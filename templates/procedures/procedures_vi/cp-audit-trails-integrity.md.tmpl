@@ -1,0 +1,12 @@
+### Tính Toàn Vẹn Nhật Ký Kiểm Toán - Các Kiểm Soát Bảo Mật và Lưu Trữ Nhật Ký
+
+1. Các nhật ký kiểm toán phải được bảo vệ khỏi truy cập hoặc thay đổi không được phép, để thông tin chứa trong chúng chỉ được cung cấp khi cần thiết để đánh giá một sự cố bảo mật hoặc cho các hoạt động kiểm toán định kỳ theo quy định trong chính sách này.
+2. Tất cả các nhật ký kiểm toán phải được bảo vệ khi truyền tải và mã hóa khi lưu trữ để kiểm soát quyền truy cập vào nội dung của nhật ký.
+3. Khi có thể, các nhật ký kiểm toán nên được lưu trữ trên một hệ thống riêng biệt để giảm thiểu tác động của việc kiểm toán có thể có đối với hệ thống quyền riêng tư và để ngăn chặn việc truy cập vào các đường dẫn kiểm toán bởi những người có quyền quản trị hệ thống.
+
+    * Các hệ thống riêng biệt được sử dụng để áp dụng nguyên tắc bảo mật "phân tách nhiệm vụ" nhằm bảo vệ các đường dẫn kiểm toán khỏi các hacker.
+    * Các máy chủ ghi nhật ký của {{companyShortName}} có thể bao gồm Elasticsearch, Logstash và Kibana (ELK) như một phần của cấu hình cơ bản của chúng để dễ dàng xem xét dữ liệu nhật ký kiểm toán. Bộ công cụ ELK cung cấp chức năng tóm tắt tin nhắn, giảm thiểu và báo cáo.
+
+4. Các báo cáo tóm tắt hoạt động kiểm toán phải được lưu trữ trong thời gian bảy năm.
+5. Dữ liệu nhật ký kiểm toán được lưu trữ cục bộ trên máy chủ nhật ký kiểm toán hoặc trong môi trường nguồn trong thời gian một tháng. Sau đó, dữ liệu nhật ký được mã hóa và chuyển đến kho lưu trữ ấm (hiện tại là S3) bằng các kịch bản tự động và được lưu trữ trong ít nhất một năm.
+6. Dữ liệu sự kiện thô có thể bị xóa sau một tháng / 30 ngày miễn là các chi tiết cần thiết được bao phủ đầy đủ trong các nhật ký/báo cáo kiểm toán tổng hợp.

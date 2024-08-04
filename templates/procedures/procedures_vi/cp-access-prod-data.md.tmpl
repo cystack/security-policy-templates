@@ -1,0 +1,13 @@
+### Truy cập dữ liệu sản xuất
+
+Các yêu cầu và kiểm soát sau đây được áp dụng cho việc truy cập dữ liệu sản xuất bởi nhân viên nội bộ:
+
+- Không có quyền truy cập "nội bộ" đã được cung cấp sẵn cho các kho dữ liệu sản xuất. Các quyền truy cập như SSH trực tiếp vào các máy chủ cơ sở dữ liệu sản xuất và truy cập trực tiếp vào các đối tượng dữ liệu trong các bucket S3 sản xuất đều bị cấm.
+
+- Quyền truy cập vào dữ liệu khách hàng được cấp theo từng tài khoản.
+
+- Các yêu cầu truy cập phải tuân theo quy trình truy cập sản xuất. Quyền truy cập phải được phê duyệt bởi cả chủ dữ liệu và đội ngũ bảo mật.
+
+- Quyền truy cập dữ liệu sản xuất chỉ được cấp thông qua một nền tảng đã được phê duyệt với kiểm soát truy cập tập trung mạnh mẽ và MFA.
+
+- Một danh sách kiểm toán về những người có quyền truy cập vào dữ liệu khách hàng nào được duy trì và xem xét hàng tháng. Quyền truy cập sẽ bị thu hồi khi không còn cần thiết.

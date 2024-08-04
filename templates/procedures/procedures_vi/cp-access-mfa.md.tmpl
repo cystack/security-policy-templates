@@ -1,0 +1,16 @@
+### Xác thực đa yếu tố
+
+Xác thực đa yếu tố (MFA) là một biện pháp kiểm soát tiêu chuẩn được sử dụng bởi {{companyShortName}} để cung cấp quyền kiểm soát truy cập mạnh mẽ vào các hệ thống và ứng dụng quan trọng, và nên được kích hoạt bất cứ khi nào có thể.
+
+{{companyShortName}} triển khai {{provider}} cho MFA.
+
+!!! quan trọng
+
+    **Các phương thức MFA được chấp thuận bao gồm:**
+
+    - Thông báo đẩy được gửi qua ứng dụng di động {{provider}} (mặc định và ưu tiên cho quyền truy cập của người dùng cuối)
+    - Thiết bị token phần cứng MFA (yêu cầu đối với người dùng root của tài khoản AWS)
+    - Chứng chỉ mật mã duy nhất gắn với một thiết bị
+    - Mật khẩu một lần dựa trên thời gian (TOTP) được gửi qua ứng dụng di động, chẳng hạn như Google Authenticator
+    - Mật khẩu một lần được gửi qua tin nhắn SMS (nếu đó là tùy chọn duy nhất được hỗ trợ)
+    - Cơ sở vật lý bảo mật (nếu hệ thống hoặc ứng dụng chỉ có thể truy cập tại địa điểm đó)

@@ -1,0 +1,60 @@
+### Tiêu Chuẩn Ghi Nhật Ký Các Sự Kiện Bảo Mật và Các Đường Dẫn Ứng Dụng
+
+Tiêu chuẩn ghi nhật ký của {{companyShortName}} yêu cầu các nhật ký ứng dụng và hệ thống phải chứa thông tin đầy đủ để xác định **ai đã làm gì, khi nào, ở đâu** để đảm bảo ghi lại các sự kiện bảo mật và kiểm toán và để tạo bằng chứng cho các hoạt động không được phép.
+
+Tất cả các hệ thống và phần mềm được phát triển tại {{companyShortName}} phải có các sự kiện bảo mật được ghi nhật ký như là một phần của hoặc bổ sung cho ghi nhật ký ứng dụng tiêu chuẩn.
+
+1. Tất cả các sự kiện nhật ký bảo mật phải có các thuộc tính sau ít nhất:
+
+    * Thời gian của sự kiện (đồng bộ với máy chủ thời gian được phê duyệt)
+    * Định danh của người thực hiện hành động (như ID người dùng)
+    * Vị trí bao gồm cả nguồn gốc (như hostname/IP) và mục tiêu (như máy chủ/dịch vụ/tài nguyên)
+    * Hoạt động hoặc hành động (như đăng nhập, đăng xuất, tạo, đọc, cập nhật, xóa tài nguyên)
+       - hành động có thể được ghi nhật ký và xác định theo phương thức yêu cầu HTTP và điểm cuối API
+    * Mô tả sự kiện và các chi tiết bổ sung có thể được ghi nhật ký tùy thuộc vào hệ thống hoặc ứng dụng
+
+2. Các loại sự kiện bảo mật sau đây phải được ghi nhật ký ít nhất:
+
+    * Các hoạt động quản trị người dùng và nhóm (người dùng hoặc nhóm được thêm, cập nhật, xóa, quyền truy cập được cấp/rút lại)
+    * Tất cả các nỗ lực đăng nhập, thành công và không thành công bao gồm địa chỉ IP nguồn
+    * Tất cả các đăng xuất tương tác
+    * Các hành động đặc quyền (thay đổi cấu hình, tắt/bắt đầu lại ứng dụng, cập nhật phần mềm, v.v.)
+    * Các sự kiện ứng dụng quan trọng (ví dụ: lỗi ứng dụng, bắt đầu và bắt đầu lại, tắt)
+    * Bất kỳ và tất cả các hành động thực hiện trên các tài nguyên quan trọng như dữ liệu sản xuất
+
+3. Tất cả các nhật ký ứng dụng và hệ thống phải không bao gồm (đã xóa hoặc bị che khuất):
+
+    * Bất kỳ thông tin nhạy cảm nào, bao gồm
+      {{#needStandardHIPAA}}thông tin sức khỏe được bảo vệ (PHI),{{/needStandardHIPAA}}
+      thông tin cá nhân nhận diện được (PII)
+
+      - ngoại trừ địa chỉ IP
+      - tên người dùng / đăng nhập có thể / nên được ghi nhật ký như một phần của ghi nhật ký xác thực
+      - đối với kiểm toán hành động của người dùng, ID mờ nên được sử dụng thay vì tên người dùng / đăng nhập bất cứ khi nào có thể
+
+    * Mã thông báo xác thực và phiên, thông tin đăng nhập của người dùng
+  
+4. Các sự kiện bảo mật và nhật ký kiểm toán phải được:
+
+    * Luôn có sẵn cho hệ thống / nhóm giám sát
+    * Được bảo vệ khỏi bất kỳ thay đổi nào
+    * Được giám sát với cơ chế cảnh báo được đặt ra (bao gồm cảnh báo về việc không nhận được sự kiện nhật ký trong một khoảng thời gian nhất định)
+
+5. Tất cả cơ sở hạ tầng CNTT của {{companyShortName}} phải có đồng hồ hệ thống đồng bộ
+
+*Ví dụ về các sự kiện ứng dụng được khuyến nghị ghi nhật ký và mục đích kiểm toán của chúng:*
+
+Sự kiện                                           | Mục đích
+---------                                        | ---------
+Yêu cầu của khách hàng và phản hồi của máy chủ | điều tra và gỡ lỗi - mức độ chi tiết được xác định bởi ứng dụng
+Các nỗ lực đăng nhập thành công và không thành công | xác thực
+Truy cập thành công và thất bại vào tài nguyên ứng dụng | cấp quyền, gia tăng đặc quyền
+Số lượng yêu cầu quá mức từ khách hàng           | tấn công brute-forcing, bot độc hại, tấn công từ chối dịch vụ
+E-mail gửi bởi ứng dụng                          | gửi thư rác, kỹ thuật xã hội
+
+*Chi tiết về cấu hình ghi nhật ký được tài liệu hóa tại*
+
+* [Ghi nhật ký ứng dụng - tài liệu trên Engineering Wiki]({{&devWikiURL}})
+* [Nhật ký hoạt động của danh tính và quyền truy cập qua Okta](https://developer.okta.com/docs/api/resources/system_log)
+* [AWS Cloudtrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html)
+* [Nhật ký truy cập máy chủ AWS S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html)

@@ -1,0 +1,45 @@
+### Quyền Truy cập Tạm thời vào Tài khoản và Tài nguyên AWS
+
+Truy cập vào các tài khoản AWS của {{companyShortName}} được phép thông qua thông tin xác thực / phiên tạm thời. Không cho phép người dùng, mật khẩu hoặc khóa truy cập lâu dài trong cấu hình IAM của AWS cho người dùng cuối, dù là để truy cập vào bảng điều khiển AWS hay AWS CLI. Điều này được thực hiện thông qua các quy trình sau:
+
+**Truy cập Bảng điều khiển AWS**
+
+* Một tài khoản chính của tổ chức (`{{companyShortName}}-master`) trong AWS được cấu hình với các vai trò IAM như Developer và Security.
+* SAML SSO và mối quan hệ tin cậy được thiết lập giữa các vai trò trong `{{companyShortName}}-master` và một "ứng dụng AWS" được cung cấp trong Okta.
+* Người dùng được chỉ định các vai trò tương ứng của họ thông qua ứng dụng và phân công vai trò trong Okta.
+* Thông qua SSO, người dùng xác thực thông qua Okta bằng cách sử dụng tên người dùng Okta, mật khẩu và MFA.
+* Sau khi xác thực và xác minh MFA thành công, người dùng đăng nhập vào `{{companyShortName}}-master` sử dụng khả năng Assume Role của AWS.
+* Các vai trò trong `{{companyShortName}}-master` theo mặc định có quyền truy cập bị hạn chế cao. Ví dụ, vai trò Developer không có quyền truy cập vào bất kỳ dịch vụ và tài nguyên nào trong tài khoản chính.
+* Người dùng cần Assume một vai trò trong tài khoản phụ, được kết nối thông qua chính sách tin cậy giữa các tài khoản được xác định khi khởi tạo tài khoản hoặc thông qua một quy trình quản lý thay đổi được phê duyệt. Ví dụ, một Developer có thể assume vai trò Administrator trong `{{companyShortName}}-dev`, đó là môi trường phát triển sandboxed trong một tài khoản AWS riêng biệt.
+* Quyền truy cập Assume Role vào tài khoản AWS sản xuất bị hạn chế nghiêm ngặt.
+
+    * Các Developer chỉ có thể assume vai trò Developer trong sản xuất, chỉ có quyền truy cập để đọc nhật ký CloudWatch, dấu vết / bản đồ dịch vụ hệ thống XRay, số liệu CloudWatch, danh sách hàng tồn kho nhóm tài nguyên và bảng điều khiển CloudWatch.
+    * Security chỉ có thể assume vai trò Auditor trong sản xuất có chính sách IAM Auditor mặc định được quản lý bởi AWS. Chính sách này cho phép truy cập chỉ đọc vào cấu hình tài khoản và tài nguyên, nhưng không cho phép truy cập đọc vào bất kỳ dữ liệu nào như các đối tượng S3.
+
+**Truy cập AWS CLI/SDK**
+
+* [Công cụ Okta AWS-CLI](https://github.com/oktadeveloper/okta-aws-cli-assume-role) được sử dụng để lấy thông tin xác thực tạm thời (khóa truy cập) cho các Developer để kết nối với AWS bằng CLI hoặc SDK.
+* Bằng cách chạy công cụ Okta AWS-CLI, các Developer được nhắc xác thực với Okta bằng thông tin đăng nhập Okta và mã thông báo / ứng dụng MFA.
+* Sau khi xác thực và xác minh MFA thành công, một khóa truy cập tạm thời và mã phiên được chèn vào tệp cấu hình cục bộ (ví dụ: `~/.aws/credentials` và `~/.aws/config`).
+* Thông tin xác thực tạm thời này hết hạn sau một giờ và cần lấy một thông tin xác thực tạm thời mới để truy cập.
+* Thông qua phương pháp này, các Developer được cấp quyền tương tự như khi họ assume vai trò Developer thông qua bảng điều khiển AWS.
+* Các chi tiết bổ sung được ghi lại trên [Wiki Phát triển]({{&devWikiURL}}).
+
+**An toàn IAM**
+
+* {{companyShortName}} triển khai **Dome9** để giám sát và bảo vệ các môi trường AWS của mình. Dome9 cung cấp một lớp phòng thủ bổ sung trên các chính sách IAM gốc gọi là **IAM Safety**.
+* IAM Safety hoạt động bằng cách xác định một tập hợp các hành động rủi ro, chẳng hạn như thêm / xóa người dùng IAM vào một chính sách **Explicit Deny**. Chính sách được gắn vào một nhóm IAM, và người dùng và / hoặc vai trò được bảo vệ được chỉ định vào nhóm này.
+* Vì các quy tắc explicit deny luôn được ưu tiên trong chính sách IAM của AWS, điều này hiệu quả trong việc hạn chế truy cập và ngăn chặn thực thi các hành động rủi ro như được xác định trong chính sách, ngay cả khi người dùng / vai trò có quyền quản trị.
+* Quyền truy cập ban đầu có thể được khôi phục tạm thời thông qua bảng điều khiển web Dome9 hoặc ứng dụng di động của nó.
+* Các vai trò có đặc quyền, chẳng hạn như vai trò Security trong tài khoản chính và vai trò Administrator trong tài khoản sản xuất, được bảo vệ bởi IAM Safety.
+* Các chi tiết bổ sung có thể được tìm thấy trên [tài liệu sản phẩm của Dome9](https://dome9-security.atlassian.net/wiki/spaces/DG/pages/2981893/IAM+Safety+Overview).
+
+**Khắc phục sự cố / Hỗ trợ Truy cập**
+
+Trong hoạt động bình thường, khắc phục sự cố được thực hiện bằng phân tích nhật ký trong Sumo Logic, ngoài các môi trường sản xuất trong AWS. Một vai trò Hỗ trợ riêng được tạo để truy cập tạm thời khi khắc phục sự cố và hỗ trợ khi truy cập nhật ký không đủ để xác định nguyên nhân. Quyền truy cập hỗ trợ nên được giảm thiểu và được thiết kế để liên quan đến quy trình phê duyệt và cung cấp thủ công.
+
+* Vai trò Hỗ trợ theo mặc định không được chỉ định cho bất kỳ ai.
+* Vai trò Hỗ trợ được cấu hình với quyền truy cập mức Đọc vào các dịch vụ được sử dụng bởi các dịch vụ và ứng dụng nền tảng của {{companyShortName}}. Nó không có quyền để thực hiện bất kỳ thay đổi cấu hình nào và không có quyền truy cập vào dữ liệu sản xuất.
+* Một vé PRODCM được sử dụng để yêu cầu quyền truy cập hỗ trợ tạm thời và phải được phê duyệt bởi Trưởng phòng Kỹ thuật và Bảo mật.
+* Sau khi phê duyệt vé PRODCM truy cập hỗ trợ, Bộ phận Bảo mật cấp quyền truy cập tạm thời cho người yêu cầu bằng cách chỉ định vai trò Hỗ trợ cho người dùng cá nhân đó trong Okta.
+* Vai trò Hỗ trợ được bảo vệ bởi Dome9

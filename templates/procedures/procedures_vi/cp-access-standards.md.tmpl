@@ -1,0 +1,41 @@
+### Tiêu Chuẩn Cấp Quyền Truy Cập
+
+#### Giải Quyết An Ninh Nhân Sự
+
+1. Mức độ bảo mật được cấp cho một người dùng trên hệ thống thông tin của tổ chức dựa trên lượng dữ liệu cần thiết tối thiểu để thực hiện trách nhiệm công việc hợp pháp được giao cho phân loại công việc của người dùng và/hoặc để người dùng cần quyền truy cập để thực hiện các hoạt động điều trị, thanh toán, hoặc chăm sóc sức khỏe.
+2. Tất cả các yêu cầu cấp quyền truy cập đều được xử lý theo nguyên tắc "quyền tối thiểu".
+3. {{companyShortName}} duy trì cách tiếp cận tối thiểu cần thiết đối với quyền truy cập vào dữ liệu Khách hàng.
+   {{#needStandardHIPAA}}
+   Do đó, {{companyShortName}}, bao gồm tất cả các thành viên lực lượng lao động, không có quyền truy cập dễ dàng vào bất kỳ ePHI nào.
+   {{/needStandardHIPAA}}
+
+#### Xác Thực Quyền Truy Cập
+
+1. Các danh mục quyền truy cập dựa trên vai trò cho từng hệ thống và ứng dụng của {{companyShortName}} được chấp thuận trước bởi Nhân viên Bảo mật.
+2. {{companyShortName}} sử dụng các ranh giới xác định phần cứng và/hoặc phần mềm để phân đoạn dữ liệu, ngăn chặn truy cập trái phép và giám sát lưu lượng truy cập để ngăn chặn các cuộc tấn công từ chối dịch vụ.
+
+#### Xác Thực Người Hoặc Thực Thể
+
+1. Mỗi thành viên trong lực lượng lao động có và sử dụng một ID người dùng và mật khẩu duy nhất để xác định họ là người sử dụng hệ thống thông tin.
+2. Mỗi Khách hàng và Đối tác có và sử dụng một ID người dùng và mật khẩu hoặc OpenID Connect duy nhất để xác định họ là người sử dụng hệ thống thông tin. Điều này được thực thi thông qua việc sử dụng **AWS Cognito**.
+3. Tất cả các tương tác hỗ trợ khách hàng phải được xác minh trước khi nhân viên hỗ trợ của {{companyShortName}} thực hiện bất kỳ yêu cầu nào có ảnh hưởng đến bảo mật thông tin.
+
+#### Xác Định Người Dùng Duy Nhất
+
+1. Quyền truy cập vào các hệ thống và ứng dụng của {{companyShortName}} được kiểm soát bằng cách yêu cầu ID Đăng Nhập Người Dùng và mật khẩu duy nhất cho từng người dùng và nhà phát triển.
+2. Các yêu cầu mật khẩu yêu cầu các điều khiển mật khẩu mạnh mẽ (xem bên dưới).
+3. Mật khẩu không được hiển thị bất kỳ lúc nào và không được truyền hoặc lưu trữ dưới dạng văn bản thuần túy.
+4. Các tài khoản mặc định trên tất cả các hệ thống và môi trường sản xuất, bao gồm root, đều bị vô hiệu hóa/khóa.
+5. Các tài khoản chia sẻ không được phép trong các hệ thống hoặc mạng của {{companyShortName}}.
+
+#### Đăng Nhập Tự Động và Đăng Xuất
+
+1. Các cấu hình đăng nhập tự động lưu trữ mật khẩu người dùng hoặc bỏ qua việc nhập mật khẩu không được phép sử dụng với các máy trạm hoặc hệ thống sản xuất của {{companyShortName}}.
+
+    * Đăng nhập tự động chỉ được phép cho các hệ thống rủi ro thấp như máy tính phòng hội nghị kết nối với Zoom Room.
+    * Các hệ thống như vậy được cấu hình trên các VLAN mạng riêng biệt.
+
+2. Người dùng phải làm cho hệ thống thông tin không thể truy cập bởi bất kỳ cá nhân nào khác khi không có mặt người dùng (ví dụ: bằng cách sử dụng bảo vệ màn hình bằng mật khẩu hoặc đăng xuất khỏi hệ thống).
+3. Các hệ thống thông tin tự động khóa người dùng, chẳng hạn như bật bảo vệ màn hình bằng mật khẩu sau 2 phút hoặc ít hơn không hoạt động.
+4. Các hệ thống thông tin tự động chuyển sang chế độ chờ hoặc đăng xuất người dùng khỏi hệ thống sau 30 phút hoặc ít hơn không hoạt động.
+5. Nhân viên Bảo mật phải phê duyệt trước bất kỳ ngoại lệ nào đối với yêu cầu đăng xuất tự động.

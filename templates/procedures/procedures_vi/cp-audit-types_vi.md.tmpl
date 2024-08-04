@@ -1,0 +1,41 @@
+### Các Loại Kiểm Toán Hệ Thống
+
+Quy trình kiểm toán của {{companyShortName}} bao gồm các loại sau đây.
+
+1. **Giám Sát Cấu Hình và Hoạt Động:** Đây là việc ghi nhật ký, giám sát, quét và cảnh báo của một hệ thống, tài khoản hoặc môi trường, có thể được thực hiện bằng các kịch bản/phần mềm tự động theo thời gian thực hoặc bằng cách kiểm tra/thử nghiệm thủ công. Loại kiểm toán này được thực hiện *liên tục* như một phần của hoạt động của {{companyShortName}}.
+
+    !!! tip "Ví dụ bao gồm:"
+
+        * Người dùng: Nhật ký kiểm toán cấp người dùng và tài khoản thường theo dõi và ghi lại tất cả các lệnh được khởi xướng trực tiếp bởi người dùng, tất cả các nỗ lực xác định và xác thực, và dữ liệu cũng như dịch vụ được truy cập.
+        * Ứng dụng: Nhật ký kiểm toán cấp ứng dụng thường theo dõi và ghi lại tất cả các hoạt động của người dùng, bao gồm dữ liệu được truy cập và chỉnh sửa cũng như các hành động cụ thể.
+        * Hệ thống: Nhật ký kiểm toán cấp hệ thống thường theo dõi và ghi lại các hoạt động của người dùng, các ứng dụng được truy cập, tính toàn vẹn của tệp và các hành động hệ thống cụ thể khác.
+        * Mạng: Quét hoặc nhật ký kiểm toán cấp mạng thường theo dõi thông tin về những gì đang hoạt động, thực hiện các cuộc tấn công xâm nhập và xác định các lỗ hổng.
+        * Lưu lượng: Lưu lượng liên quan đến lưu lượng đến và đi vào các môi trường sản xuất/cấm. Ví dụ, nhật ký tường lửa hoặc nhật ký luồng VPC trong AWS.
+        * Dữ liệu: Dữ liệu bao gồm tất cả các nỗ lực thành công và thất bại trong việc truy cập và chỉnh sửa dữ liệu sản xuất.
+
+        *Dữ liệu liên quan đến các sự kiện trên sẽ bao gồm nguồn gốc, đích đến, hành động thực hiện, thời gian và các chi tiết liên quan khác có sẵn.*
+
+2. **Xem Xét Quyền Truy Cập:** Đây là việc xem xét tất cả các tài khoản người dùng và dịch vụ cũng như quyền truy cập trên các môi trường hoạt động của {{companyShortName}}, bao gồm các hệ thống tại chỗ, môi trường đám mây như các tài khoản AWS và các ứng dụng khác như phần mềm cộng tác, hệ thống vé và kho mã nguồn.
+
+    * {{companyShortName}} đã phát triển một công cụ nội bộ để tự động lấy cấu hình từ các môi trường đám mây của chúng tôi, bao gồm
+        - Cấu hình truy cập AWS từ các chính sách IAM, cài đặt VPC EC2 và nhóm bảo mật, chính sách bucket S3, tài nguyên Lambda và API Gateway, v.v.;
+        - Người dùng, nhóm, quyền truy cập ứng dụng từ IdP Okta;
+        - Cài đặt truy cập mạng từ Cisco Meraki, v.v.
+    * Dữ liệu được thu thập theo yêu cầu từ đội ngũ bảo mật hoặc theo các thay đổi trong môi trường hoạt động.
+    * Dữ liệu được công cụ sử dụng để tổng hợp và phân tích quyền truy cập của người dùng và ứng dụng.
+    * Quyền truy cập vào các hệ thống và ứng dụng khác không được công cụ tự động này bao phủ được xem xét thủ công hàng quý hoặc khi có bất kỳ thay đổi đáng kể nào đối với môi trường mục tiêu.
+    * Kết quả của mỗi lần xem xét, quyền truy cập không sử dụng hoặc không hợp lệ sẽ được gỡ bỏ.
+
+3. **Kiểm Toán Tuân Thủ và Kiểm Soát:** Đây là việc kiểm toán được thực hiện đối với các kiểm soát Kỹ thuật, Quản trị và/hoặc Vật lý như được xác định trong các chính sách và quy trình của {{companyShortName}}, nhằm đo lường việc áp dụng và hiệu quả của chúng. Loại kiểm toán này thường được thực hiện bởi một nhóm kiểm toán nội bộ được chỉ định hoặc một công ty kiểm toán bên ngoài, theo *các khoảng thời gian xác định* hoặc được kích hoạt bởi một *sự kiện kích hoạt*.
+
+    !!! tip "Các sự kiện kích hoạt tiềm năng bao gồm:"
+
+        * Kiểm toán/đánh giá tuân thủ theo lịch trình (ví dụ: đánh giá rủi ro hàng năm)
+        * Các sự cố hoặc sự kiện có nguy cơ cao hoặc dễ gặp sự cố, hoặc như một phần của các hoạt động sau sự cố
+        * Khiếu nại từ các đối tác, khách hàng hoặc cộng tác viên
+        * Xác định các lỗ hổng bảo mật quan trọng
+        * Mẫu hoạt động không điển hình
+        * Nỗ lực xác thực thất bại
+        * Sử dụng và hoạt động truy cập từ xa
+        * Hoạt động sau khi kết thúc hợp đồng
+        * Kiểm toán ngẫu nhiên

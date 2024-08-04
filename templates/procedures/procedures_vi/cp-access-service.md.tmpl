@@ -1,0 +1,13 @@
+### Tài khoản dịch vụ
+
+* Tất cả giao tiếp từ ứng dụng đến ứng dụng sử dụng tài khoản dịch vụ bị hạn chế và không được phép trừ khi thật sự cần thiết. Các công cụ tự động được sử dụng để hạn chế quyền truy cập của tài khoản giữa các ứng dụng và hệ thống.
+
+* Các dịch vụ thuộc nền tảng của {{companyShortName}} sử dụng cấu hình chính sách AWS IAM và/hoặc OAuth để xác thực.
+
+* Tài khoản chung không được phép trên các hệ thống của {{companyShortName}}.
+
+* Xác thực và ủy quyền giữa hệ thống và hệ thống, hệ thống và ứng dụng, và ứng dụng và ứng dụng được hạn chế và kiểm soát để giới hạn quyền truy cập.
+
+* Trong AWS, các tài khoản dịch vụ được thực hiện dưới dạng IAM Roles, và quyền truy cập của chúng được xác định bởi các chính sách IAM tương ứng. Việc tạo ra các IAM roles và chính sách này được thực hiện dưới dạng mã, tuân theo quy trình phát triển bảo mật, xem xét và phê duyệt thay đổi sản xuất.
+
+* Một danh mục của tất cả các tài khoản dịch vụ được duy trì bởi {{provider}} và được xem xét định kỳ.

@@ -1,0 +1,50 @@
+### Thiết lập, Sửa đổi và Chấm dứt Quyền truy cập
+
+1. Yêu cầu truy cập vào các hệ thống và ứng dụng của nền tảng {{companyShortName}} được thực hiện chính thức bằng cách sử dụng quy trình sau:
+
+    1.1. Một yêu cầu truy cập được tạo trong {{ticketingSystem}} thông qua yêu cầu onboard nhân viên mới hoặc yêu cầu truy cập cụ thể từ trang Hỗ trợ Nội bộ của {{companyShortName}}.
+    
+    1.2. Đội ngũ Bảo mật sẽ cấp quyền truy cập tiêu chuẩn theo vai trò công việc như một phần của quy trình onboard nhân viên mới. Một bộ tài khoản tiêu chuẩn được tạo mặc định cho tất cả nhân viên như một phần của quy trình onboard. Điều này bao gồm:
+       
+        * Tài khoản người dùng cho hệ thống/laptop cục bộ
+        * Người dùng Okta trong nhóm Everyone, và các nhóm bổ sung dựa trên vai trò như Phát triển, CNTT, Bảo mật
+        * Tài khoản Office365 để truy cập email Outlook, SharePoint, v.v.
+        * Tài khoản Ataata cho đào tạo nhận thức bảo mật
+        * Tài khoản HR cho các thủ tục giấy tờ, quản lý phúc lợi, tiền lương, báo cáo chi phí, v.v.
+        * Quyền truy cập {{ticketingSystem}} để gửi yêu cầu hỗ trợ
+        * Quyền truy cập bổ sung dựa trên vai trò (ví dụ: quyền truy cập {{sourceControl}} và {{ciSystem}} cho một developer)
+        
+    1.3. Quyền truy cập tiêu chuẩn có thể được cấp bởi các chủ tài khoản / quản trị viên bất kỳ lúc nào trong hoặc sau quá trình onboard với sự phê duyệt của chủ tài khoản và/hoặc quản lý.
+    
+    1.4. Nếu cần quyền truy cập bổ sung ngoài những điều trên, một yêu cầu truy cập riêng biệt (thông qua {{ticketingSystem}}) là cần thiết và người yêu cầu phải bao gồm mô tả và lý do là một phần của yêu cầu truy cập.
+    
+    1.5. Sau khi hoàn tất việc xem xét, đội ngũ Bảo mật phê duyệt hoặc từ chối yêu cầu. Nếu yêu cầu bị từ chối, nó sẽ quay lại để xem xét và tài liệu bổ sung.
+    
+    1.6. Nếu yêu cầu được phê duyệt, đội ngũ CNTT hoặc Bảo mật cấp quyền truy cập, sau đó đánh dấu yêu cầu là Hoàn thành, thêm bất kỳ ghi chú cần thiết nào.
+       
+        * Các tài khoản mới sẽ được tạo với một mật khẩu tạm thời an toàn đáp ứng tất cả các yêu cầu về mật khẩu, cần phải thay đổi khi đăng nhập lần đầu tiên.
+        * Tất cả các trao đổi mật khẩu phải diễn ra qua một kênh xác thực.
+        * Đối với các hệ thống tại chỗ, việc cấp quyền truy cập được thực hiện bằng cách thêm tài khoản người dùng phù hợp vào nhóm LDAP/AD tương ứng.
+        * Đối với các tài khoản đám mây, việc cấp quyền truy cập được thực hiện trong Okta hoặc sử dụng các cơ chế kiểm soát truy cập được tích hợp trong các dịch vụ/ứng dụng đó.
+        * Quản lý tài khoản cho các hệ thống không sản xuất có thể được ủy quyền cho một nhân viên {{companyShortName}} theo quyết định của Viên chức Bảo mật.
+
+2. Quyền truy cập đặc biệt, bao gồm quyền truy cập vào các môi trường sản xuất, không được cấp cho đến khi nhận được, xem xét và phê duyệt bởi Viên chức Bảo mật của {{companyShortName}}.
+
+3. Yêu cầu truy cập được lưu giữ để tham khảo trong tương lai.
+
+4. Tài khoản tạm thời không được sử dụng trừ khi thực sự cần thiết cho mục đích kinh doanh.
+
+    4.1. Các tài khoản được xem xét sau mỗi 90 ngày để đảm bảo tài khoản tạm thời không bị bỏ lại không cần thiết.
+    
+    4.2. Các tài khoản không hoạt động trong hơn 90 ngày sẽ bị xóa.
+
+5. Trong trường hợp thông tin không cá nhân, chẳng hạn như nội dung giáo dục chung, không cần thiết phải nhận dạng và xác thực.
+
+#### Chấm dứt Quyền truy cập
+
+Trưởng phòng CNTT hoặc đội ngũ Bảo mật nhận yêu cầu chấm dứt quyền truy cập trong một trong các điều kiện sau và xử lý theo quy định:
+
+* Nhân viên rời khỏi / chấm dứt hợp đồng, như được định nghĩa bởi quy trình trong [HR & Employee Security](hr.md);
+* Quyền truy cập của nhân viên vào hệ thống không còn cần thiết do thay đổi vai trò công việc hoặc sự kiện tương tự, trong trường hợp này một yêu cầu chấm dứt truy cập có thể được gửi bởi nhân viên hoặc quản lý của họ thông qua Cổng trợ giúp nội bộ hoặc một yêu cầu qua email gửi đến đội ngũ Bảo mật;
+* Do kết quả của Kiểm tra truy cập, như được định nghĩa trong [System Auditing](system-audit.md).
+* Quyền truy cập không tiêu chuẩn bị thu hồi theo mặc định sau 30 ngày không hoạt động, trừ khi có yêu cầu và phê duyệt ngoại lệ / gia hạn.
