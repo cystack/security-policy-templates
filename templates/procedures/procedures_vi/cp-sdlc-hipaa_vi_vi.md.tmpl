@@ -1,0 +1,47 @@
+### Các phương pháp tốt nhất về HIPAA cho phát triển phần mềm
+
+#### Chỉ sử dụng các dịch vụ phù hợp với HIPAA trên Cloud (AWS)
+
+Vì chúng tôi sử dụng các dịch vụ do AWS cung cấp cho môi trường sản xuất của mình, trong đó có chứa thông tin sức khỏe được bảo vệ điện tử (ePHI), AWS là một "đối tác kinh doanh" của chúng tôi. HIPAA yêu cầu {{companyShortName}} và AWS phải ký một ["thỏa thuận đối tác kinh doanh" (BAA)][BAA].
+
+[BAA]: https://aws.amazon.com/blogs/security/tag/aws-business-associate-agreement/
+
+BAA đã được thực thi đầy đủ của chúng tôi với AWS có thể được tìm thấy trong kho tài liệu nội bộ.
+
+Chúng tôi chỉ được sử dụng các dịch vụ phù hợp với HIPAA được bao gồm trong BAA để xử lý và lưu trữ ePHI. Các dịch vụ không đủ điều kiện có thể được sử dụng để hỗ trợ hạ tầng đám mây của chúng tôi miễn là nó không truy cập vào ePHI.
+
+Danh sách các dịch vụ đủ điều kiện HIPAA có thể được tìm thấy [tại đây](https://aws.amazon.com/compliance/hipaa-eligible-services-reference/). AWS thường xuyên cập nhật các dịch vụ của mình để đáp ứng các yêu cầu tuân thủ HIPAA. Hãy kiểm tra trang này thường xuyên để biết liệu có dịch vụ mới nào được thêm vào hay không.
+
+Các tài liệu tham khảo bổ sung:
+
+- [Kiến trúc cho HIPAA trên Cloud](https://aws.amazon.com/health/healthcare-compliance/hipaa/)
+- [Mô hình Trách nhiệm chia sẻ của AWS](https://aws.amazon.com/compliance/shared-responsibility-model/)
+- [Tuân thủ HIPAA của AWS](https://aws.amazon.com/compliance/hipaa-compliance/)
+- [Tài liệu trắng về tuân thủ HIPAA của AWS](https://d0.awsstatic.com/whitepapers/compliance/AWS_HIPAA_Compliance_Whitepaper.pdf)
+
+#### Phân tách quyền truy cập và dữ liệu giữa các tài khoản sản xuất và không sản xuất
+
+Đây là yêu cầu tuân thủ của nhiều quy định để đảm bảo sự phân tách trách nhiệm giữa các môi trường sản xuất và không sản xuất, bao gồm cả quyền truy cập và dữ liệu. Ngoài ra, chúng tôi không được sử dụng dữ liệu sản xuất cho phát triển hoặc kiểm tra, trừ khi dữ liệu đã được làm sạch/ẩn danh đúng cách.
+
+Các ví dụ về các quy định và chứng chỉ có yêu cầu rõ ràng này bao gồm HIPAA, SAS70/SSAE-17, SOC, PCI, và ISO 27001/27002, nhiều trong số đó nằm trong danh sách mục tiêu của chúng tôi để tuân thủ hoặc chứng nhận.
+
+#### Không ghi log ePHI
+
+Không chỉ là một thực hành bảo mật tốt để tránh dữ liệu nhạy cảm như ePHI trong ghi nhật ký ứng dụng, mà còn có thể là vi phạm hợp đồng (theo AWS BAA) nếu làm như vậy. Chúng tôi không được gửi bất kỳ ePHI nào đến các dịch vụ không đủ điều kiện HIPAA trong AWS, chẳng hạn như CloudTrail.
+
+#### Bao gồm ngôn ngữ phù hợp trong các thông báo
+
+Ngôn ngữ cụ thể phải được bao gồm trong các điều khoản, đồng ý và thông báo. Ví dụ, chúng tôi phải thu thập địa chỉ email từ bệnh nhân khi họ đăng ký PHC và ghi rõ trong các điều khoản rằng chúng tôi có thể sử dụng địa chỉ email được cung cấp làm phương thức liên lạc chính thức, bao gồm cả thông báo vi phạm, nếu xảy ra vi phạm ảnh hưởng đến PHI của họ.
+
+#### Bảo vệ dữ liệu
+
+Tuân thủ các yêu cầu được liệt kê trong các tài liệu sau:
+
+- [Mô hình phân loại dữ liệu](data-mgmt.md#data-classification-model);
+- [Yêu cầu xử lý dữ liệu](data-mgmt.md#data-handling-requirements-matrix);
+- [Chính sách và quy trình bảo vệ dữ liệu](data-protection.md); và
+- [Quy trình sao lưu và khôi phục](data-mgmt.md#backup-and-recovery).
+
+#### Phân tích rủi ro và Đánh giá tuân thủ
+
+Đọc [báo cáo đánh giá mới nhất](assessments/hipaa-latest.md) để biết thêm chi tiết về việc tuân thủ HIPAA của {{companyShortName}}.

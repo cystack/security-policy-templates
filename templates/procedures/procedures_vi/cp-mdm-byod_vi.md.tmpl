@@ -1,0 +1,45 @@
+### Hỗ Trợ và Quản Lý Thiết Bị BYOD
+
+{{companyShortName}} cung cấp máy tính xách tay và trạm làm việc do công ty cấp cho tất cả nhân viên.
+
+{{#supportBYODandMDM}}
+
+Các thiết bị di động (bao gồm các thiết bị thông minh cá nhân) có thể được sử dụng cho mục đích kinh doanh dưới các điều kiện và quản lý sau:
+
+- Tất cả các thiết bị di động của nhân viên truy cập hoặc chứa dữ liệu của công ty sẽ được kiểm kê và quản lý bởi IT sử dụng **{{provider}}**. Danh mục sẽ duy trì thông tin cập nhật về chủ sở hữu thiết bị, các mục đích sử dụng được phê duyệt, các ứng dụng đã cài đặt, trạng thái hệ thống (phiên bản hệ điều hành và các bản vá), và trạng thái của nó (ví dụ: đang sử dụng, bị mất, ngừng sử dụng).
+
+- Phần mềm quản lý thiết bị di động được triển khai để đảm bảo bảo vệ và cấu hình đúng cách cho các thiết bị di động, bao gồm:
+
+  - Mã hóa phải được kích hoạt cho bộ nhớ thiết bị
+  - Mật khẩu thiết bị phải được kích hoạt và đáp ứng các yêu cầu chính sách bảo mật
+  - Thiết bị phải bị khóa sau 2 phút không hoạt động
+  - Hệ điều hành và các bản vá phải được cập nhật
+
+- Tất cả các ứng dụng tải xuống trên thiết bị di động của nhân viên sử dụng cho mục đích kinh doanh phải được cài đặt thông qua cửa hàng ứng dụng đã được phê duyệt hoặc
+  [danh sách ứng dụng](approved-software.md).
+
+- Việc tránh các điều khiển bảo mật tích hợp của thiết bị, chẳng hạn như việc bẻ khóa, là nghiêm cấm và được thực thi bởi phần mềm phát hiện hoặc ngăn chặn.
+
+- Phần mềm chống phần mềm độc hại được cài đặt và hoạt động trên các thiết bị di động. Ngoài ra, một môi trường sandbox được tạo ra trên các thiết bị BYOD sử dụng giải pháp MDM của **{{provider}}** để chỉ cho phép các ứng dụng và dữ liệu được trắng danh sách trong một không gian làm việc hạn chế.
+
+- Bất kỳ dữ liệu nhạy cảm hoặc bí mật nào chỉ được phép truy cập qua và lưu trữ trong môi trường sandbox trên các thiết bị di động.
+
+- Nhân viên đồng ý rằng thiết bị di động của họ có thể bị điều khiển từ xa, khóa hoặc xóa qua phần mềm MDM.
+
+- Tính đủ điều kiện và việc sử dụng thiết bị BYOD phải được sự chấp thuận của quản lý và/hoặc IT/Bảo mật.
+
+{{/supportBYODandMDM}}
+
+{{^supportBYODandMDM}}
+
+{{companyShortName}} hiện tại không yêu cầu hoặc hỗ trợ nhân viên mang theo thiết bị tính toán của riêng họ.
+
+Các thiết bị tính toán của người dùng cuối được tự quản lý. Mỗi nhân viên của {{companyShortName}} có trách nhiệm
+
+* cấu hình máy tính xách tay/trạm làm việc của họ để đáp ứng các [yêu cầu cấu hình và quản lý](ccm.md); và
+
+* đảm bảo các bản vá bảo mật mới nhất được cài đặt hoặc tự động cập nhật được kích hoạt.
+
+IT và Bảo mật cung cấp các tập lệnh tự động cho cấu hình hệ thống của người dùng cuối và/hoặc hỗ trợ kỹ thuật khi cần. Các cấu hình này được kiểm tra hàng ngày bằng **{{provider}}** được quản lý tập trung bởi đội ngũ Bảo mật.
+
+{{/supportBYODandMDM}}

@@ -1,0 +1,39 @@
+### Quản lý mã nguồn
+
+{{companyShortName}} nhóm phát triển / kỹ sư sử dụng {{sourceControl}} cho
+quản lý mã nguồn. Truy cập vào {{sourceControl}} và cấu hình của nó
+các tiêu chuẩn bao gồm:
+
+* Tất cả các nhà phát triển phải xác thực để có quyền truy cập vào {{sourceControl}} và mã
+  repos được lưu trữ trên {{sourceControl}} theo các tiêu chuẩn và quy trình
+  được xác định trong [Chính sách truy cập] (access.md):
+
+  - Kiểm soát truy cập vào giao diện web {{sourceControl}} phải được bật, thông qua
+    SSO và / hoặc MFA nếu áp dụng
+  
+  - Quyền truy cập khóa công khai/riêng tư SSH có thể được sử dụng để truy cập dòng lệnh hoặc "git"
+    đến repos mã
+
+ * Tất cả các repos mã trong {{sourceControl}} tuân theo các tiêu chuẩn cấu hình sau:
+
+  - Tất cả các repos phải có một chủ sở hữu được xác định và liệt kê
+
+  - Tất cả các repos theo mặc định là "riêng tư"
+
+* Một số hạn chế nhánh được bật, bao gồm:
+
+  - Không thể dựa trên nhánh "master"
+
+  - Hạn chế các cam kết trực tiếp vào "master"
+
+  - Hạn chế ghi lại lịch sử của "master"
+
+  - Hạn chế xóa "master"
+
+* Một số yêu cầu pull request (PR) được thực thi trước khi hợp nhất, bao gồm:
+
+  - Phải có ít nhất 1 đánh giá phê duyệt để hợp nhất
+
+  - Phải có ít nhất 1 bản build thành công để hợp nhất
+
+  - Tất cả các nhiệm vụ PR phải được hoàn thành

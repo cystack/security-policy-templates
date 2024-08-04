@@ -1,0 +1,52 @@
+### Kiến Trúc Bảo Mật
+
+{{companyShortName}} đã phát triển một kiến trúc bảo mật dựa trên ba môi trường cơ sở hạ tầng chính - Đám mây (AWS), DevOps, và hợp tác lực lượng lao động / máy tính đầu cuối.
+
+#### Sơ Đồ Kiến Trúc
+
+Các sơ đồ kiến trúc chi tiết của các mạng, điểm cuối, ứng dụng cũng như hoạt động bảo mật được {{provider}} phát triển và duy trì.
+
+#### Kiến Trúc Đám Mây
+
+##### Cloud Native
+
+* Được thiết kế cho đám mây với kiến trúc đa thuê bao thực sự
+* Tự động mở rộng qua nhiều trung tâm dữ liệu ở nhiều khu vực trên toàn thế giới
+* Các dịch vụ {{companyShortName}} được triển khai trong các subnet riêng tư của Virtual Private Cloud (VPC)
+* Bảo mật và tuân thủ toàn diện qua chứng nhận AWS
+* Kiểm tra bảo mật liên tục bởi AWS và khách hàng AWS
+
+##### Lợi Ích Khách Hàng
+
+* Hạ tầng được tùy chỉnh theo mục tiêu và mẫu sử dụng của khách hàng
+* Mô hình "sử dụng chung" giảm chi phí
+* Khả năng tính toán và dữ liệu gần như vô hạn qua nhà cung cấp đám mây AWS
+* Khách hàng có thể tập trung vào việc giải quyết các vấn đề kinh doanh mà không phải lo lắng về hạ tầng
+* Sao lưu và phục hồi tự động
+* Cải tiến liên tục qua quy trình kiểm soát thay đổi
+* Khả năng áp dụng công nghệ mới nhanh chóng
+
+##### Sự Tiến Hóa Của Điện Toán Đám Mây
+
+1. **Baremetal**
+
+    - Một máy tính trong trung tâm dữ liệu của người khác
+
+2. **Virtual Machine**
+
+    - Một phần của máy tính trong trung tâm dữ liệu của người khác
+    - Trong AWS, một Máy Ảo được tạo từ Amazon Machine Image (AMI)
+
+3. **Container**
+
+    - Một gói các thư viện và mã ứng dụng thiết yếu nhưng không bao gồm thư viện hệ điều hành chính - Đơn giản hơn để mở rộng một hình ảnh Docker vì - Không có sự sao chép các quá trình hệ điều hành chính (mạng, hệ thống tệp, v.v.) - Thường là một Docker container
+
+4. **Function**
+
+    - Chỉ có mã ứng dụng chạy trong một container được xây dựng sẵn
+
+{{companyShortName}} cố gắng tận dụng các hàm như là các khối xây dựng chính cho nền tảng của chúng tôi vì:
+
+* Các hàm triển khai nhanh hơn so với containers và máy ảo
+* AWS tự động mở rộng các hàm Lambda dựa trên số lượng yêu cầu đến
+* Chúng là các quá trình ngắn hạn, điều này giảm thiểu bề mặt tấn công

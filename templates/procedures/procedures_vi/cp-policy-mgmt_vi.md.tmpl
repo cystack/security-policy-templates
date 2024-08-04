@@ -1,0 +1,94 @@
+### Quy trình Quản lý Chính sách
+
+#### Cấu trúc Tài liệu
+
+Các chính sách được viết trong các tài liệu riêng lẻ, mỗi tài liệu liên quan đến một lĩnh vực cụ thể.
+
+Mỗi tài liệu bắt đầu với số phiên bản hiện tại theo định dạng `YYYY.#` (ví dụ: `2017.1`), theo sau là một tóm tắt ngắn gọn. Phần còn lại của tài liệu được cấu trúc để chứa các phần sau:
+
+* Tuyên bố Chính sách
+* Tiêu chuẩn Áp dụng
+* Kiểm soát và Quy trình
+
+#### Phiên bản
+
+Mỗi tài liệu chính sách của {{companyShortName}} chứa một số phiên bản và tùy chọn một số sửa đổi. Số phiên bản là năm bốn chữ số theo sau bởi một số, để chỉ năm và số thứ tự của chính sách tại thời điểm nó được viết hoặc cập nhật.
+
+Số phiên bản sẽ được tăng thêm một với mỗi thay đổi quan trọng về nội dung chính sách. Ví dụ, nếu một tuyên bố chính sách mới được thêm vào hoặc một kiểm soát/quy trình kỹ thuật được cập nhật từ phiên bản `2017.1` của chính sách, phiên bản mới nên được đánh số là `2017.2`.
+
+Tài liệu chính sách cũng có thể bao gồm một số sửa đổi, theo định dạng `rev.#`, ngay sau số phiên bản chính. Số sửa đổi chỉ ra những thay đổi nhỏ, không quan trọng đối với tài liệu, chẳng hạn như thay đổi định dạng, sửa lỗi chính tả, hoặc thêm chi tiết nhỏ.
+
+#### Đánh số
+
+Nếu các số thứ tự được bao gồm trong các tiêu đề chính sách:
+
+* Chính sách có thể được tham chiếu bằng số tuyên bố của nó, chẳng hạn như `§2.1(a)`, trong các giao tiếp nội bộ/bên ngoài cũng như trong các chính sách hoặc tài liệu kỹ thuật/doanh nghiệp khác của {{companyShortName}} để tham khảo chéo.
+
+* Do đó, để duy trì tính toàn vẹn của tham chiếu chéo, bắt đầu từ phiên bản `2017.2`, tất cả các số thứ tự phải được giữ nguyên cho các tài liệu và tuyên bố chính sách.
+
+* Khi cập nhật, tránh việc thay đổi thứ tự và số thứ tự của tài liệu và tuyên bố chính sách. Ví dụ:
+
+    - Thêm vào cuối danh sách bằng cách thêm các tuyên bố mới khi cần thay vì chèn vào.
+    - Nếu một chính sách hoặc tuyên bố chính sách không còn áp dụng, hãy đánh dấu nó là "deprecated" thay vì xóa bỏ hoàn toàn tài liệu hoặc tuyên bố.
+
+#### Xem xét và Bảo trì Chính sách
+
+1. Tất cả các chính sách được lưu trữ và cập nhật để duy trì sự tuân thủ của {{companyShortName}} với {{#needStandardHIPAA}}HIPAA,{{/needStandardHIPAA}} {{#needStandardPCI}}PCI,{{/needStandardPCI}} {{#needStandardNIST}}NIST,{{/needStandardNIST}} SOC 2 và các tiêu chuẩn liên quan khác. Việc cập nhật và kiểm soát phiên bản được thực hiện tương tự như kiểm soát mã nguồn.
+
+2. Yêu cầu cập nhật chính sách có thể được thực hiện bởi bất kỳ thành viên nào của lực lượng lao động vào bất kỳ thời điểm nào. Hơn nữa, tất cả các chính sách được xem xét hàng năm bởi Nhân viên Bảo mật và Quyền riêng tư để đảm bảo chúng chính xác và cập nhật.
+
+3. Nhân viên của {{companyShortName}} có thể yêu cầu thay đổi các chính sách theo quy trình sau:
+
+    1. Nhân viên của {{companyShortName}} khởi tạo yêu cầu thay đổi chính sách bằng cách tạo một Vấn đề trong dự án Bảo mật {{ticketingSystem}}. Yêu cầu thay đổi có thể bao gồm một yêu cầu kéo từ {{sourceControl}} từ một nhánh hoặc kho lưu trữ khác chứa các thay đổi mong muốn.
+
+    2. Nhân viên Bảo mật hoặc Nhân viên Quyền riêng tư được chỉ định để xem xét yêu cầu thay đổi chính sách.
+
+    3. Sau khi xem xét xong, Nhân viên Bảo mật phê duyệt hoặc từ chối Vấn đề. Nếu Vấn đề bị từ chối, nó sẽ quay lại để xem xét và tài liệu thêm.
+
+    4. Nếu việc xem xét được phê duyệt, Nhân viên Bảo mật đánh dấu Vấn đề là Hoàn thành, thêm bất kỳ ghi chú cần thiết nào.
+
+    5. Nếu thay đổi chính sách yêu cầu sửa đổi kỹ thuật đối với các hệ thống sản xuất, các thay đổi đó sẽ được thực hiện bởi nhân viên được ủy quyền sử dụng quy trình [quản lý thay đổi](ccm.md) của {{companyShortName}}.
+
+    6. Nếu thay đổi dẫn đến phiên bản mới thay vì một sửa đổi mới (xem §3.3.1 cho các định nghĩa), phiên bản hiện tại của tài liệu chính sách phải được lưu vào kho lưu trữ dưới số phiên bản tương ứng trước khi chính sách mới được thông qua/công bố và trước khi hợp nhất yêu cầu kéo chứa các thay đổi. Điều này cho phép tham khảo dễ dàng các phiên bản trước đó nếu cần.
+
+    !!! quan trọng
+
+        * Các thay đổi được thực hiện trên nhánh `drafts` (hoặc tương đương) thay vì trên nhánh `master` cho các cam kết.
+        * Nếu nhiều tác giả đang làm việc trên các thay đổi, có thể cần thêm các nhánh và yêu cầu kéo riêng biệt trước khi các thay đổi được hợp nhất vào `drafts`.
+        * Các thay đổi không được hợp nhất vào `master` mà không có sự phê duyệt của Nhân viên Bảo mật và Quyền riêng tư.
+        * Các thay đổi không được hợp nhất vào `master` mà không lưu trữ phiên bản hiện tại của tài liệu chính sách, trừ khi thay đổi là một sửa đổi nhỏ.
+        * Khi các thay đổi đã hoàn tất và được phê duyệt, một yêu cầu kéo sẽ được tạo từ nhánh `drafts` vào nhánh `master` và tất cả các thành viên của đội phát triển sẽ được bao gồm như là các người phê duyệt. Điều này nhằm thông báo và đào tạo các cập nhật chính sách cho tổ chức phát triển, và các phê duyệt yêu cầu kéo phục vụ như là hồ sơ đào tạo đã nhận.
+        * Việc thông báo và đào tạo cập nhật chính sách cho nhân viên không thuộc phát triển được thực hiện riêng biệt bởi nhóm Bảo mật.
+
+4. Tất cả các chính sách được cung cấp cho tất cả các thành viên lực lượng lao động của {{companyShortName}}. Các chính sách hiện tại được công bố tại [{{&securityPolicyURL}}]({{&securityPolicyURL}}).
+
+    * Các thay đổi được tự động thông báo đến tất cả các thành viên của {{companyShortName}} thông qua các tích hợp giữa {{sourceControl}} và Slack, ghi lại các thay đổi vào một Kênh Slack đã được định nghĩa của {{companyShortName}}.
+    * Nhân viên Bảo mật cũng thông báo các thay đổi chính sách đến tất cả nhân viên qua email. Những email này bao gồm mô tả cấp cao về thay đổi chính sách bằng cách sử dụng thuật ngữ phù hợp với đối tượng mục tiêu.
+
+5. Tất cả các chính sách và tài liệu liên quan được lưu trữ trong 7 năm kể từ ngày tạo ra hoặc ngày cuối cùng có hiệu lực, tùy theo thời điểm nào muộn hơn
+
+     1. Lịch sử phiên bản của tất cả các chính sách của {{companyShortName}} được thực hiện qua {{sourceControl}}.
+     2. Lưu trữ sao lưu của tất cả các chính sách được thực hiện bằng AWS S3 và/hoặc chia sẻ tệp nội bộ (ví dụ: Microsoft Office365 SharePoint hoặc Box).
+
+6. Các chính sách và chính sách bảo mật thông tin được xem xét và kiểm toán hàng năm, hoặc sau khi có thay đổi quan trọng đối với môi trường tổ chức của {{companyShortName}}, bởi các thành viên của ủy ban bảo mật. Các vấn đề phát sinh trong quá trình này được quản lý bởi ban quản lý của {{companyShortName}} để đảm bảo tất cả các rủi ro và lỗ hổng tiềm ẩn được giảm thiểu và/hoặc giải quyết hoàn toàn. Quy trình xem xét chính sách được nêu dưới đây:
+
+    1. Nhân viên Bảo mật khởi tạo việc xem xét chính sách bằng cách tạo một Vấn đề trong dự án Bảo mật {{ticketingSystem}} hoặc qua một Pull Request (PR).
+    2. Các thành viên ủy ban bảo mật và các người đánh giá bổ sung được thông báo qua email hoặc qua PR để xem xét các chính sách hiện tại.
+    3. Nếu có thay đổi, quy trình trên được sử dụng. Tất cả các thay đổi được tài liệu hóa trong Vấn đề/PR.
+    4. Sau khi việc xem xét hoàn tất, Nhân viên Bảo mật phê duyệt hoặc từ chối Vấn đề/PR. Nếu Vấn đề/PR bị từ chối, nó quay lại để xem xét và tài liệu thêm.
+    5. Nếu việc xem xét được phê duyệt, Nhân viên Bảo mật đánh dấu Vấn đề là Hoàn thành, hoặc hợp nhất PR vào nhánh chính, thêm bất kỳ ghi chú cần thiết nào.
+    6. Việc xem xét chính sách được giám sát bằng cách sử dụng {{ticketingSystem}} hoặc báo cáo {{sourceControl}} để đánh giá sự tuân thủ với chính sách trên.
+
+{{#adoptedHITRUST}}
+
+7. {{companyShortName}} sử dụng khung HITRUST MyCSF để theo dõi sự tuân thủ với HITRUST CSF hàng năm. {{companyShortName}} cũng theo dõi sự tuân thủ hàng năm. Để theo dõi và đo lường sự tuân thủ hàng năm, {{companyShortName}} sử dụng quy trình sau để theo dõi các cuộc kiểm toán HITRUST, cả toàn diện và tạm thời:
+
+    1. Nhân viên Bảo mật khởi tạo hoạt động kiểm toán HITRUST bằng cách tạo một Vấn đề trong dự án Bảo mật {{ticketingSystem}} của {{companyShortName}}.
+    2. Nhân viên Bảo mật hoặc Nhân viên Quyền riêng tư được chỉ định để sở hữu và quản lý hoạt động HITRUST.
+    3. Khi hoạt động HITRUST hoàn tất, Nhân viên Bảo mật phê duyệt hoặc từ chối Vấn đề.
+    4. Nếu việc xem xét được phê duyệt, Nhân viên Bảo mật đánh dấu Vấn đề là Hoàn thành, thêm bất kỳ ghi chú cần thiết nào.
+    5. Tuân thủ các đánh giá tuân thủ hàng năm, sử dụng HITRUST CSF như là một khung, được giám sát hàng quý để đánh giá sự tuân thủ với chính sách trên.
+
+{{/adoptedHITRUST}}
+
+Tài liệu bổ sung liên quan đến việc bảo trì chính sách được nêu trong [Vai trò và Trách nhiệm](rar.md).

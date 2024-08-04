@@ -1,0 +1,9 @@
+### Bảo vệ tường lửa
+
+Bảo vệ tường lửa được triển khai ở các tầng sau:
+
+* **Mạng** - bao gồm Network ACL và Security Groups trong AWS cũng như các tường lửa tại văn phòng giữa mạng nội bộ và Internet.
+
+* **Máy chủ** - các máy chủ (bao gồm các máy tính và cơ sở dữ liệu trong AWS) được bảo vệ bằng các nhóm bảo mật (security groups), và các tường lửa cục bộ được kích hoạt trên các thiết bị kết nối của người dùng.
+
+* **Ứng dụng** - tường lửa ứng dụng web (WAF) và phân phối nội dung được cấu hình ở tầng ứng dụng để bảo vệ khỏi các cuộc tấn công thông thường như cross site scripting, injection và tấn công từ chối dịch vụ (denial-of-service).

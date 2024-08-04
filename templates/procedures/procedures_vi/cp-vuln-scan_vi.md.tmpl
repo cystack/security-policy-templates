@@ -1,0 +1,31 @@
+### Quét Lỗ Hổng và Kiểm Tra An Ninh Cơ Sở Hạ Tầng
+
+Việc quét và xác định các lỗ hổng hệ thống được thực hiện bởi
+
+1. Đại lý bảo mật tự động cài đặt trên tất cả các máy chủ Linux.
+
+    * Điều này bao gồm các máy chủ vật lý và ảo được lưu trữ tại chỗ cũng như
+      các phiên bản EC2 trên AWS.
+    * Đại lý tự động báo cáo đến máy chủ/dashboard quản lý tập trung với chi tiết về phiên bản máy chủ và bất kỳ phát hiện lỗ hổng nào.
+    * Đánh giá này được thực hiện liên tục.
+
+2. Ngoài ra, các quét bảo mật định kỳ của hệ thống tại chỗ của {{companyShortName}} được thực hiện
+   bằng cách kết hợp các công cụ kiểm tra lỗ hổng mã nguồn mở và thương mại, bao gồm:
+
+    * OpenVAS
+    * Nmap
+    * OWASP ZAP
+    * Burp Suite Pro
+
+3. Kiểm tra thâm nhập được thực hiện thường xuyên như một phần của chính sách quản lý lỗ hổng của {{companyShortName}}.
+
+    * Kiểm tra thâm nhập bên ngoài được thực hiện liên tục thông qua chương trình công khai về tiết lộ lỗ hổng / chương trình thưởng lỗi.
+    * Kiểm tra thâm nhập bên ngoài bổ sung được thực hiện ít nhất hàng năm bởi một nhà kiểm tra thâm nhập chứng nhận trong nhóm an ninh của {{companyShortName}} hoặc một bên thứ ba độc lập.
+    * Kiểm tra thâm nhập nội bộ kiểu white-box được thực hiện ít nhất hàng quý bởi nhóm an ninh.
+
+4. {{companyShortName}} phát triển một công cụ/dữ liệu quản lý lỗ hổng nội bộ được sử dụng để
+   theo dõi tất cả các thực thể hệ thống và các lỗ hổng liên quan.
+
+5. Các phát hiện từ quét lỗ hổng hoặc kiểm tra thâm nhập được phân tích bởi nhóm an ninh, cùng với IT và Kỹ thuật khi cần, và báo cáo theo quy trình được định nghĩa trong phần tiếp theo. Một báo cáo bằng văn bản có thể được tạo ra ngoài việc tạo các phát hiện trong {{ticketingSystem}}.
+
+6. Tất cả các báo cáo kiểm tra bảo mật và hồ sơ phát hiện được lưu giữ trong 7 năm.

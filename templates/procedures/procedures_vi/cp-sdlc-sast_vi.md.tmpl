@@ -1,0 +1,17 @@
+### Thử nghiệm bảo mật ứng dụng tĩnh (SAST)
+
+Công cụ:
+
+- Nền tảng {{provider}} - phân tích mã tĩnh và động. Cùng với
+    công cụ bảo mật FOSS, thử nghiệm SAST đã được cung cấp để sử dụng thông qua
+    hình ảnh docker `security-scan` tự động, cũng như được tích hợp vào 
+    {{companyShortName}} {{ciSystem}} thư viện đường ống thông qua bước `securityScan()`
+
+- Đánh giá bảo mật mã thủ công được thực hiện định kỳ bởi nhóm Bảo mật
+    như sau:
+
+    - Đánh giá định kỳ như một phần của hoạt động hàng tuần
+
+    - Mỗi yêu cầu kéo bao gồm nhóm bảo mật là người phê duyệt
+
+    - Theo yêu cầu - {{ticketingSystem}} vấn đề được tạo ra trên dự án / bảng Bảo mật

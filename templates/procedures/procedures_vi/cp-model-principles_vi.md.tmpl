@@ -1,0 +1,128 @@
+### Các Nguyên Tắc Bảo Mật của {{companyShortName}}
+
+#### (1) Mô hình dựa trên dữ liệu; kiến trúc không tin cậy (zero-trust)
+
+“Zero Trust” là một thiết kế bảo mật dựa trên dữ liệu, tạo ra các vòng bảo vệ xung quanh các dữ liệu hoặc tài sản cụ thể để các quy tắc chi tiết hơn có thể được thực thi. Nó khắc phục những thiếu sót của các chiến lược dựa trên perimeters và các thiết bị, công nghệ cũ đã được sử dụng để thực hiện chúng. Điều này thực hiện bằng cách thúc đẩy nguyên tắc “không tin cậy, luôn xác minh”. Điều này khác biệt rõ rệt với các mô hình bảo mật truyền thống hoạt động dựa trên nguyên tắc “tin cậy nhưng xác minh”.
+
+Cụ thể, với Zero Trust, không có sự tin cậy mặc định đối với bất kỳ thực thể nào — bao gồm người dùng, thiết bị, ứng dụng và gói dữ liệu — bất kể nó là gì và vị trí của nó trên hoặc liên quan đến mạng doanh nghiệp. Thêm vào đó, việc xác minh rằng các thực thể được ủy quyền luôn thực hiện đúng những gì họ được phép làm không còn là tùy chọn; bây giờ là bắt buộc.
+
+!!! Tóm tắt
+
+    * Không có mạng nội bộ. (Gần như) 100% đám mây.
+    * Hoàn toàn phân tách với các chính sách thực thi chi tiết.
+    * Thiết bị được bảo mật cá nhân. Không có quyền truy cập sản xuất mặc định.
+
+#### (2) Môi trường “Air-Gapped” đáp ứng các quy trình ngắn hạn
+
+Chúng tôi mở rộng mô hình bảo mật không tin cậy bằng cách tiếp cận “Cơ sở hạ tầng tối thiểu”, nơi chúng tôi sử dụng “Dịch vụ bất kỳ” bất cứ khi nào có thể, để khai thác toàn bộ sức mạnh của đám mây. Các dịch vụ đám mây cho phép chúng tôi kiểm soát và quản lý quyền truy cập ở mức độ chi tiết hơn nhiều so với việc vận hành cơ sở hạ tầng tại chỗ. Thông qua việc truy cập vào các API rộng lớn mà các dịch vụ đám mây cung cấp, chúng tôi có thể dễ dàng tích hợp và tự động hóa các hoạt động bảo mật. Thêm vào đó, việc giảm thiểu cơ sở hạ tầng làm giảm bề mặt tấn công luôn bật. Các dịch vụ không được sử dụng sẽ được tắt, thay vì ở chế độ chờ mở ra cơ hội tấn công. Kết hợp với Zero Trust, mô hình và kiến trúc bảo mật này cho phép độ linh hoạt cao cho tính toán của người dùng cuối trong khi duy trì mức độ bảo mật cao nhất.
+
+!!! Tóm tắt
+
+    * Không có kết nối quản trị trực tiếp hoặc kết nối mạng rộng đến môi trường sản xuất.
+    * Các quy trình là ngắn hạn và bị tắt sau khi sử dụng.
+    * Bề mặt tấn công vĩnh viễn tối thiểu làm cho nó gần như không thể bị xâm nhập.
+
+#### (3) Quyền truy cập tạm thời với quyền tối thiểu
+
+Các cuộc tấn công mạng là không thể tránh khỏi. Khi chuẩn bị cho các cuộc tấn công tiềm tàng, các hoạt động bảo mật của {{companyShortName}} áp dụng cách tiếp cận giả định rằng một sự xâm phạm có thể xảy ra bất kỳ lúc nào, với bất kỳ thiết bị nào, với ít hoặc không có dấu hiệu. Đây cũng là một phần mở rộng của mô hình “zero trust”. Khi xây dựng các hoạt động bảo mật, chúng tôi thực hiện phân tích rủi ro và mô hình mối đe dọa một cách cẩn thận để xác định các điểm mỏng và tránh có “chìa khóa đến vương quốc”.
+
+Nói cách khác, sự xâm phạm của bất kỳ hệ thống, người dùng hoặc chứng chỉ nào không nên dễ dàng dẫn đến sự xâm phạm rộng rãi hoặc hoàn toàn của toàn bộ cơ sở hạ tầng hoặc hoạt động. Ví dụ, nếu một kẻ tấn công có quyền truy cập vào chứng chỉ quản trị (ví dụ: miền Active Directory), điều đó không nên dẫn trực tiếp đến sự xâm phạm của tất cả các hệ thống và dữ liệu trong môi trường.
+
+!!! Tóm tắt
+
+    * Kiểm soát quyền truy cập dựa trên nhu cầu cho cả nhân viên và dịch vụ tính toán.
+    * Quyền truy cập vào các hệ thống và tài nguyên quan trọng bị đóng theo mặc định, cấp theo yêu cầu.
+    * Được bảo vệ bởi xác thực đa yếu tố mạnh mẽ.
+    * Không có “chìa khóa đến vương quốc”; không có điểm xâm phạm đơn lẻ.
+    * “Bí mật” (như SSH Keys) phải luôn được giữ bí mật.
+
+#### (4) Xây dựng và triển khai không thay đổi
+
+Nền tảng của {{companyShortName}} sử dụng kiến trúc micro-service. Điều này có nghĩa là hệ thống đã được phân tách thành nhiều thành phần nhỏ có thể được xây dựng và triển khai riêng lẻ. Trước khi các thành phần này được triển khai đến môi trường _sản xuất_ của chúng tôi, chúng tôi kiểm tra và xác minh kỹ lưỡng các thay đổi trong môi trường _thấp hơn_ của chúng tôi, hoàn toàn tách biệt với sản xuất. Điều này cho phép chúng tôi kiểm tra các thay đổi sắp tới mà không ảnh hưởng đến khách hàng của chúng tôi.
+
+Khi một phiên bản cụ thể của một thành phần tiến triển qua các môi trường của chúng tôi, điều quan trọng là phiên bản không thay đổi, vì vậy chúng tôi đảm bảo rằng mỗi phiên bản là không thay đổi. Khi một _phiên bản không thay đổi_ đã được xác minh trong môi trường _thấp hơn_ (không sản xuất), chúng tôi sau đó triển khai nó vào môi trường _sản xuất_ nơi thay đổi sẽ có sẵn cho khách hàng và người dùng cuối của {{companyShortName}}.
+
+Các thay đổi đối với cơ sở hạ tầng của chúng tôi (thay đổi lược đồ cơ sở dữ liệu, bucket lưu trữ, bộ cân bằng tải, mục DNS, v.v.) cũng được mô tả trong mã nguồn của chúng tôi và được triển khai vào các môi trường của chúng tôi giống như các ứng dụng. Cách tiếp cận kiến trúc này để quản lý cơ sở hạ tầng được gọi là _hạ tầng dưới dạng mã_ và là yêu cầu chính cho các triển khai tự động hoàn toàn với sự can thiệp tối thiểu của con người.
+
+!!! Tóm tắt
+
+    * Hạ tầng dưới dạng mã với bảo vệ chủ động.
+    * Quét bảo mật tự động và theo dõi đầy đủ từ cam kết mã đến sản xuất.
+    * Triển khai “không cần tay” đảm bảo mỗi phiên bản không bị lỗi do con người hoặc nhiễm độc.
+
+#### (5) Bảo vệ và quyền riêng tư dữ liệu từ đầu đến cuối
+
+Việc bảo vệ sự bí mật (quyền riêng tư), toàn vẹn và khả năng sẵn sàng của dữ liệu khách hàng là rất quan trọng đối với {{companyShortName}}. Dữ liệu của bạn được bảo vệ bằng mã hóa từ đầu đến cuối, kết hợp với kiểm soát quyền truy cập và quản lý khóa mạnh mẽ. Chúng tôi cũng cấm các nhân viên nội bộ của chúng tôi truy cập vào dữ liệu khách hàng trực tiếp trong môi trường sản xuất. Vì vậy, dữ liệu của bạn luôn an toàn và riêng tư. Chúng tôi sẽ không bao giờ sử dụng hoặc chia sẻ dữ liệu của bạn mà không có sự đồng ý trước của bạn.
+
+Chúng tôi tự hào cung cấp cho khách hàng của mình sự yên tâm về lưu trữ dữ liệu với một cam kết hoàn tiền. Chúng tôi đảm bảo dữ liệu cá nhân của bạn được lưu trữ trên nền tảng của chúng tôi luôn an toàn và được bảo vệ khỏi các cuộc tấn công mạng như ransomware, và chúng tôi sẽ hoàn trả cho bạn các tổn thất nhất định của dữ liệu như vậy do hoạt động trái phép trong các tài khoản đủ điều kiện mà không phải lỗi của bạn.
+
+!!! Tóm tắt
+
+    * Dữ liệu được bảo vệ cả khi nghỉ và khi truyền, sử dụng mã hóa mạnh mẽ, kiểm soát quyền truy cập và quản lý khóa.
+    * Không cho phép truy cập của người dùng nội bộ vào dữ liệu khách hàng trong sản xuất.
+
+#### (6) Quyền truy cập mạnh mẽ nhưng linh hoạt
+
+Chúng ta đều biết rằng "Passw0rd" là một mật khẩu tồi tệ. Kiểm soát quyền truy cập rất quan trọng và chúng tôi phải thực hiện đúng. Đó là lý do tại sao chúng tôi sử dụng công nghệ đã được chứng minh như SAML, OAuth, xác thực đa yếu tố và phân quyền chi tiết để cung cấp các tùy chọn truy cập mạnh mẽ nhưng trực quan, cả cho nhân viên nội bộ để truy cập tài nguyên kinh doanh và cho khách hàng để truy cập nền tảng và dịch vụ của {{companyShortName}}.
+
+!!! Tóm tắt
+
+    * OAuth 2.0, OpenID Connect, SAML cho xác thực khách hàng và đăng nhập một lần.
+    * Xác thực đa yếu tố.
+    * Phân quyền chi tiết dựa trên thuộc tính hoặc vai trò.
+
+#### (7) Giám sát mọi thứ, kể cả những người giám sát
+
+Bạn không thể bảo vệ những gì bạn không thể thấy.
+
+Như chiến lược gia nổi tiếng Sun Tzu đã nói, “Biết chính mình, biết kẻ thù. Một nghìn trận chiến, một nghìn chiến thắng.” Tất cả bắt đầu từ việc biết chính mình. Điều này áp dụng cho cơ sở hạ tầng, môi trường, hoạt động, người dùng, hệ thống, tài nguyên và quan trọng nhất là dữ liệu. Điều quan trọng là kiểm kê tất cả các tài sản, tài liệu tất cả các hoạt động, xác định tất cả các điểm yếu và trực quan hóa/hiểu tất cả các sự kiện.
+
+Điều này bao gồm việc thực hiện các phân tích rủi ro, mô hình mối đe dọa, đánh giá lỗ hổng, quét ứng dụng và kiểm tra thâm nhập. Không chỉ vậy, điều này yêu cầu các hoạt động bảo mật phải theo dõi mọi thứ, và một người cũng nên “giám sát những người giám sát.”
+
+Lúc đầu, điều này sẽ yêu cầu công sức thủ công đáng kể và có vẻ như không thể cập nhật liên tục. Mục tiêu của chúng tôi là tự động hóa các hoạt động bảo mật, để điều này có thể được thực hiện theo cách lập trình khi các hoạt động của chúng tôi phát triển trở nên phức tạp hơn.
+
+Ngoài ra, nhóm bảo mật của {{companyShortName}} sẽ tích cực theo dõi thông tin tình báo mối đe dọa trong cộng đồng, với các nguồn cấp dữ liệu và nền tảng chia sẻ thông tin như NH-ISAC để cập nhật các hoạt động và phương pháp của kẻ tấn công.
+
+!!! Tóm tắt
+
+    * Tất cả các môi trường đều được giám sát; Tất cả các sự kiện đều được ghi lại; Tất cả các cảnh báo đều được phân tích; Tất cả các tài sản đều được theo dõi.
+    * Không có quyền truy cập ưu tiên mà không có sự phê duyệt trước hoặc toàn bộ kiểm toán.
+    * Chúng tôi triển khai tính dự phòng giám sát để “giám sát những người giám sát.”
+
+#### (8) Hoạt động tập trung và tự động hóa
+
+Khi có thể, bảo mật của {{companyShortName}} sẽ chuyển các yêu cầu chính sách và tuân thủ thành mã tái sử dụng để thực hiện và bảo trì dễ dàng. Điều này cho phép chúng tôi thực sự có thể thực thi chính sách và tuân thủ theo cách nhanh chóng và quy mô, thay vì chỉ dựa vào các chính sách viết và kiểm toán thủ công không thường xuyên. Ví dụ, các chính sách thiết bị đầu cuối có thể được chuyển thành mã Chef InSpec và tuân thủ có thể được thực thi thông qua tác nhân. Chính sách kiểm soát quyền truy cập cho các môi trường sản xuất được chuyển thành chính sách AWS IAM JSON và triển khai thông qua mã Terraform.
+
+Tự động hóa thực sự cho phép tập trung các hoạt động bảo mật, bao gồm không chỉ tập hợp và phân tích sự kiện mà còn phối hợp và quản lý các kiểm soát bảo mật và nỗ lực khắc phục đã bị cô lập trước đó.
+
+!!! Tóm tắt
+
+    * Mạng bảo mật dựa trên API đám mây:
+        - giám sát các sự kiện bảo mật trung tâm,
+        - trực quan hóa quản lý rủi ro,
+        - tự động hóa các cuộc kiểm toán tuân thủ, và
+        - phối hợp khắc phục gần như ngay lập tức.
+
+#### (9) Bảo mật có thể sử dụng
+
+Bảo mật hưởng lợi từ sự minh bạch và nên hoạt động như một cuốn sách mở. Điều này cho phép toàn bộ tổ chức chịu trách nhiệm và chịu trách nhiệm về việc áp dụng các phương pháp bảo mật tốt nhất. Tương tự như các đánh giá mã và yêu cầu kéo trong quy trình phát triển, nhóm bảo mật của {{companyShortName}} cung cấp các tiêu chuẩn và thực hành bảo mật cho tất cả nhân viên để nhận phản hồi trước khi áp dụng.
+
+Chúng tôi nhấn mạnh tính khả dụng và tính thực tiễn của bảo mật. Một giải pháp hoặc quy trình bảo mật không hiệu quả nếu nó không được sử dụng, bất kể nó tốt như thế nào. Có bảo mật không thực tế chỉ tạo ra tiếng ồn, cung cấp cảm giác bảo mật sai lầm và phát sinh chi phí không cần thiết. Không có gì là hoàn hảo, nhưng chúng tôi chấp nhận tư duy linh hoạt để kiểm tra và thử nghiệm, và liên tục cải tiến.
+
+!!! Tóm tắt
+
+    * Tất cả nhân viên nhận được đào tạo nhận thức về bảo mật không phải hàng năm, mà hàng tháng.
+    * Các chính sách, quy trình và thủ tục đơn giản.
+    * Không có “Công nghệ bóng tối.”
+    * DevSecOps với mục tiêu chung và đội ngũ tích hợp.
+    * Quy trình khuyến khích tự quản lý và thưởng cho hành vi tốt.
+
+#### (10) Tuân thủ quy định và xác minh bởi hacker
+
+Bảo mật != Tuân thủ. Chúng tôi không thể có cái này mà không có cái kia.
+
+!!! Tóm tắt
+
+    * Tuân thủ quy định;
+    * Được đánh giá và chứng nhận độc lập;
+    * Được xác minh bởi hacker.

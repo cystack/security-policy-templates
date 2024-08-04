@@ -1,0 +1,197 @@
+### Quy Trình Quản Lý Sự Cố
+
+Quy trình phản ứng sự cố của {{companyShortName}} tuân theo quy trình được khuyến nghị bởi
+[SANS](https://www.sans.org), một nhà lãnh đạo trong ngành bảo mật. Các quy trình là
+biểu diễn trực tiếp của quy trình SANS.
+
+Phản ứng sự cố của {{companyShortName}} phân loại các sự kiện liên quan đến bảo mật thành các
+danh mục sau:
+
+* **Sự kiện** - Bất kỳ sự kiện liên quan đến bảo mật máy tính có thể quan sát được trong hệ thống
+  hoặc mạng với hậu quả tiêu cực. Ví dụ:
+
+    * Thành phần phần cứng bị hỏng gây ra sự cố dịch vụ.
+    * Lỗi phần mềm gây ra sự cố dịch vụ.
+    * Sự không ổn định chung của mạng hoặc hệ thống.
+
+* **Dấu hiệu** - Một dấu hiệu cho thấy một sự cố có thể xảy ra trong tương lai. Ví dụ:
+
+    * Hệ thống giám sát hiển thị hành vi không bình thường.
+    * Cảnh báo từ nhật ký kiểm toán chỉ ra nhiều lần đăng nhập không thành công.
+    * Email nghi ngờ nhắm mục tiêu đến các nhân viên của {{companyShortName}} với quyền quản trị trên các hệ thống sản xuất.
+    * Cảnh báo từ một nguồn kiểm soát bảo mật dựa trên chính sách giám sát của nó, chẳng hạn như
+
+        - Okta (hoạt động xác thực người dùng)
+        - Threat Stack (sự kiện AWS Cloudtrail hoặc hoạt động của đại lý hệ thống)
+        - Dome9 (cảnh báo cấu hình hoặc quyền truy cập dịch vụ đám mây)
+        - Carbon Black Cb Defense (sự kiện phần mềm độc hại và điểm cuối)
+        - Sự kiện Syslog từ các máy chủ
+
+* **Chỉ số** - Một dấu hiệu cho thấy một sự cố có thể đã xảy ra hoặc có thể đang xảy ra tại thời điểm hiện tại. Ví dụ:
+
+    * Cảnh báo về các tệp hệ thống đã bị thay đổi hoặc truy cập hệ thống không bình thường.
+    * Cảnh báo từ phần mềm chống virus cho các tệp hoặc thiết bị bị nhiễm.
+    * Lưu lượng mạng quá mức hướng đến các vị trí địa lý không mong đợi.
+
+* **Sự cố** - Một cuộc tấn công đã được xác nhận / chỉ số thỏa hiệp hoặc một vi phạm được xác nhận của các chính sách bảo mật máy tính hoặc chính sách sử dụng chấp nhận, thường dẫn đến vi phạm dữ liệu. Ví dụ:
+
+    * Tiết lộ trái phép dữ liệu nhạy cảm.
+    * Thay đổi hoặc tiêu hủy dữ liệu nhạy cảm trái phép.
+    * Một vụ vi phạm dữ liệu được thực hiện bởi một thực thể nội bộ hoặc bên ngoài.
+    * Một cuộc tấn công từ chối dịch vụ (DoS) khiến một dịch vụ quan trọng trở nên không thể tiếp cận.
+
+Nhân viên của {{companyShortName}} phải báo cáo bất kỳ hoạt động không được phép hoặc nghi ngờ nào thấy trên các hệ thống sản xuất hoặc liên quan đến các hệ thống liên lạc liên quan (như email hoặc Slack). Thực tế có nghĩa là theo dõi các sự kiện bảo mật và thông báo cho nhóm Bảo mật về bất kỳ dấu hiệu hoặc chỉ số nào khi được phát hiện.
+
+!!! Chú ý
+
+    Các sự cố có đánh giá mức độ nghiêm trọng/tác động cao hơn **NHỎ** sẽ kích hoạt quy trình phản ứng sau đây, hoặc theo cách định nghĩa cụ thể hơn trong phần **Danh mục và Kế hoạch Sự cố**.
+
+#### I - Xác Định và Phân Tích
+
+1. Ngay khi quan sát, các thành viên {{companyShortName}} báo cáo các Sự kiện, Dấu hiệu, Chỉ số và Sự cố nghi ngờ và đã biết theo một trong các cách sau:
+
+    1. Báo cáo trực tiếp cho quản lý, Nhân viên An ninh, Nhân viên Bảo mật, hoặc
+       người khác;
+    2. Email;
+    3. Cuộc gọi điện thoại;
+    4. Gửi báo cáo sự cố trực tuyến qua
+       [{{companyShortName}} Internal ServiceDesk]({{&internalHelpdeskURL}});
+    5. Chat bảo mật; hoặc
+    6. Anonymously thông qua các kênh mong muốn của nhân viên.
+
+2. Cá nhân nhận báo cáo hỗ trợ thu thập thông tin bổ sung về sự cố, nếu cần, và thông báo cho Nhân viên An ninh (nếu chưa được thực hiện).
+
+3. Nhân viên An ninh xác định vấn đề là Sự kiện, Dấu hiệu, Chỉ số, hoặc Sự cố.
+
+   1. Nếu vấn đề là sự kiện, chỉ số, hoặc dấu hiệu, Nhân viên An ninh
+      chuyển tiếp nó đến nguồn tài nguyên phù hợp để giải quyết.
+
+      1. Sự kiện không kỹ thuật (vi phạm nhỏ): Nhân viên An ninh hoặc người được chỉ định tạo một vấn đề phù hợp trong {{ticketingSystem}} và điều tra thêm sự cố khi cần.
+      2. Sự kiện kỹ thuật: Gán vấn đề cho một tài nguyên kỹ thuật để
+         giải quyết. Tài nguyên này cũng có thể là nhà thầu hoặc tài nguyên kỹ thuật được thuê ngoài, nếu thiếu nguồn lực hoặc chuyên môn trong lĩnh vực đó.
+
+   2. Nếu vấn đề là một sự cố bảo mật, Nhân viên An ninh kích hoạt Đội phản ứng sự cố bảo mật (SIRT) và thông báo cho lãnh đạo cấp cao qua email.
+
+       1. Nếu phát hiện sự cố bảo mật không kỹ thuật, SIRT hoàn tất
+          điều tra, thực hiện các biện pháp phòng ngừa và giải quyết sự cố bảo mật.
+       2. Sau khi điều tra hoàn tất, tiến hành đến Giai đoạn V, Theo dõi.
+       3. Nếu vấn đề là sự cố bảo mật kỹ thuật, bắt đầu Giai đoạn II:
+          Containment.
+       4. Các Giai đoạn Containment, Eradication và Recovery là rất
+          kỹ thuật. Điều quan trọng là phải được hoàn thành bởi một tài nguyên bảo mật kỹ thuật có trình độ cao với sự giám sát của đội SIRT.
+       5. Mỗi thành viên trong đội SIRT và tài nguyên bảo mật kỹ thuật
+          ghi chép tất cả các biện pháp thực hiện trong mỗi giai đoạn, bao gồm thời gian bắt đầu và kết thúc của tất cả các nỗ lực.
+       6. Thành viên trưởng của đội SIRT tạo và quản lý một vé Sự cố trong {{ticketingSystem}} Dự án Bảo mật và ghi chép tất cả các phát hiện và chi tiết trong vé.
+
+           * Mục đích của vé Sự cố là cung cấp một bản tóm tắt của tất cả các
+             sự kiện, nỗ lực và kết luận của mỗi Giai đoạn của chính sách và
+             quy trình này.
+           * Mỗi vé Sự cố nên chứa đủ chi tiết theo các [Mẫu Biểu mẫu Sự cố An ninh SANS](https://www.sans.org/score/incident-forms/),
+             khi phù hợp.
+
+3. Nhân viên An ninh, Nhân viên Bảo mật, hoặc đại diện {{companyShortName}} được chỉ định
+   thông báo cho bất kỳ Khách hàng và Đối tác bị ảnh hưởng. Nếu không có Khách hàng và Đối tác
+   bị ảnh hưởng, thông báo là tùy thuộc vào Nhân viên An ninh và Nhân viên Bảo mật.
+
+4. Trong trường hợp phát hiện mối đe dọa, Nhân viên An ninh sẽ thành lập một đội để
+   điều tra và tham gia các nguồn lực cần thiết, cả nội bộ của {{companyShortName}} và
+   có thể bên ngoài.
+
+#### II - Containment (Kỹ Thuật)
+
+Trong Giai đoạn này, các kỹ sư và nhóm bảo mật của {{companyShortName}} cố gắng chứa đựng
+sự cố bảo mật. Việc ghi chép chi tiết trong quá trình phản ứng sự cố bảo mật là rất quan trọng. Điều này đảm bảo rằng các bằng chứng thu thập được trong sự cố bảo mật có thể được sử dụng thành công trong quá trình truy tố, nếu phù hợp.
+
+1. Xem xét bất kỳ thông tin nào đã được thu thập bởi nhóm Bảo mật hoặc bất kỳ
+   cá nhân nào khác điều tra sự cố bảo mật.
+2. Bảo mật vùng ảnh hưởng (tức là một mạng hoặc khu vực truy cập vật lý hoặc logic).
+3. Thực hiện các chuẩn bị phân tích pháp y như sau, nếu cần:
+
+    1. Kết nối an toàn với hệ thống bị ảnh hưởng qua kết nối đáng tin cậy.
+    2. Lấy bất kỳ dữ liệu dễ bị tổn thương nào từ hệ thống bị ảnh hưởng.
+    3. Xác định độ tin cậy của hệ thống và sự phù hợp của việc sao lưu hệ thống.
+    4. Nếu cần, chụp ảnh đĩa để kiểm tra pháp y thêm; và nếu phù hợp, sao lưu hệ thống.
+    5. Thay đổi mật khẩu của hệ thống bị ảnh hưởng.
+    6. Xác định xem có an toàn để tiếp tục hoạt động với hệ thống bị ảnh hưởng không.
+    7. Nếu an toàn, cho phép hệ thống tiếp tục hoạt động; và chuyển đến
+       Giai đoạn V, Phân tích và Theo dõi Sau Sự cố.
+    8. Nếu không an toàn để cho phép hệ thống tiếp tục hoạt động, ngừng
+       hoạt động của hệ thống và chuyển đến Giai đoạn III, Xóa bỏ.
+    9. Cá nhân hoàn thành giai đoạn này cung cấp thông tin bằng văn bản cho
+       SIRT.
+
+4. Hoàn thành bất kỳ tài liệu nào liên quan đến việc chứa đựng sự cố bảo mật trên vé Sự cố, sử dụng
+   [Mẫu Biểu mẫu Containment SANS IH](https://www.sans.org/media/score/incident-forms/IH-Containment.pdf)
+   làm mẫu.
+5. Cập nhật liên tục cho Ban Giám Đốc về tiến trình.
+6. Tiếp tục thông báo cho Khách hàng và Đối tác bị ảnh hưởng với các cập nhật liên quan khi cần.
+
+#### III - Xóa Bỏ (Kỹ Thuật)
+
+Giai đoạn Xóa bỏ đại diện cho nỗ lực của SIRT để loại bỏ nguyên nhân và các
+lỗ hổng bảo mật phát sinh hiện có trên các hệ thống bị ảnh hưởng.
+
+1. Xác định các triệu chứng và nguyên nhân liên quan đến các hệ thống bị ảnh hưởng.
+2. Tăng cường các phòng thủ xung quanh các hệ thống bị ảnh hưởng, nếu có thể (có thể cần đánh giá rủi ro và có thể được xác định bởi Nhân viên An ninh).
+   Điều này có thể bao gồm các điều sau:
+
+    1. Tăng cường phòng thủ mạng.
+    2. Tăng cường phòng thủ hệ thống giám sát.
+    3. Khắc phục ("sửa chữa") bất kỳ vấn đề bảo mật nào trong hệ thống bị ảnh hưởng,
+       chẳng hạn như loại bỏ các dịch vụ không cần thiết/các kỹ thuật làm cứng máy chủ.
+
+3. Thực hiện đánh giá lỗ hổng chi tiết để xác minh tất cả các lỗ hổng/gap có thể bị khai thác đã được giải quyết.
+
+    1. Nếu phát hiện thêm vấn đề hoặc triệu chứng, thực hiện các biện pháp phòng ngừa phù hợp để loại bỏ hoặc giảm thiểu các mối đe dọa tiềm tàng trong tương lai.
+
+4. Cập nhật vé Sự cố với chi tiết Xóa bỏ, sử dụng
+   [Mẫu Biểu mẫu Xóa bỏ SANS IH](https://www.sans.org/media/score/incident-forms/IH-Eradication.pdf)
+   làm mẫu.
+5. Cập nhật tài liệu với thông tin thu được từ đánh giá lỗ hổng, bao gồm nguyên nhân, triệu chứng và phương pháp đã được sử dụng để khắc phục vấn đề với các hệ thống bị ảnh hưởng.
+6. Thông báo cho Ban Giám Đốc về tiến trình.
+7. Tiếp tục thông báo cho Khách hàng và Đối tác bị ảnh hưởng với các cập nhật liên quan khi cần.
+8. Chuyển đến Giai đoạn IV, Khôi phục.
+
+#### IV - Khôi Phục (Kỹ Thuật)
+
+Giai đoạn Khôi phục đại diện cho nỗ lực của SIRT để phục hồi các
+hệ thống bị ảnh hưởng trở lại hoạt động sau khi các lỗ hổng bảo mật, nếu có, đã được khắc phục.
+
+1. Nhóm kỹ thuật xác định xem các hệ thống bị ảnh hưởng có bị thay đổi theo cách nào không.
+
+    1. Nếu có, nhóm kỹ thuật phục hồi hệ thống về trạng thái hoạt động đúng ("lần cuối tốt nhất").
+    2. Sau khi phục hồi, nhóm xác nhận rằng hệ thống hoạt động đúng như đã dự kiến/trong quá khứ. Điều này có thể yêu cầu sự tham gia của đơn vị kinh doanh sở hữu các hệ thống bị ảnh hưởng.
+    3. Nếu hoạt động của hệ thống đã bị ngắt quãng (tức là hệ thống đã bị ngắt kết nối khỏi mạng hoặc đã bị gỡ bỏ trong khi xử lý), khởi động lại hệ thống đã phục hồi và theo dõi hành vi.
+    4. Nếu hệ thống không bị thay đổi theo cách nào nhưng đã bị ngắt kết nối (tức là hoạt động đã bị ngắt quãng), khởi động lại hệ thống và theo dõi hành vi đúng cách.
+    5. Cập nhật tài liệu với chi tiết đã xác định trong giai đoạn này.
+    6. Thông báo cho Ban Giám Đốc về tiến trình.
+    7. Tiếp tục thông báo cho Khách hàng và Đối tác bị ảnh hưởng với các cập nhật liên quan khi cần.
+    8. Chuyển đến Giai đoạn V, Theo dõi.
+
+#### V - Phân Tích Sau Sự Cố (Kỹ Thuật và Phi Kỹ Thuật)
+
+Giai đoạn Theo dõi đại diện cho việc xem xét sự cố bảo mật để tìm kiếm
+"bài học kinh nghiệm" và xác định liệu quy trình đã thực hiện có thể được cải thiện theo cách nào không. Khuyến nghị rằng tất cả các sự cố bảo mật nên được xem xét ngay sau khi giải quyết để xác định nơi phản ứng có thể được cải thiện. Thời gian có thể kéo dài đến một đến hai tuần sau sự cố.
+
+1. Các đáp ứng viên cho sự cố bảo mật (Nhóm SIRT và tài nguyên bảo mật kỹ thuật)
+   gặp nhau để xem xét tài liệu đã thu thập trong suốt sự cố bảo mật.
+2. Một phần "bài học kinh nghiệm" được viết và đính kèm vào vé Sự cố.
+
+    1. Đánh giá chi phí và tác động của sự cố bảo mật đến {{companyShortName}} bằng
+       các tài liệu được cung cấp bởi SIRT và tài nguyên bảo mật kỹ thuật.
+    2. Xác định những gì có thể được cải thiện. Điều này có thể bao gồm:
+
+        * Điều chỉnh hệ thống và quy trình
+        * Đào tạo nhận thức và tài liệu
+        * Triển khai các kiểm soát bổ sung
+
+    3. Truyền đạt những phát hiện này cho Ban Giám Đốc để phê duyệt và triển khai bất kỳ khuyến nghị nào được đưa ra sau khi xem xét sự cố bảo mật.
+    4. Thực hiện các khuyến nghị được Ban Giám Đốc phê duyệt; ngân sách, thời gian và nguồn lực đủ nên được cam kết cho hoạt động này.
+
+3. Đảm bảo tất cả thông tin liên quan đến sự cố được ghi lại và lưu giữ theo yêu cầu
+   của {{companyShortName}} về Kiểm toán và Tiêu chuẩn Lưu giữ Dữ liệu.
+4. Đóng sự cố bảo mật.
+
+#### Đánh Giá Định Kỳ
+
+Điều quan trọng là quy trình liên quan đến phản ứng sự cố bảo mật nên được xem xét và đánh giá định kỳ về hiệu quả. Điều này cũng bao gồm việc đào tạo phù hợp cho các nguồn lực dự kiến phản ứng với các sự cố bảo mật, cũng như đào tạo cho toàn bộ dân số về kỳ vọng của {{companyShortName}} đối với họ, liên quan đến trách nhiệm bảo mật. Kế hoạch phản ứng sự cố được kiểm tra hàng năm.

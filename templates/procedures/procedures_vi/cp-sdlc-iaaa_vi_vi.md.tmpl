@@ -1,0 +1,28 @@
+### Kiểm soát truy cập của Ứng dụng (Xác định danh tính, Xác thực, Ủy quyền, Kế toán)
+
+{{companyShortName}} ứng dụng phần mềm bên ngoài mà khách hàng đối diện với
+truy cập vào dữ liệu cụ thể của khách hàng, bao gồm thông tin nhạy cảm như PII
+{{#needStandardHIPAA}}và ePHI{{/needStandardHIPAA}}, triển khai kiểm soát truy cập mạnh mẽ,
+bao gồm Xác định danh tính, Xác thực, Ủy quyền, và Kế toán/kiểm toán (IAAA) của truy cập và hoạt động của người dùng.
+
+Việc triển khai đảm bảo rằng
+
+- người yêu cầu truy cập là người được tuyên bố (Xác định danh tính và Xác thực);
+
+- chỉ những người dùng được ủy quyền truy cập dữ liệu cụ thể
+  {{#needStandardHIPAA}}(chẳng hạn như ePHI){{/needStandardHIPAA}} mới được phép truy cập (Ủy quyền); và
+
+- các hoạt động truy cập của họ được ghi lại (Kế toán/kiểm toán) theo
+  tiêu chuẩn kiểm toán của {{companyShortName}}.
+
+Việc triển khai hiện tại sử dụng {{provider}} để quản lý danh tính người dùng
+và truy cập.
+
+Nền tảng backend triển khai kiểm soát truy cập dựa trên thuộc tính chi tiết (ABAC)
+để cấp quyền truy cập vào các dịch vụ và dữ liệu cụ thể dựa trên
+thuộc tính của chủ thể (tức là người yêu cầu truy cập -- một thuộc tính
+có thể là vai trò hoặc thành viên nhóm hoặc tổ chức mà người dùng thuộc về) và
+thuộc tính của tài nguyên được yêu cầu (tức là dữ liệu hoặc dịch vụ -- một thuộc tính
+có thể là dự án mà dữ liệu này thuộc về).
+
+Chi tiết triển khai thêm được ghi lại trên wiki kỹ thuật nội bộ.

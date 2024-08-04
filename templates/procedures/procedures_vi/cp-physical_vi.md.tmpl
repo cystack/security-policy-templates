@@ -1,0 +1,89 @@
+### Bảo mật vật lý
+
+#### Tổng quan yêu cầu truy cập
+
+* Truy cập vật lý bị hạn chế bằng cách sử dụng đầu đọc thẻ và/hoặc ổ khóa thông minh theo dõi tất cả các lần truy cập.
+
+    * Các khu vực và cơ sở hạn chế được khóa khi không có người (nơi có thể).
+    * Chỉ những nhân viên được ủy quyền mới có quyền truy cập vào các khu vực hạn chế (theo quyết định của Nhân viên Bảo mật).
+    * Quyền truy cập và chìa khóa bị thu hồi khi nhân viên rời khỏi công ty.
+    * Nhân viên phải báo cáo chìa khóa hoặc thẻ bị mất hoặc bị đánh cắp cho quản lý của mình, Trưởng nhóm địa phương, hoặc Quản lý cơ sở.
+    * Quản lý cơ sở hoặc người được chỉ định chịu trách nhiệm thu hồi quyền truy cập đối với thẻ hoặc chìa khóa bị mất/đánh cắp và cấp lại quyền truy cập khi cần.
+    * Quản lý cơ sở hoặc người được chỉ định sẽ thay đổi ổ khóa trong vòng 7 ngày kể từ khi chìa khóa vật lý được báo cáo là mất/đánh cắp.
+
+* Thực thi chính sách truy cập cơ sở
+
+    * Báo cáo các vi phạm chính sách này cho trưởng nhóm bộ phận khu vực hạn chế, giám sát viên, quản lý, hoặc giám đốc, hoặc Nhân viên Bảo mật.
+    * Nhân viên vi phạm chính sách này sẽ bị xử lý kỷ luật, bao gồm cả việc sa thải.
+    * Khách truy cập vi phạm chính sách này sẽ bị mất quyền lợi nhà cung cấp và/hoặc chấm dứt dịch vụ từ {{companyShortName}}.
+
+* Bảo mật trạm làm việc
+
+    * Các trạm làm việc chỉ được truy cập và sử dụng bởi những nhân viên được ủy quyền để hoàn thành nhiệm vụ/hợp đồng được giao.
+    * Tất cả nhân viên đều phải giám sát các trạm làm việc và báo cáo người dùng không được ủy quyền và/hoặc các nỗ lực truy cập không được ủy quyền vào hệ thống/ứng dụng theo Chính sách Truy cập Hệ thống.
+    * Tất cả các trạm làm việc được {{companyShortName}} mua đều thuộc sở hữu của {{companyShortName}} và được phân phối cho người dùng bởi công ty.
+
+#### Tiêu chuẩn cơ sở theo từng địa điểm
+
+Tất cả các điểm vào đều được bảo mật bằng đầu đọc thẻ và có camera giám sát thêm khi cần.
+
+* **Văn phòng Indianapolis, IN**
+
+    * Tòa nhà được mở khóa từ Thứ Hai đến Thứ Sáu, từ 9 giờ sáng đến 4 giờ chiều
+    * Ngoài giờ làm việc, tòa nhà được bảo mật và yêu cầu thẻ truy cập để vào
+    * Lối vào chính của phòng làm việc mở trong giờ làm việc bình thường (T-Th 8 giờ sáng - 5 giờ chiều)
+    * Không gian văn phòng của {{companyShortName}} được bảo mật và yêu cầu thẻ truy cập để vào ngoài giờ làm việc
+    * Tất cả các phòng máy chủ đều được bảo mật 24/7 và yêu cầu thẻ truy cập để vào
+
+* **Văn phòng Morrisville, NC**
+
+    * Tòa nhà được mở khóa với quyền truy cập tự do từ Thứ Hai đến Thứ Sáu, từ 7 giờ sáng đến 7 giờ tối và Thứ Bảy từ 9 giờ sáng đến 1 giờ chiều
+    * Ngoài giờ làm việc, tòa nhà được bảo mật và yêu cầu thẻ truy cập để vào
+    * Phòng làm việc của {{companyShortName}} được bảo mật 24/7 và yêu cầu thẻ truy cập để vào
+
+#### Lưu trữ dữ liệu truy cập cơ sở
+
+Máy chủ bảo mật chứa cấu hình bảo mật cho hệ thống thẻ điện tử của chúng tôi được đặt an toàn trong phòng máy chủ của văn phòng tương ứng mà nó quản lý; Indianapolis, IN và Morrisville, NC.
+
+**dnaFusion** (văn phòng Indianapolis) lưu trữ tất cả các nhật ký kiểm soát truy cập vô thời hạn.
+
+**mySonitrol** (văn phòng Morrisville) lưu trữ tất cả các nhật ký kiểm soát truy cập trong 90 ngày.
+
+Video từ camera được lưu trữ trên các camera và video được truy cập qua **Meraki**.
+Video được lưu trữ tối thiểu trong 30 ngày.
+
+#### Quy trình kiểm soát truy cập cơ sở
+
+Thẻ truy cập được lưu trữ trong tủ khóa cho đến khi được kích hoạt và cấp phát.
+
+##### Nhân viên mới
+
+Thẻ truy cập của nhân viên mới được phân phối dựa trên thông báo nhân viên mới được phát hành qua {{ticketingSystem}}.
+
+* Thẻ truy cập của nhân viên mới thường được kích hoạt vào ngày trước ngày bắt đầu
+* Khi được kích hoạt, thẻ truy cập được lưu trữ trong tủ khóa cho đến khi được cấp cho nhân viên mới.
+
+##### Chấm dứt hợp đồng
+
+Thông báo chấm dứt được phát hành qua {{ticketingSystem}}.
+
+* Thông báo chấm dứt ngay lập tức được xử lý khi phát hành
+* Thông báo chấm dứt trong tương lai được lập lịch trước để vô hiệu hóa trước ngày chấm dứt
+
+##### Yêu cầu truy cập đặc biệt
+
+Các khu vực truy cập đặc biệt yêu cầu sự phê duyệt thêm. Nếu người phê duyệt được tài liệu không có mặt, COO có thể thay mặt phê duyệt.
+
+#### Bảo trì & Sửa chữa
+
+Tất cả bảo trì, sửa chữa và thay đổi hệ thống kiểm soát truy cập của chúng tôi sẽ được xử lý bởi nhà cung cấp địa phương hỗ trợ hệ thống của chúng tôi.
+
+Tất cả các tài liệu liên quan đến bảo trì, sửa chữa hoặc thay đổi sẽ được lưu trữ trong thư mục bảo mật vật lý trên trang SharePoint của {{companyShortName}}.
+
+#### Báo cáo và Kiểm toán
+
+Tất cả các bản ghi kiểm soát truy cập được kiểm toán hàng năm.
+
+Truy cập đặc biệt được kiểm toán và xem xét với người phê duyệt hàng quý.
+
+Các bản ghi thuộc quyền sở hữu và được duy trì bởi Quản lý cơ sở. Các bản ghi được lưu trữ trong thư mục Bảo mật Vật lý trên SharePoint và sẽ được giữ ít nhất 7 năm.

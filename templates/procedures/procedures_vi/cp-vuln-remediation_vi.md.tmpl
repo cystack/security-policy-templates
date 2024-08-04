@@ -1,0 +1,75 @@
+### Báo Cáo, Theo Dõi và Khắc Phục Các Phát Hiện An Ninh
+
+Chúng tôi theo dõi lỗ hổng bằng quy trình đơn giản sử dụng {{ticketingSystem}}. Các hồ sơ phát hiện được lưu giữ trong bảy năm.
+
+#### Báo Cáo Một Phát Hiện
+
+- Sau khi phát hiện một lỗ hổng (bao gồm lỗ hổng trong phần mềm, hệ thống, hoặc quy trình), một Vấn Đề {{ticketingSystem}} (issueType = **Finding**) được tạo trên Dự Án AN NINH.
+
+- Điền các trường tùy chỉnh sau vào vấn đề {{ticketingSystem}} khi áp dụng:
+
+  > - **Nguồn Phát Hiện** (danh sách thả xuống)
+  > - **Trong Sản Xuất** (có/không/không áp dụng)
+  > - **Tên Ứng Dụng/Repo** (văn bản/tag)
+  > - **Số Phiên Bản** (văn bản/tag)
+
+- **Tóm Tắt** của Phát Hiện nên có định dạng này: "{\[sev\]} {mô tả ngắn}" (ví dụ: "[Cao] Gói lỗi thời trên hình ảnh ECS AMI").
+
+- **Mô Tả** của Phát Hiện nên bao gồm các chi tiết thêm, không chứa thông tin bí mật, và liên kết đến nguồn gốc.
+
+- **Ưu Tiên** của Phát Hiện nên phù hợp với mức độ nghiêm trọng của nó.
+
+#### Đánh Giá Ưu Tiên/Nghiêm Trọng và Thỏa Thuận Mức Dịch Vụ
+
+Để nhanh chóng khắc phục các lỗ hổng bảo mật, các thời gian sau đây đã được thiết lập để thúc đẩy việc giải quyết.
+
+| Mức Độ Nghiêm Trọng | Mức Độ Ưu Tiên | SLA        | Định Nghĩa | Ví Dụ |
+| ------------------ |:--------------:| ----------:| :----------| :--------|
+| P0                 | Cao Nhất       | 3 ngày     | Các lỗ hổng gây ra sự gia tăng quyền hạn trên nền tảng từ không có quyền đến quản trị, cho phép thực thi mã từ xa, ăn cắp tài chính, truy cập trái phép đến/khai thác dữ liệu nhạy cảm, v.v. | Các lỗ hổng dẫn đến Thực Thi Mã Từ Xa như Bỏ Qua Xác Thực Theo Đứng, SSRF, XXE, SQL Injection, Bỏ Qua Xác Thực Người Dùng |
+| P1                 | Cao            | 7 ngày     | Các lỗ hổng ảnh hưởng đến an ninh của nền tảng bao gồm các quy trình mà nó hỗ trợ. | Bỏ Qua Xác Thực Theo Ngang, XSS Lưu Trữ, một số CSRF tùy thuộc vào ảnh hưởng. |
+| P2                 | Trung Bình      | 30 ngày    | Các lỗ hổng ảnh hưởng đến nhiều người dùng và yêu cầu ít hoặc không có sự tương tác của người dùng để kích hoạt. | XSS Phản Chiếu, Tham Chiếu Đối Tượng Trực Tiếp, Chuyển Hướng URL, một số CSRF tùy thuộc vào ảnh hưởng. |
+| P3                 | Thấp           | Nỗ Lực Tốt Nhất| Các vấn đề ảnh hưởng đến người dùng đơn lẻ và yêu cầu sự tương tác hoặc điều kiện tiên quyết quan trọng (MitM) để kích hoạt. | Các lỗi phổ biến, Thông tin Gỡ Lỗi, Nội dung Hỗn Hợp. |
+
+Trong trường hợp mức độ nghiêm trọng/ưu tiên được cập nhật sau khi một phát hiện lỗ hổng được tạo ra ban đầu, SLA được cập nhật như sau:
+
+- **Nâng Cấp Mức Độ Nghiêm Trọng:** đặt lại SLA từ thời điểm gia tăng
+
+- **Hạ Cấp Mức Độ Nghiêm Trọng:** thời gian SLA vẫn giữ nguyên từ thời điểm tạo ra/nhận diện phát hiện
+
+#### Giải Quyết Một Phát Hiện
+
+- Phát Hiện nên được giao cho người chịu trách nhiệm về hệ thống hoặc gói phần mềm.
+
+- Tất cả các phát hiện nên được giải quyết theo SLA đã thiết lập.
+
+- Không được triển khai phần mềm vào sản xuất với các phát hiện CAO hoặc TRUNG BÌNH chưa được giải quyết, trừ khi có một Ngoại Lệ (xem bên dưới).
+
+- Một phát hiện có thể được giải quyết bằng cách
+
+    1. cung cấp một bản sửa lỗi/biện pháp khắc phục hợp lệ
+    2. xác định là báo động giả
+    3. tài liệu về một ngoại lệ đã được phê duyệt
+
+#### Đóng Một Phát Hiện
+
+- Người được giao nhiệm vụ nên cung cấp một giải pháp hợp lệ (xem trên) và thêm một nhận xét vào phát hiện.
+
+- Phát hiện nên được chuyển giao lại cho Người Báo Cáo hoặc một thành viên của nhóm an ninh để xác thực.
+
+- Sau khi xác thực, phát hiện có thể được đánh dấu là Đã Hoàn Thành (đã đóng) bởi Người Báo Cáo.
+
+- **Trước khi phát hiện có thể được đánh dấu là đã đóng bởi người báo cáo, bản sửa lỗi phải được triển khai vào môi trường phát triển và có ngày phát hành dự kiến để triển khai vào sản xuất được ghi trên vé.**
+
+#### Ngoại Lệ
+
+- Một Ngoại Lệ có thể được yêu cầu khi một bản sửa lỗi khả thi hoặc trực tiếp cho lỗ hổng không có sẵn. Ví dụ, một phiên bản của gói chứa bản sửa lỗi không được hỗ trợ trên hệ điều hành cụ thể đang sử dụng.
+
+- Một giải pháp thay thế (hay còn gọi là kiểm soát bù đắp) phải được áp dụng để giải quyết lỗ hổng ban đầu sao cho rủi ro được giảm thiểu. Kiểm soát bù đắp có thể là kỹ thuật hoặc quy trình hoặc kết hợp cả hai.
+
+- Một Ngoại Lệ phải được mở dưới dạng một vé {{ticketingSystem}} (issueType = **Exception**) trên dự án AN NINH.
+
+- Vé Ngoại Lệ {{ticketingSystem}} phải tham chiếu đến Phát Hiện gốc bằng cách thêm Liên Kết Vấn Đề đến vé Phát Hiện {{ticketingSystem}}.
+
+- Mỗi Ngoại Lệ phải được xem xét và phê duyệt bởi nhóm An ninh và chủ sở hữu tài sản bị ảnh hưởng.
+
+- Tất cả các Ngoại Lệ được xem xét mỗi sáu tháng để đánh giá lại tính hợp lệ của nó.
