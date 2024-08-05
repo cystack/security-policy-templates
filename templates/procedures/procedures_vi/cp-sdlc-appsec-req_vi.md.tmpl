@@ -1,0 +1,34 @@
+## Yêu Cầu Bảo Mật Ứng Dụng Cấp Cao
+
+Tất cả phần mềm của {{companyShortName}} phải được phát triển theo các nguyên tắc và yêu cầu bảo mật ứng dụng chung sau đây. Các ứng dụng web cũng phải bảo vệ chống lại các lỗ hổng của [OWASP Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project#tab=OWASP_Top_10_for_2017_Release_Candidate).
+
+1. Bảo vệ dữ liệu nhạy cảm của khách hàng như {{#needStandardHIPAA}}PHI, {{/needStandardHIPAA}}
+   PII và mật khẩu tài khoản. Mã hóa dữ liệu lưu trữ (ở trạng thái nghỉ).
+
+2. Bảo mật dữ liệu trong quá trình truyền và thông tin liên lạc của khách hàng thông qua TLS.
+
+3. Cung cấp kiểm soát truy cập mạnh mẽ (xác thực và ủy quyền). Ngăn chặn và báo cáo truy cập không được phép.
+
+4. Ghi lại tất cả các giao dịch và hoạt động để có thể xác định ai đã làm gì, khi nào, ở đâu và như thế nào. Ẩn hoặc xóa dữ liệu nhạy cảm trong các bản ghi.
+
+5. Triển khai bảo mật phía khách hàng tại các điểm cuối ứng dụng (ví dụ: trình duyệt, ứng dụng di động).
+
+6. Giao tiếp một cách bảo mật qua các điểm cuối ứng dụng và giữa các nhà cung cấp/dịch vụ tiêu dùng.
+
+7. Sử dụng cấu hình mặc định an toàn để đảm bảo bảo mật trong tất cả các điều kiện lỗi.
+
+8. Kiểm tra và duy trì bảo mật của tất cả các thư viện/đối tượng/phụ thuộc bên thứ ba và mã nguồn mở.
+
+9. Xác thực tất cả các đầu vào dữ liệu; mã hóa đầu ra dữ liệu khi phù hợp.
+
+10. Triển khai và cấu hình ứng dụng một cách bảo mật khi đưa vào sản xuất.
+
+11. Thực hiện phân tích lỗ hổng định kỳ và áp dụng các bản vá bảo mật kịp thời.
+
+12. Bảo mật quyền truy cập đặc quyền vào các môi trường sản xuất và đảm bảo giám sát ứng dụng liên tục.
+
+Tất cả mã phần mềm phải hoàn thành một loạt các kiểm tra/bảo mật trước khi được triển khai vào sản xuất, bao gồm quét phụ thuộc mã nguồn mở, kiểm tra bảo mật ứng dụng tĩnh và động, cũng như kiểm tra xâm nhập định kỳ.
+
+Kiểm tra tiền sản xuất được thực hiện với dữ liệu không phải sản xuất trong các môi trường không phải sản xuất. Các kiểm tra sức khỏe được thực hiện định kỳ hoặc tự động trong sản xuất.
+
+Các lỗ hổng phần mềm được xác định thông qua bất kỳ quy trình nào ở trên phải được báo cáo và theo dõi theo quy trình Quản Lý Lỗ Hổng của {{companyShortName}} như được xác định trong [Chính Sách và Quy Trình Quản Lý Lỗ Hổng](vuln-mgmt.md).

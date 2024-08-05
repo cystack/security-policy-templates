@@ -1,0 +1,47 @@
+### Quy trình Quản lý Cập nhật
+
+**Hệ thống Cục bộ**
+
+{{companyShortName}} sử dụng công cụ tự động hóa để đảm bảo các hệ thống luôn được cập nhật
+với các bản vá bảo mật mới nhất.
+
+* Trên các hệ thống Linux và Windows cục bộ, công cụ unattended-upgrades được sử dụng để
+  áp dụng các bản vá bảo mật theo các giai đoạn.
+
+    - Các bản vá bảo mật Rủi ro Cao được tự động áp dụng khi chúng được phát hành.
+    - Cập nhật hệ thống hàng tháng cho các ứng dụng thông thường được áp dụng khi cần.
+    - Việc chụp ảnh hệ thống sẽ diễn ra trước khi cập nhật được áp dụng.
+    - Khi bản cập nhật được coi là ổn định, ảnh chụp sẽ được xóa bỏ.
+    - Trong trường hợp cập nhật thất bại, ảnh chụp sẽ được quay trở lại.
+    - Nếu các hệ thống staging hoạt động bình thường sau giai đoạn kiểm tra hai tuần,
+      đội ngũ bảo mật sẽ nâng cấp ảnh chụp đó vào bản sao lưu được sử dụng
+      bởi tất cả các hệ thống sản xuất. Các bản vá này sẽ được áp dụng cho tất cả các hệ thống sản xuất
+      trong lần cập nhật ban đêm tiếp theo.
+    - Quy trình cập nhật có thể được đẩy nhanh bởi đội ngũ An ninh.
+    - Trên các hệ thống Windows, cài đặt Chính sách Nhóm cơ bản cấu hình Windows
+      Update để thực hiện chính sách cập nhật.
+
+**Tài nguyên Đám mây**
+
+{{companyShortName}} tuân theo phương pháp "gia súc-vs-thú cưng" để giữ cho các
+tài nguyên trong môi trường đám mây không thay đổi và luôn được cập nhật với các bản vá bảo mật.
+
+* Dịch vụ Container Elastic AWS (ECS) được sử dụng để quản lý tài nguyên container
+  một cách động dựa trên nhu cầu.
+
+* Đội ngũ Kỹ thuật xây dựng AMI đã được phê duyệt bảo mật từ hình ảnh Amazon Machine Image (AMI) tối ưu hóa AWS mới nhất
+  để bao gồm đại lý bảo mật cần thiết.
+
+* Các đại lý bảo mật được cài đặt trên các AMI đã được phê duyệt bảo mật liên tục quét
+  và báo cáo các lỗ hổng mới.
+
+* Các AMI tùy chỉnh được tự động xây dựng lại từ các AMI AWS mới nhất hàng tuần để
+  bao gồm các bản vá bảo mật mới nhất.
+
+**Điểm cuối Người dùng**
+
+{{companyShortName}} yêu cầu kích hoạt tự động cập nhật bản vá bảo mật cho
+tất cả các điểm cuối người dùng, bao gồm cả máy tính xách tay và máy trạm.
+
+* Cấu hình tự động cập nhật và trạng thái cập nhật trên tất cả các hệ thống người dùng cuối
+  được đội ngũ An ninh kiểm tra thông qua các kiểm toán định kỳ thủ công hoặc các đại lý kiểm toán tuân thủ tự động được cài đặt trên các điểm cuối.

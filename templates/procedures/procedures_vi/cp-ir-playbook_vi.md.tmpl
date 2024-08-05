@@ -1,0 +1,104 @@
+## Các Danh Mục và Quy Trình Xử Lý Sự Cố
+
+* Nhóm Phản Ứng Sự Cố (IRT) xem xét và phân tích các sự kiện bảo mật như một phần của hoạt động hàng ngày.
+* Dựa trên phân tích ban đầu, một sự kiện có thể bị loại bỏ do báo động giả, hoạt động kinh doanh bình thường, ngoại lệ đã được thực hiện, được phép theo chính sách, hoặc trùng lặp. Một dấu vết kiểm toán sẽ được giữ lại cho việc loại bỏ sự kiện.
+* Một sự kiện bảo mật hợp lệ có thể được nâng cấp lên thành sự cố bảo mật. Khi đó, một phân loại và mức độ nghiêm trọng của sự cố sẽ được chỉ định như được nêu dưới đây.
+* Hồ sơ quyết định phải được lưu trữ với các chi tiết về ngày, tên của những người thực hiện đánh giá.
+* Một quy trình containment, eradication và recovery sẽ được kích hoạt dựa trên phân loại Danh Mục của sự cố.
+* Ngoài các quy trình quản lý sự cố chung đã được mô tả trước đó, một hoặc nhiều quy trình xử lý sự cố sau đây sẽ được tham khảo dựa trên phân loại của sự cố cụ thể.
+
+#### Phân loại
+
+* **Danh Mục 1** – Sự cố chung, bao gồm sự cố an ninh vật lý
+
+* **Danh Mục 2** – Tấn công vào cơ sở hạ tầng nội bộ của công ty, bao gồm mạng, phần cứng, phần mềm
+
+* **Danh Mục 3** – Malware
+
+* **Danh Mục 4** – Tấn công vào tài sản hướng ra ngoài, như website, ứng dụng web, dịch vụ web. Bao gồm cả tấn công từ chối dịch vụ.
+
+* **Danh Mục 5** – Mục tiêu con người, kỹ thuật xã hội, phishing, v.v.
+
+* **Danh Mục 6** – Rò rỉ/vi phạm dữ liệu quan trọng hoặc bí mật
+
+#### Mức độ nghiêm trọng:
+
+* **Critical** – Sự cố gây gián đoạn ngay lập tức và đáng kể đến hoạt động kinh doanh và/hoặc vi phạm dữ liệu quan trọng hoặc bí mật
+
+* **Major** – Sự cố gây gián đoạn ngay lập tức đến hoạt động kinh doanh nhưng không có khả năng gây vi phạm dữ liệu ngay lập tức
+
+* **Minor** – Tất cả các sự cố đã được xác nhận khác
+
+#### Quy Trình Xử Lý: Danh Mục 1 – Sự cố chung
+
+* Ưu tiên xử lý sự cố dựa trên ảnh hưởng chức năng, nỗ lực thông tin, nỗ lực khôi phục và các yếu tố liên quan khác
+* Báo cáo sự cố cho các cá nhân nội bộ và tổ chức bên ngoài thích hợp
+* Thu thập, bảo quản, bảo mật và tài liệu bằng chứng
+* Giới hạn sự cố
+* Xóa bỏ sự cố
+
+    * Xác định và giảm thiểu tất cả các yếu tố đã cho phép sự cố xảy ra
+    * Loại bỏ bất kỳ kết quả hoạt động độc hại nào
+
+* Khôi phục từ sự cố
+
+    * Khôi phục các hệ thống và chức năng kinh doanh bị ảnh hưởng
+    * Triển khai các biện pháp phòng ngừa bổ sung
+
+#### Quy Trình Xử Lý: Danh Mục 2 – Xử lý sự cố cơ sở hạ tầng nội bộ
+
+Tùy thuộc vào loại sự kiện, sử dụng các quy trình xử lý sự cố sau:
+
+* [Unauthorized Access](https://incidentresponse.com/playbooks/unauthorized-access)
+* [Root Access](https://incidentresponse.com/playbooks/root-access)
+* [Elevation of Privilege](https://incidentresponse.com/playbooks/elevation-of-privilege)
+* [Improper Usage](https://incidentresponse.com/playbooks/improper-computer-usage)
+
+#### Quy Trình Xử Lý: Danh Mục 3 – Bùng phát Malware
+
+Tùy thuộc vào loại tác nhân, theo các quy trình xử lý sự cố sau:
+
+* [Malware](https://incidentresponse.com/playbooks/malware-outbreak)
+* [Virus](https://incidentresponse.com/playbooks/virus-outbreak)
+
+#### Quy Trình Xử Lý: Danh Mục 4 – Tấn công web bên ngoài và tấn công DoS/DDoS
+
+* Triển khai đội ngũ Kỹ thuật để bảo mật hệ thống và đảm bảo Tính liên tục của Doanh nghiệp
+* Thực hiện điều tra toàn diện về sự cố
+* Quản lý các mối quan hệ công chúng
+* Đáp ứng các yêu cầu pháp lý và quy định
+* Đối với tấn công DDoS, tham khảo [DDOS playbook](https://incidentresponse.com/playbooks/ddos)
+* Kích hoạt BCDR nếu cần
+
+#### Quy Trình Xử Lý: Danh Mục 5 – Kỹ thuật xã hội
+
+Tham khảo [Phishing incident response playbook](https://incidentresponse.com/playbooks/phishing)
+
+#### Quy Trình Xử Lý: Danh Mục 6 – Rò rỉ dữ liệu
+
+[Data Theft incident response playbook](https://incidentresponse.com/playbooks/data-theft) mô tả các hướng dẫn phản ứng
+
+#### Quy Trình Xử Lý: Các Trường Hợp Đặc Biệt
+
+Ít nhất hai trường hợp đặc biệt sau được xem xét khi phản ứng với sự cố:
+
+{{#needStandardHIPAA}}
+**PHI/ePHI:**
+
+Khi xảy ra vi phạm dữ liệu liên quan đến PHI hoặc ePHI không được bảo mật, thông báo vi phạm phải được thực hiện theo yêu cầu quy định HIPAA, bao gồm từng cá nhân bị ảnh hưởng và nếu áp dụng, tổ chức được bảo vệ và OCR (xem Phụ lục để biết thêm chi tiết).
+
+Nếu vi phạm hoặc khả năng vi phạm ảnh hưởng đến PHI/ePHI thuộc về một Tổ chức Được Bảo Vệ mà {{companyShortName}} là Đối Tác Kinh Doanh của, nhóm IRT và đội ngũ quản lý sẽ thông báo cho Tổ chức Được Bảo Vệ theo thời gian và phương pháp liên hệ được thiết lập trong Thỏa thuận Đối tác Kinh Doanh hoặc theo mô tả trong [§Breach Notification](breach.md).
+HIPAA §164.410(b)
+{{/needStandardHIPAA}}
+
+**Hoạt Động Tội Phạm:**
+
+Trong trường hợp một cuộc tấn công liên quan đến các hoạt động tội phạm bị nghi ngờ, nhóm IRT và đội ngũ quản lý sẽ thông báo cho cơ quan thực thi pháp luật.
+
+**Mối Đe Dọa Nội Bộ:**
+
+Các thành viên của đội xử lý sự cố mối đe dọa nội bộ bao gồm:
+
+* Cán bộ Bảo mật và Quyền riêng tư,
+* COO, và
+* Trưởng phòng Kỹ thuật khi thích hợp.

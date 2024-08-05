@@ -1,0 +1,52 @@
+### Cấp phát Tài khoản AWS
+
+#### Cấu trúc / Tổ chức Tài khoản AWS
+
+{{companyShortName}} duy trì một Tổ chức AWS duy nhất, được quản lý qua tài khoản AWS cấp cao (tài khoản chính). Các tài khoản phụ được kết nối, mỗi tài khoản chứa các khối lượng công việc và tài nguyên riêng biệt trong môi trường cách ly của nó. Tài khoản chính chỉ xử lý việc lập hóa đơn tổng hợp cho tất cả các tài khoản phụ được kết nối và không lưu trữ bất kỳ khối lượng công việc, dịch vụ hoặc tài nguyên nào, ngoại trừ các bản ghi DNS cho miền gốc của {{companyShortName}}, sử dụng dịch vụ AWS Route53. Các bản ghi DNS cho các miền phụ được duy trì trong các tài khoản phụ tương ứng.
+
+Việc truy cập vào từng tài khoản được quản lý thông qua nhà cung cấp SSO được chỉ định, thiết lập mối quan hệ tin cậy với một tập hợp các vai trò được định sẵn trong tài khoản chính. Sau khi xác thực, người dùng sẽ sử dụng khả năng Assume Role của AWS IAM để chuyển sang tài khoản phụ và truy cập các dịch vụ và tài nguyên.
+
+Cấu trúc tài khoản và mạng trông như sau:
+
+```
+SSO/IdP ── {{companyShortName}}-master
+            │  └── billing and root DNS records only
+            │
+            ├── {{companyShortName}}-dev
+            │    └── VPC
+            │        └── Subnets
+            │             └── Security-Groups
+            │                  └── EC2 instances
+            │                       └── Docker containers
+            │            
+            ├── {{companyShortName}}-test
+            │    └── VPC
+            │         └── Subnets
+            │              └── Security-Groups
+            │                   └── EC2 instances
+            │                        └── Docker containers
+            │
+            ├── {{companyShortName}}-infra
+            │    └── VPC
+            │         └── Subnets
+            │              └── Security-Groups
+            │                   └── EC2 instances
+            │                        └── Docker containers
+            │
+            ├── {{companyShortName}}-prod-us1
+            │    └── VPC
+            │         └── Subnets
+            │              └── Security-Groups
+            │                   └── EC2 instances
+            │                        └── Docker containers
+            │
+            ├── {{companyShortName}}-prod-us2
+            │
+            ...
+```
+
+
+#### Infrastructure-as-Code
+
+Các môi trường và cơ sở hạ tầng AWS của {{companyShortName}} được quản lý dưới dạng mã. Việc cấp phát được thực hiện bằng cách sử dụng một tập hợp các tập lệnh tự động hóa và mã {{provider}}. Mỗi môi trường mới được tạo ra dưới dạng tài khoản phụ kết nối với `{{companyShortName}}-master`. Việc tạo và cấp phát một tài khoản mới tuân theo các hướng dẫn được tài liệu hóa trong trang Bootstrap a new AWS environment của wiki phát triển.
+

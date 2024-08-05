@@ -1,0 +1,58 @@
+### Quy trình Quản lý Cấu hình
+
+1. Quản lý cấu hình được tự động hóa bằng cách sử dụng các công cụ được công nhận trong ngành như
+   Chef, Salt và Terraform để thực thi các tiêu chuẩn cấu hình an toàn.
+
+2. Tất cả các thay đổi đối với hệ thống sản xuất, thiết bị mạng và tường lửa được
+   xem xét và phê duyệt bởi đội ngũ An ninh trước khi được thực hiện để đảm bảo
+   chúng tuân thủ các yêu cầu về kinh doanh và bảo mật.
+
+3. Tất cả các thay đổi đối với hệ thống sản xuất được kiểm tra trước khi chúng được triển khai trong
+   môi trường sản xuất.
+
+4. Việc thực hiện các thay đổi được phê duyệt chỉ được thực hiện bởi
+   nhân viên được ủy quyền.
+
+5. Công cụ được sử dụng để tạo danh sách hệ thống cập nhật.
+
+    * Tất cả các hệ thống được phân loại và gán nhãn theo môi trường tương ứng của chúng, chẳng hạn như *dev*, *test*, và *prod*.
+    * Tất cả các hệ thống được phân loại và gán nhãn dựa trên dữ liệu mà chúng lưu trữ hoặc
+      xử lý, theo mô hình phân loại dữ liệu của {{companyShortName}}.
+    * Đội ngũ An ninh duy trì tự động hóa để giám sát tất cả các thay đổi đối với tài sản CNTT,
+      tạo danh sách tài sản, sử dụng phát hiện tài sản CNTT tự động,
+      và các dịch vụ được cung cấp bởi từng nhà cung cấp đám mây.
+    * Cơ sở dữ liệu tài sản CNTT được sử dụng để tạo các sơ đồ và danh sách tài sản
+      cần thiết cho giai đoạn Đánh giá Rủi ro của {{companyShortName}}'s
+      [Quy trình Quản lý Rủi ro](risk-mgmt.md)
+    * Quy trình Quản lý Thay đổi của {{companyShortName}} đảm bảo rằng tất cả danh sách tài sản
+      được tạo ra bởi tự động hóa được đối chiếu với các thay đổi thực tế đối với hệ thống sản xuất. Quy trình này bao gồm kiểm toán và phê duyệt thủ công định kỳ.
+    * Trong mỗi lần thực hiện thay đổi, thay đổi đó được xem xét và xác minh bởi
+      chủ sở hữu tài sản mục tiêu khi cần thiết.
+
+6. {{companyShortName}} sử dụng [Hướng dẫn Triển khai Kỹ thuật Bảo mật
+   (STIGs)](http://iase.disa.mil/stigs/) được xuất bản bởi Cơ quan Hệ thống Thông tin Quốc phòng như một tiêu chuẩn cơ bản để tăng cường bảo mật hệ thống.
+
+    * Các hệ thống dựa trên Windows sử dụng cấu hình chính sách nhóm Active Directory cơ bản kết hợp với các STIGs của DISA.
+    * Các hệ thống dựa trên Linux sử dụng STIG Red Hat Enterprise Linux làm hướng dẫn cho
+      việc triển khai.
+    * Các phiên bản EC2 trên AWS được cấp phát chỉ sử dụng các Amazon Machine Images (AMIs) đã được cứng hóa và phê duyệt.
+    * Các container Docker chỉ được khởi chạy bằng các hình ảnh Docker đã được phê duyệt và đã qua kiểm tra bảo mật.
+
+7. Tất cả các tài sản CNTT của {{companyShortName}} đều được đồng bộ hóa thời gian với một nguồn
+   chính thức duy nhất.
+
+    * Các hệ thống tại chỗ được cấu hình để chỉ định đến một máy chủ NTP nội bộ.
+    * Máy chủ NTP nội bộ và tất cả các phiên bản AWS đều trỏ đến cùng một tập hợp
+      các máy chủ ntp.org.
+
+6. Tất cả chức năng frontend (ví dụ: bảng điều khiển người dùng và cổng thông tin) được tách biệt
+   khỏi hệ thống backend (ví dụ: máy chủ cơ sở dữ liệu và ứng dụng) bằng cách triển khai trên
+   các máy chủ hoặc container riêng biệt.
+
+7. Tất cả phần mềm và hệ thống đều yêu cầu hoàn thành kiểm tra quy mô đầy đủ trước khi
+   được nâng cấp lên môi trường sản xuất.
+
+8. Tất cả các thay đổi mã nguồn đều được xem xét để đảm bảo chất lượng mã phần mềm, trong
+   quá trình phát triển, để phát hiện sớm các vấn đề bảo mật tiềm ẩn bằng cách sử dụng
+   các yêu cầu kéo và công cụ phân tích mã tĩnh. Thông tin chi tiết có thể được tìm thấy trong
+   phần *Phát hành Phần mềm / Thăng cấp Mã*.

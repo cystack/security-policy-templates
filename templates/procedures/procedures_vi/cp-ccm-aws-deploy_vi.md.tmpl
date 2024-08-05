@@ -1,0 +1,64 @@
+### Quản lý thay đổi tự động cho việc triển khai lên AWS
+
+Pipeline Continuous Delivery của {{companyShortName}} tự động hóa việc tạo và xác thực các yêu cầu thay đổi. Điều này được thực hiện qua quy trình 3 bước:
+
+1.  **Tạo/Xác thực thẻ Yêu Cầu Thay Đổi**
+
+    {{ciSystem}} được sử dụng cho việc phát hành liên tục (xây dựng và triển khai), và chúng tôi áp dụng tự động hóa {{ciSystem}}-{{ticketingSystem}} để:
+
+    * Mỗi khi có yêu cầu triển khai đến môi trường kiểm soát (ví dụ: tài khoản sản xuất và tài khoản cơ sở hạ tầng), công việc của {{ciSystem}} sẽ kiểm tra xem có thẻ PRODCM được phê duyệt không, hoặc tạo thẻ mới nếu không tìm thấy.
+    * Mã tự động hóa sẽ cố gắng tự động điền dữ liệu cần thiết cho thẻ PRODCM (xem danh sách ở trên).
+    * Nếu dữ liệu không thể tự động điền, {{ciSystem}} có thể tạm dừng công việc và yêu cầu người dùng nhập dữ liệu thủ công.
+    * Công việc sẽ bị tạm dừng cho đến khi yêu cầu được phê duyệt hoặc hủy bỏ (bị từ chối). Trước khi tiếp tục triển khai, {{ciSystem}} sẽ xác thực định danh công việc xây dựng của yêu cầu thay đổi, số phiên bản xây dựng và nhánh mã nguồn.
+
+2.  **Phát hiện Chi Tiết Thay Đổi và Nhận Phê Duyệt**
+
+    Một `change-management-bot` riêng biệt được triển khai để cung cấp thêm chi tiết nhằm hỗ trợ/tự động hóa quy trình phê duyệt thẻ:
+
+    * Mỗi khi một thẻ PRODCM được tạo ra, bot sẽ được kích hoạt thông qua một webhook của {{ticketingSystem}}.
+    * Bot được cấu hình để kiểm tra các yếu tố sau:
+
+        - Tìm tất cả các thay đổi mã kể từ thẻ PRODCM được phê duyệt cuối cùng.
+        - Kiểm tra xem tất cả các commit mã có được phê duyệt bởi một người đánh giá khác ngoài tác giả không, ngoại trừ việc nâng cấp phiên bản.
+        - Đảm bảo rằng việc quét bảo mật đã được hoàn thành cho bản xây dựng này và không phát hiện vấn đề gây cản trở.
+
+        !!! attention
+
+            Các thực hành sau đây sẽ thất bại trong việc xác thực này và dẫn đến việc xử lý thủ công, do đó nên tránh:
+
+            - Nén các commit khi gộp PR
+            - Commit sau khi phê duyệt PR mà không được phê duyệt lại
+
+    * Chi tiết phân tích sẽ được đăng lên thẻ PRODCM của {{ticketingSystem}}.
+
+    * Khi tất cả các kiểm tra yêu cầu vượt qua xác thực, bot sẽ khuyến nghị phê duyệt. Bot cm có thể được cấu hình để tự động phê duyệt thẻ nếu tất cả các điều kiện cần thiết (và các điều kiện trong tương lai) được đáp ứng. Ngoài ra, một đánh giá / phê duyệt thủ công luôn được yêu cầu trong các điều kiện sau:
+
+        - Đây là lần triển khai sản phẩm đầu tiên mà không có lịch sử phê duyệt trước đó
+        - Một thẻ CM liên quan / triển khai của cùng một dự án đang chờ xử lý
+
+    * Nếu cần phê duyệt của con người, các người phê duyệt cần thiết sẽ xem xét chi tiết và phê duyệt/từ chối tương ứng.
+
+    * Các kiểm tra ngẫu nhiên của các thẻ được phê duyệt tự động được thực hiện bởi đội ngũ bảo mật hàng tháng để đảm bảo rằng tự động hóa hoạt động đúng cách.
+
+    !!! important
+
+        1. Lưu ý rằng quy trình trên không phát hiện được các điểm yếu trong thiết kế, và do đó không thay thế nhu cầu về mô hình hóa mối đe dọa và đánh giá bảo mật trong giai đoạn thiết kế.
+        2. Các yêu cầu bổ sung có thể được thêm vào sau khi quy trình tiếp tục trưởng thành.
+
+3.  **Phát hiện Các Thay Đổi Rủi Ro, Triển Khai và Đóng**
+
+    Công việc của {{ciSystem}} chỉ tiếp tục với một thẻ PRODCM được phê duyệt và xác thực.
+
+    * Trong các lần triển khai sản xuất, luôn thực hiện `terraform plan` trước tiên để phát hiện các thay đổi rủi ro.
+
+    * Các ví dụ về thay đổi liên quan đến bảo mật hoặc rủi ro bao gồm:
+
+        - Thay đổi thuộc tính "policy" của tài nguyên (aws_s3_bucket.policy, aws_kms_key.policy)
+        - Thay đổi IAM policy, role, user hoặc group
+        - Gắn/dỡ gắn policy
+        - Thay đổi/xóa nhóm bảo mật
+        - Bất kỳ điều gì bị xóa (trong môi trường sản xuất, việc xóa nên là không bình thường nên nên được xem xét thủ công)
+
+    * Nếu phát hiện thay đổi rủi ro, việc triển khai sẽ bị tạm dừng và thẻ PRODCM sẽ được cập nhật yêu cầu xem xét thủ công trước khi tiếp tục.
+
+    * Khi việc triển khai hoàn tất, thẻ PRODCM sẽ được tự động giải quyết và đóng.

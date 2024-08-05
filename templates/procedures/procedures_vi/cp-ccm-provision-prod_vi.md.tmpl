@@ -1,0 +1,31 @@
+### Cung cấp Hệ thống Sản xuất
+
+1. Trước khi cung cấp bất kỳ hệ thống nào, một yêu cầu phải được tạo ra và phê duyệt trong
+   dự án Quản lý Thay đổi Sản xuất (PRODCM) của {{ticketingSystem}}.
+
+    * Truy cập {{ticketingSystem}} yêu cầu người dùng đã xác thực.
+    * An ninh cấp quyền truy cập vào dự án PRODCM của {{ticketingSystem}} theo các quy trình
+      được mô tả trong [Phần Thiết lập và Thay đổi Truy cập](access.md).
+
+2. Đội ngũ bảo mật phải phê duyệt yêu cầu cung cấp trước khi bất kỳ hệ thống mới nào
+   có thể được cung cấp, trừ khi một quy trình tự động đã được phê duyệt trước đó được thực hiện.
+
+3. Sau khi việc cung cấp đã được phê duyệt, người thực hiện phải cấu hình hệ thống mới
+   theo tiêu chuẩn cơ bản được chọn cho vai trò của hệ thống.
+
+4. Nếu hệ thống sẽ được sử dụng để lưu trữ thông tin nhạy cảm, người thực hiện
+   phải đảm bảo rằng khối lượng chứa dữ liệu nhạy cảm này được mã hóa.
+
+5. Dữ liệu nhạy cảm khi di chuyển phải luôn được mã hóa.
+
+6. Một phân tích bảo mật được thực hiện sau khi hệ thống đã được cung cấp. Điều này
+   có thể được thực hiện thông qua quét cấu hình/lỗ hổng tự động hoặc
+   kiểm tra thủ công bởi đội ngũ bảo mật. Các xác minh bao gồm, nhưng không giới hạn ở:
+
+    * Loại bỏ các người dùng mặc định được sử dụng trong quá trình cung cấp.
+    * Cấu hình mạng cho hệ thống.
+    * Cài đặt mã hóa khối lượng dữ liệu.
+    * Phần mềm phát hiện xâm nhập và quét virus đã được cài đặt.
+
+7. Hệ thống mới được hoàn toàn đưa vào sản xuất sau khi xác minh thành công
+   theo các tiêu chuẩn của {{companyShortName}} và phê duyệt yêu cầu thay đổi.

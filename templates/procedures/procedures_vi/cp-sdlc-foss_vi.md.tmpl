@@ -1,0 +1,14 @@
+## Bảo Mật Phần Mềm Nguồn Mở và Tự Do (FOSS)
+
+Nhóm bảo mật và phát triển của {{companyShortName}} đã triển khai một quy trình để
+
+  -  Tạo danh mục tất cả các phụ thuộc phần mềm;
+  -  Quét các phụ thuộc phần mềm để phát hiện các lỗ hổng bảo mật đã biết;
+  -  Sửa tất cả các phát hiện có nguy cơ cao trước khi sản xuất; và
+  -  Xem xét và xác định các vấn đề về giấy phép của phần mềm và thư viện của bên thứ ba.
+
+Công cụ hiện tại đang sử dụng là {{provider}}. {{provider}} hỗ trợ Node.js, Ruby và Java. Tài liệu có thể được tìm thấy trên trang web của {{provider}}.
+
+{{provider}} cũng cho phép phân tích giấy phép tự động cho các phụ thuộc, và chức năng này được tích hợp vào bước `securityScan()` trong quy trình {{ciSystem}}.
+
+{{provider}} có thể được tận dụng trong môi trường phát triển cục bộ để quét cục bộ và/hoặc tại mỗi lần xây dựng để bao gồm các phụ thuộc phát triển.

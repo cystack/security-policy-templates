@@ -1,0 +1,33 @@
+### Quy trình Triển khai Sản xuất / Thăng cấp Mã
+
+Để thăng cấp các thay đổi vào Sản xuất, một Yêu cầu Thay đổi (CR) hợp lệ và đã được phê duyệt là cần thiết. Nó có thể được tạo ra trong [Hệ thống/ Cổng thông tin Quản lý Thay đổi][1] mà thực hiện quy trình Quản lý Thay đổi của {{companyShortName}}, sử dụng dự án Quản lý Thay đổi Sản xuất (PRODCM) {{ticketingSystem}} để quản lý các thay đổi và phê duyệt.
+
+[1]: {{&cmPortal}}
+
+* Ít nhất hai phê duyệt là cần thiết cho mỗi vé PRODCM. Theo mặc định, các phê duyệt viên là
+
+    - Người đứng đầu An ninh và
+    - Người đứng đầu Kỹ thuật.
+
+* Các phê duyệt viên bổ sung có thể được thêm vào tùy thuộc vào các thành phần bị ảnh hưởng.
+  Ví dụ,
+
+    - người quản lý CNTT được thêm vào là phê duyệt viên cho các thay đổi IT/mạng; và
+    - người đứng đầu DevOps được thêm vào là phê duyệt viên cho các thay đổi đối với tài khoản `aws-{{companyShortName}}-infra` trong AWS.
+
+* Mỗi vé PRODCM yêu cầu các thông tin sau ít nhất:
+
+    - Tóm tắt về thay đổi
+    - Thành phần(s) bị ảnh hưởng
+    - Lý do
+    - Kế hoạch quay lại
+
+* Các chi tiết bổ sung là cần thiết cho một triển khai mã, bao gồm:
+
+    - Tên công việc xây dựng
+    - ID và/hoặc số xây dựng
+    - Hành động triển khai (ví dụ: lập kế hoạch, áp dụng)
+    - Nhánh triển khai (ví dụ: master)
+    - Môi trường mục tiêu (ví dụ: `aws-{{companyShortName}}-infra`, `aws-{{companyShortName}}-prod-us`, `datacenter-hq`)
+    - Các liên kết đến yêu cầu kéo và/hoặc các vấn đề {{ticketingSystem}}
+    - Tình trạng và kết quả quét bảo mật

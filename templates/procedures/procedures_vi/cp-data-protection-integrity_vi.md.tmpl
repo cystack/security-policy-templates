@@ -1,0 +1,13 @@
+### Bảo Vệ Tính Toàn Vẹn Dữ Liệu
+
+Khi cần thiết, {{companyShortName}} kỹ thuật nên triển khai các cơ chế quản lý dữ liệu như "Phiên bản" và "Vòng đời", hoặc các cơ chế tương đương, sao cho các hành động chỉnh sửa và xóa trực tiếp không được phép để ngăn ngừa sự ghi đè vô tình hoặc độc hại. Điều này bảo vệ chống lại lỗi của con người và các cuộc tấn công mạng như ransomware.
+
+Trong AWS, chính sách IAM và S3 bucket trong môi trường sản xuất sẽ được triển khai tương ứng khi cấu hình môi trường. Khi cần thực hiện thay đổi, một phiên bản mới được tạo ra thay vì chỉnh sửa và ghi đè dữ liệu hiện có.
+
+* Tất cả các chỉnh sửa tạo ra một phiên bản mới và các phiên bản cũ được bảo tồn trong một khoảng thời gian xác định theo chính sách vòng đời.
+
+* Các đối tượng dữ liệu được "đánh dấu để xóa" khi bị xóa để chúng có thể được phục hồi nếu cần trong khoảng thời gian xác định theo chính sách lưu trữ dữ liệu.
+
+* Dữ liệu được lưu trữ ngoại vi -- tức là vào tài khoản AWS hoặc khu vực riêng biệt.
+
+Ngoài ra, tất cả các quyền truy cập vào dữ liệu nhạy cảm đều được xác thực và được ghi lại qua việc ghi log của hạ tầng, hệ thống và/hoặc ứng dụng.

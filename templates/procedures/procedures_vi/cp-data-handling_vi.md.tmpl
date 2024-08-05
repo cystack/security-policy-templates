@@ -1,0 +1,16 @@
+### Ma Trận Yêu Cầu Xử Lý Dữ Liệu
+
+Các yêu cầu về xử lý dữ liệu, chẳng hạn như cần mã hóa và thời gian lưu giữ, được
+xác định theo Phân loại Dữ liệu của {{companyShortName}}.
+
+| Dữ Liệu          | Gán Nhãn hoặc Đánh Dấu | Lưu Trữ Tách Biệt | Lưu Trữ Điểm Cuối | Mã Hóa Khi Lưu Trữ | Mã Hóa Khi Truyền Tải | Mã Hóa Khi Sử Dụng | Quyền Truy Cập Kiểm Soát | Giám Sát | Xóa Khi Vứt Bỏ | Thời Gian Lưu Giữ | Sao Lưu và Phục Hồi |
+|------------------|------------------------|-------------------|-------------------|-------------------|----------------------|-------------------|--------------------------|----------|----------------|-------------------|---------------------|
+| **Critical**     | Bắt buộc               | Bắt buộc          | Cấm               | Bắt buộc          | Bắt buộc             | Bắt buộc          | Quyền truy cập bị chặn đối với người dùng cuối theo mặc định; Quyền truy cập tạm thời cho người dùng đặc quyền | Bắt buộc | Bắt buộc | 7 năm đối với nhật ký kiểm toán; Thay đổi theo dữ liệu thuộc quyền sở hữu của khách hàng† | Bắt buộc |
+| **Confidential** | Bắt buộc               | Không yêu cầu     | Được phép         | Bắt buộc          | Bắt buộc             | Bắt buộc          | Tất cả quyền truy cập dựa trên nhu cầu cần biết | Bắt buộc | Bắt buộc | 7 năm đối với tài liệu chính thức; Các tài liệu khác thay đổi theo nhu cầu kinh doanh | Bắt buộc |
+| **Internal**     | Bắt buộc               | Không yêu cầu     | Được phép         | Không yêu cầu     | Không yêu cầu        | Không yêu cầu     | Tất cả nhân viên và nhà thầu (đọc); Chủ sở hữu dữ liệu và các cá nhân được ủy quyền (ghi) | Không yêu cầu | Không yêu cầu | 7 năm đối với tài liệu chính thức; Các tài liệu khác thay đổi theo nhu cầu kinh doanh | Tùy chọn |
+| **Public**       | Không yêu cầu          | Không yêu cầu     | Được phép         | Không yêu cầu     | Không yêu cầu        | Không yêu cầu     | Mọi người (đọc); Chủ sở hữu dữ liệu và các cá nhân được ủy quyền (ghi) | Không yêu cầu | Không yêu cầu | Thay đổi theo nhu cầu kinh doanh | Tùy chọn |
+
+N/R = Không yêu cầu
+
+† dữ liệu thuộc quyền sở hữu của khách hàng được lưu trữ miễn là họ còn là
+khách hàng của {{companyShortName}}, hoặc theo yêu cầu của quy định, tùy thuộc vào điều kiện nào lâu hơn. Khách hàng có thể yêu cầu xóa dữ liệu của họ bất cứ lúc nào; trừ khi việc lưu giữ được yêu cầu bởi pháp luật.

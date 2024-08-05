@@ -1,0 +1,36 @@
+### Sao lưu và Khôi phục
+
+#### Dữ liệu Khách hàng
+
+{{companyShortName}} lưu trữ dữ liệu trong một tài khoản sản xuất an toàn trên AWS, sử dụng sự kết hợp của S3, DynamoDB, và cơ sở dữ liệu Aurora SQL. Theo mặc định, Amazon S3 cung cấp cơ sở hạ tầng bền bỉ để lưu trữ dữ liệu quan trọng và được thiết kế với độ bền 99.999999999% của các đối tượng.
+
+{{#needStandardHIPAA}}
+Tất cả các dịch vụ và nền tảng lưu trữ dữ liệu đang sử dụng đều tuân thủ HIPAA.
+{{/needStandardHIPAA}}
+
+{{companyShortName}} thực hiện sao lưu tự động tất cả dữ liệu khách hàng và hệ thống để bảo vệ khỏi tổn thất nghiêm trọng do các sự kiện không lường trước có thể ảnh hưởng đến toàn bộ hệ thống. Một quy trình tự động sẽ sao lưu tất cả dữ liệu đến một khu vực AWS khác trong cùng quốc gia (ví dụ: từ US East đến US West). Theo mặc định, dữ liệu sẽ được sao lưu hàng ngày. Các bản sao lưu được mã hóa theo cách giống như dữ liệu sản xuất trực tiếp.
+
+Khách hàng cũng có thể sử dụng Giao diện Lập trình Ứng dụng (API) của {{companyShortName}} để trích xuất và lưu trữ dữ liệu của họ ở nơi khác. Phí sử dụng API tiêu chuẩn sẽ được áp dụng.
+
+#### Mã nguồn
+
+{{companyShortName}} lưu trữ mã nguồn của mình trong các kho lưu trữ git do {{sourceControl}} lưu trữ.
+
+Các kho mã nguồn được sao lưu vào tài khoản cơ sở hạ tầng AWS S3 của {{companyShortName}} hàng tuần với một bộ cấu hình chung cho mỗi kho lưu trữ để thực thi quy trình SDLC.
+
+Trong trường hợp {{sourceControl}} gặp tổn thất dữ liệu nghiêm trọng, mã nguồn sẽ được khôi phục từ các bản sao lưu trên AWS S3.
+
+Vì AWS và {{sourceControl}} đều có thể lưu trữ các kho git, chúng tôi có thể tận dụng khả năng của git để duy trì toàn bộ lịch sử của tất cả các thay đổi đối với các kho git của chúng tôi thông qua nhật ký commit.
+
+#### Hồ sơ và tài liệu Kinh doanh
+
+Mỗi chủ sở hữu/tạo dữ liệu có trách nhiệm duy trì một bản sao lưu của các tệp kinh doanh của họ trên máy tính xách tay/điện thoại làm việc của họ đến vị trí thích hợp trên trang web SharePoint của {{companyShortName}}. Các ví dụ về tệp kinh doanh bao gồm, nhưng không giới hạn:
+
+* Tài liệu (ví dụ: thông số sản phẩm, kế hoạch kinh doanh)
+* Bài thuyết trình
+* Báo cáo và bảng tính
+* Tệp thiết kế/hình ảnh/sơ đồ
+* Ghi chép/cuộc họp
+* Hồ sơ quan trọng (ví dụ: ghi chú phê duyệt)
+
+Trừ khi máy tính/thiết bị cục bộ có quyền truy cập vào dữ liệu **Quan trọng**, các bản sao lưu của máy tính/thiết bị người dùng được quản lý tự động bởi chủ sở hữu thiết bị. Các bản sao lưu có thể được lưu trữ trên ổ cứng ngoài hoặc sử dụng dịch vụ đám mây như iCloud nếu và chỉ nếu dữ liệu được mã hóa và bảo vệ bằng mật khẩu (mật khẩu phải đáp ứng yêu cầu của {{companyShortName}}).

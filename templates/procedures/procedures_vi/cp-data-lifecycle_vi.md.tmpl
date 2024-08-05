@@ -1,0 +1,48 @@
+### Quản Lý Danh Mục Dữ Liệu và Vòng Đời Dữ Liệu
+
+Nhóm Bảo mật của {{companyShortName}} sử dụng một hệ thống tự động để truy vấn qua cơ sở hạ tầng đám mây của chúng tôi, bao gồm nhưng không giới hạn ở AWS, để thu thập các hồ sơ chi tiết của tất cả các kho dữ liệu, bao gồm nhưng không giới hạn ở:
+
+* Kho AWS S3
+* Các phiên bản AWS RDS và DynamoDB
+* Các ổ đĩa AWS EC2
+* Các kho lưu trữ mã nguồn
+* Office 365
+* Hệ thống lưu trữ tại chỗ (duy trì thủ công)
+
+Các hồ sơ được lưu trữ trong hệ thống cơ sở dữ liệu do nhóm bảo mật của {{companyShortName}} duy trì. Các hồ sơ được gán thẻ với chủ sở hữu/dự án và phân loại khi áp dụng. Tất cả các hồ sơ được giữ cập nhật thông qua tự động hóa. Hệ thống cũng được thiết kế để theo dõi sự di chuyển của dữ liệu và cập nhật/cảnh báo tương ứng.
+
+**Quản Lý Vòng Đời Đối Tượng AWS S3**
+
+Nền tảng {{companyShortName}} sẽ tự động điều chỉnh lớp lưu trữ cho các loại dữ liệu nhất định dựa trên mẫu sử dụng và tuổi của chúng. Điều này cho phép nền tảng {{companyShortName}} cung cấp giá cả cạnh tranh trong khi vẫn cho phép khách hàng lưu trữ lượng dữ liệu lớn.
+
+AWS cung cấp các [lớp lưu trữ](<https://aws.amazon.com/s3/storage-classes/>) sau:
+
+* General Purpose
+* Infrequent Access
+* Archive (Amazon Glacier)
+
+Các chính sách vòng đời S3 được sử dụng để quản lý lớp lưu trữ cho các loại dữ liệu nhất định. Trong hầu hết các trường hợp, nền tảng {{companyShortName}} tự động điều chỉnh lớp lưu trữ nhưng chúng tôi có thể cho phép khách hàng điều chỉnh lớp lưu trữ thủ công để đáp ứng nhu cầu giá cả hoặc hiệu suất của họ.
+
+{{companyShortName}} thực hiện sao lưu toàn bộ dữ liệu sản xuất thường xuyên. Chúng tôi tận dụng các chính sách vòng đời S3 để tự động xóa dữ liệu sao lưu cũ. Điều này cho phép dữ liệu cũ "lão hóa" thay vì phải xóa nó một cách cụ thể. Các chính sách vòng đời S3 cũng được sử dụng để điều chỉnh lớp lưu trữ của dữ liệu sao lưu dựa trên tuổi của sao lưu.
+
+**Dữ Liệu Kinh Doanh Khác**
+
+Tất cả các hồ sơ và tài liệu kinh doanh nội bộ và bí mật, chẳng hạn như kế hoạch sản phẩm, chiến lược kinh doanh, bài thuyết trình và báo cáo, được lưu trữ ngoài máy trạm hoặc laptop của nhân viên.
+
+*   Các hồ sơ chính thức được lưu trữ trong các hệ thống quản lý hồ sơ như
+    - {{ticketingSystem}} (vé),
+    - {{sourceControl}} (mã nguồn),
+    - {{hrSystem}} (HR),
+    - {{expenseReporting}} (báo cáo chi phí), v.v.
+
+*   Các tài liệu kinh doanh không có cấu trúc như tài liệu Word, bảng tính Excel
+    và bài thuyết trình PowerPoint được lưu trữ trên chia sẻ tệp nội bộ của {{companyShortName}}.
+
+*   Các tài liệu/hồ sơ kinh doanh bí mật được lưu trữ dưới dạng mã hóa và
+    với kiểm soát quyền truy cập được kích hoạt dựa trên nhu cầu cần biết.
+
+**Quản Lý Dữ Liệu Tạm Thời**
+
+Dữ liệu có thể được lưu trữ tạm thời bởi một hệ thống để xử lý. Ví dụ, một thiết bị lưu trữ có thể được sử dụng để lưu trữ các tệp tạm/thô trước khi được tải lên môi trường sản xuất trong AWS. Những kho lưu trữ dữ liệu tạm thời này không được thiết kế cho lưu trữ lâu dài và dữ liệu sẽ được xóa ngay sau khi sử dụng.
+
+*{{companyShortName}} hiện tại KHÔNG sử dụng lưu trữ tạm thời cho bất kỳ dữ liệu nhạy cảm nào.*

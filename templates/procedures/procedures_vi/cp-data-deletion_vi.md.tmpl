@@ -1,0 +1,43 @@
+### Quy trình Xóa Dữ liệu
+
+#### Đối với Khách hàng Nền tảng
+
+{{#needStandardHIPAA}}
+Mặc dù không phải là yêu cầu trong HIPAA, {{companyShortName}} hiểu và
+đánh giá cao tầm quan trọng của việc lưu giữ dữ liệu sức khỏe. Đóng vai trò
+là nhà thầu phụ/cung cấp dịch vụ, và đôi khi là đối tác kinh doanh, {{companyShortName}} không
+chịu trách nhiệm trực tiếp về việc lưu giữ hồ sơ sức khỏe và y tế như đã
+được quy định bởi từng tiểu bang.
+{{/needStandardHIPAA}}
+
+{{companyShortName}} đã tạo ra và thực hiện các quy trình sau để giúp các
+Khách hàng của {{companyShortName}} hỗ trợ các quy định về lưu giữ dữ liệu.
+
+Một số loại dữ liệu khách hàng có thể được tự động chuyển sang lớp lưu trữ
+phù hợp cho lưu trữ lâu dài hoặc sử dụng không thường xuyên. Các hướng dẫn
+cho việc chuyển dữ liệu sang các lớp lưu trữ khác là theo quyết định của
+{{companyShortName}}.
+
+Dữ liệu khách hàng được lưu giữ miễn là tài khoản đang ở trạng thái hoạt động. Dữ liệu
+sẽ vào trạng thái hết hạn khi tài khoản được đóng tự nguyện. Dữ liệu tài
+khoản hết hạn sẽ được lưu giữ trong 14 ngày. Sau 14 ngày, dự án/tài khoản và
+dữ liệu liên quan sẽ bị xóa. Khách hàng muốn đóng tài khoản tự nguyện nên tải
+dữ liệu của họ xuống bằng tay hoặc qua API trước khi đóng tài khoản.
+
+Nếu tài khoản bị đình chỉ một cách không tự nguyện, thì có thời gian ân hạn 14 ngày
+trong đó tài khoản sẽ không thể truy cập nhưng có thể được mở lại nếu khách hàng
+hoàn thành nghĩa vụ thanh toán và giải quyết bất kỳ vi phạm điều khoản dịch vụ nào.
+Nếu khách hàng muốn sao lưu dữ liệu của họ trong tài khoản bị đình chỉ, họ
+phải đảm bảo rằng tài khoản của họ được đưa trở lại trạng thái tốt để API và giao
+diện người dùng có thể sử dụng. Sau 14 ngày, tài khoản bị đình chỉ sẽ bị đóng và dữ liệu
+sẽ bị xóa vĩnh viễn (trừ khi pháp luật yêu cầu giữ lại).
+
+#### Đối với dữ liệu bệnh nhân với vai trò là Đối tượng Bảo vệ
+
+{{companyShortName}} KHÔNG phải là đối tượng bảo vệ. Nếu chúng tôi trở thành đối tượng
+bảo vệ trong tương lai, chúng tôi sẽ phải lưu giữ hồ sơ chăm sóc sức khỏe trong
+tối đa 10 năm sau khi dịch vụ cuối cùng được cung cấp khi cung cấp dịch vụ
+chăm sóc sức khỏe trực tiếp cho bệnh nhân. Bất kỳ dữ liệu bệnh nhân nào được đánh
+dấu để xóa sẽ được lưu trữ trong thời gian pháp luật yêu cầu. Dữ liệu lưu trữ này
+có thể được khách hàng truy xuất miễn là được truy xuất trong vòng 10 năm kể từ
+ngày dịch vụ cuối cùng.

@@ -1,0 +1,21 @@
+### Bảo Vệ Dữ Liệu Trong Quá Trình Truyền Tải
+
+1. Tất cả các truyền tải dữ liệu bên ngoài đều được mã hóa từ đầu đến cuối bằng các khóa mã hóa được quản lý bởi {{companyShortName}}. Điều này bao gồm nhưng không giới hạn ở cơ sở hạ tầng đám mây và các nhà cung cấp và ứng dụng bên thứ ba.
+
+2. Các khóa mã hóa truyền tải và các hệ thống tạo ra khóa được bảo vệ khỏi sự truy cập trái phép. Vật liệu khóa mã hóa truyền tải được bảo vệ bằng các kiểm soát truy cập, và chỉ có thể được truy cập bởi các tài khoản có đặc quyền.
+
+3. Các khóa mã hóa truyền tải sử dụng khóa RSA tối thiểu 4096-bit, hoặc các khóa và cipher có độ mạnh mã hóa tương đương hoặc cao hơn (ví dụ, các khóa phiên AES 256-bit trong trường hợp mã hóa IPSec).
+
+4. Các khóa mã hóa truyền tải bị giới hạn sử dụng trong một năm và sau đó phải được tạo lại.
+
+5. Đối với tất cả các API của {{companyShortName}}, việc thực thi xác thực, ủy quyền và kiểm toán được sử dụng cho tất cả các hệ thống từ xa gửi, nhận hoặc lưu trữ dữ liệu.
+
+6. Các bản ghi hệ thống của tất cả các truyền tải dữ liệu sản xuất được giữ lại. Những bản ghi này phải có sẵn để kiểm toán.
+
+#### Mã Hóa Dữ Liệu Trong Quá Trình Truyền Tải
+
+Tất cả các kết nối internet và intranet đều được mã hóa và xác thực bằng TLS 1.2 (một giao thức mạnh), ECDHE_RSA với P-256 (một phương pháp trao đổi khóa mạnh), và AES_128_GCM (một cipher mạnh).
+
+#### Bảo Vệ Dữ Liệu Qua Các Kênh Nhắn Tin Cuối Người Dùng
+
+Dữ liệu hạn chế và nhạy cảm không được phép gửi qua các kênh nhắn tin điện tử cuối người dùng như email hoặc chat, trừ khi mã hóa từ đầu đến cuối được kích hoạt.

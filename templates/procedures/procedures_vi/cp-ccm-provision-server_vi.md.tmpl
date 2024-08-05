@@ -1,0 +1,27 @@
+### Hướng dẫn và Quy trình Cứng hóa Máy chủ
+
+1. **Cứng hóa Hệ thống Linux:** Các hệ thống Linux áp dụng cấu hình bảo mật cơ bản của chúng thông qua các công cụ tự động hóa. Các công cụ này bao gồm:
+
+    * Đảm bảo rằng máy tính luôn được cập nhật với các bản vá bảo mật và được cấu hình để áp dụng các bản vá theo chính sách của chúng tôi.
+    * Dừng và vô hiệu hóa bất kỳ dịch vụ OS không cần thiết nào.
+    * Áp dụng các DISA STIGs áp dụng cho OS và các ứng dụng.
+    * Cấu hình thời gian hết phiên hoạt động không hoạt động 15 phút cho các phiên SSH.
+    * Cài đặt và cấu hình trình quét virus.
+    * Cài đặt và cấu hình daemon NTP, bao gồm việc đảm bảo rằng việc sửa đổi thời gian hệ thống không thể được thực hiện bởi người dùng không có quyền.
+    * Cấu hình các khối lượng đĩa cho các nhà cung cấp không hỗ trợ mã hóa khối lượng dữ liệu, bao gồm việc đảm bảo rằng các khóa mã hóa được bảo vệ khỏi truy cập trái phép.
+    * Cấu hình xác thực đến các máy chủ Dịch vụ Thư mục tập trung.
+    * Cấu hình ghi nhật ký kiểm toán như được mô tả trong [Phần Chính sách Kiểm toán](system-audit.md).
+
+2. **Cứng hóa Hệ thống Windows:** Các hệ thống Windows áp dụng cấu hình bảo mật cơ bản của chúng thông qua sự kết hợp của các cài đặt Chính sách Nhóm và/hoặc các kịch bản tự động hóa. Các cài đặt cơ bản này bao gồm:
+
+    * Tham gia vào Bộ điều khiển Miền Windows và áp dụng cấu hình Chính sách Nhóm Active Directory (chỉ dành cho các hệ thống được quản lý bởi AD).
+    * Đảm bảo rằng máy tính luôn được cập nhật với các bản vá bảo mật và được cấu hình để áp dụng các bản vá theo chính sách của chúng tôi.
+    * Áp dụng các DISA STIGs áp dụng cho OS và các ứng dụng.
+    * Dừng và vô hiệu hóa bất kỳ dịch vụ OS không cần thiết nào.
+    * Cấu hình thời gian hết phiên hoạt động không hoạt động.
+    * Cài đặt và cấu hình các đại lý bảo vệ bảo mật như trình quét virus.
+    * Cấu hình mã hóa truyền tải theo các yêu cầu được mô tả trong [Phần Bảo mật Thiết bị Di động và Quản lý phương tiện dùng một lần](mdm.md).
+    * Cấu hình đồng hồ hệ thống để chỉ vào các máy chủ NTP đã được phê duyệt và đảm bảo rằng việc sửa đổi thời gian hệ thống không thể được thực hiện bởi người dùng không có quyền.
+    * Cấu hình ghi nhật ký kiểm toán như được mô tả trong [Phần Chính sách Kiểm toán](system-audit.md).
+
+3. Bất kỳ thay đổi cấu hình bổ sung nào áp dụng cho các hệ thống Windows đã được cứng hóa phải được tài liệu hóa rõ ràng bởi người thực hiện và được đội ngũ An ninh xem xét.

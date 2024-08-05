@@ -1,0 +1,22 @@
+### Cấu hình và Quản lý Các Điều khiển Mạng
+
+Tất cả các thiết bị và điều khiển mạng trên một mạng nhạy cảm được cấu hình sao cho:
+
+* Các cấu hình mặc định do nhà cung cấp cung cấp được thay đổi một cách an toàn, bao gồm
+
+  - các khóa mã hóa mặc định,
+  - các chuỗi cộng đồng SNMP mặc định, nếu áp dụng,
+  - các mật khẩu/cụm từ mật khẩu mặc định, và
+  - các mặc định liên quan đến bảo mật khác của nhà cung cấp, nếu áp dụng.
+
+* Các khóa mã hóa và mật khẩu được thay đổi mỗi khi bất kỳ ai biết về
+  các khóa hoặc mật khẩu rời khỏi công ty hoặc thay đổi vị trí công việc.
+
+* Lọc lưu lượng (ví dụ: quy tắc tường lửa) và kiểm tra (ví dụ: IDS/IPS Mạng
+  hoặc nhật ký luồng AWS VPC) được kích hoạt.
+
+* Một sơ đồ mạng cập nhật được duy trì.
+
+Trong AWS, các điều khiển mạng được triển khai bằng cách sử dụng các Đám mây Riêng Ảo (VPC) và
+Nhóm Bảo mật. Các cấu hình được quản lý dưới dạng mã và lưu trữ trong các kho đã được phê duyệt.
+Tất cả các thay đổi đối với cấu hình tuân theo quy trình đánh giá mã, quản lý thay đổi và phê duyệt triển khai sản xuất đã được định nghĩa.

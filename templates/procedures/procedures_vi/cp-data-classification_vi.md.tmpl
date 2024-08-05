@@ -1,0 +1,76 @@
+### Mô hình Phân loại Dữ liệu
+
+{{companyShortName}} xác định bốn phân loại dữ liệu sau:
+
+* **Quan trọng**
+* **Bí mật**
+* **Nội bộ**
+* **Công khai**
+
+#### Định nghĩa và Ví dụ
+
+**Dữ liệu Quan trọng** bao gồm dữ liệu cần được bảo vệ do yêu cầu quy định, quyền riêng tư,
+và/hoặc nhạy cảm về bảo mật.
+
+Việc tiết lộ trái phép dữ liệu quan trọng có thể dẫn đến sự gián đoạn lớn trong
+hoạt động kinh doanh, chi phí đáng kể, thiệt hại về danh tiếng không thể khắc phục, và/hoặc
+xử lý pháp lý đối với công ty.
+
+Việc tiết lộ dữ liệu quan trọng ra ngoài là hoàn toàn bị cấm mà không có quy trình
+và thỏa thuận được phê duyệt.
+
+*Ví dụ về Dữ liệu Quan trọng* bao gồm
+
+* PII
+{{#needStandardHIPAA}}
+* PHI hoặc ePHI
+{{/needStandardHIPAA}}
+{{#needStandardPCI}}
+* PCI hoặc CHD (dữ liệu thẻ)
+{{/needStandardPCI}}
+* Dữ liệu Bảo mật Sản xuất, chẳng hạn như
+    - Bí mật sản xuất, mật khẩu, khóa truy cập, chứng chỉ, v.v.
+    - Nhật ký bảo mật sản xuất, sự kiện, và dữ liệu sự cố
+
+**Dữ liệu Bí mật** và tài sản trí tuệ đại diện cho bí mật công ty và có giá trị lớn
+đối với công ty.
+
+Việc tiết lộ trái phép có thể dẫn đến sự gián đoạn trong hoạt động kinh doanh và tổn thất giá trị.
+
+Việc tiết lộ yêu cầu ký NDA và phê duyệt của quản lý.
+
+*Ví dụ về Dữ liệu Bí mật* bao gồm
+
+* Kế hoạch kinh doanh
+* Dữ liệu Nhân sự/HR
+* Tin tức và thông báo công khai (trước khi công bố)
+* Bằng sáng chế (trước khi nộp đơn)
+* Mã nguồn chuyên biệt
+* Dữ liệu Bảo mật Không sản xuất, bao gồm
+    - Bí mật không sản xuất, mật khẩu, khóa truy cập, chứng chỉ, v.v.
+    - Nhật ký bảo mật không sản xuất, sự kiện, báo cáo, và dữ liệu sự cố
+    - Báo cáo kiểm toán/tuân thủ, tài liệu kiến trúc bảo mật, v.v.
+
+**Dữ liệu Nội bộ** chứa thông tin được sử dụng cho các hoạt động nội bộ.
+
+Việc tiết lộ trái phép có thể gây ra kết quả không mong muốn đối với hoạt động kinh doanh.
+
+Việc tiết lộ yêu cầu phê duyệt của quản lý. NDA thường được yêu cầu nhưng có thể
+được miễn trên cơ sở từng trường hợp.
+
+*Ví dụ về Dữ liệu Nội bộ* bao gồm
+
+* Tài liệu nội bộ
+* Chính sách và quy trình
+* Lịch trình sản phẩm
+* Hầu hết mã nguồn
+
+**Dữ liệu Công khai** là thông tin dự định cho công chúng tiêu thụ. Mặc dù không
+bí mật, tính toàn vẹn và khả năng có sẵn của dữ liệu công khai nên được bảo vệ.
+
+*Ví dụ về Dữ liệu Công khai* bao gồm
+
+* Tin tức và thông báo công khai (sau khi công bố)
+* Tài liệu tiếp thị
+* Tài liệu sản phẩm
+* Nội dung đăng trên trang web công ty và các kênh mạng xã hội

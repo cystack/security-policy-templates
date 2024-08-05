@@ -1,0 +1,35 @@
+### Thay đổi Khẩn cấp
+
+Trong trường hợp khẩn cấp, người hoặc đội ngũ trực sẽ được thông báo. Điều này có thể
+bao gồm sự kết hợp giữa Phát triển, CNTT và An ninh.
+
+Nếu cần thực hiện một thay đổi khẩn cấp, chẳng hạn như vá lỗi bảo mật zero-day hoặc khôi phục
+từ sự cố hệ thống, và quy trình quản lý thay đổi chuẩn không thể được thực hiện do hạn chế về thời gian
+hoặc sự có mặt của nhân sự hoặc các vấn đề không lường trước khác, thay đổi có thể được thực hiện bởi:
+
+* **Thông báo:** Người đứng đầu Kỹ thuật, Người đứng đầu An ninh và/hoặc Người đứng đầu CNTT phải được
+  thông báo qua email, Slack hoặc cuộc gọi điện thoại trước khi thực hiện thay đổi. Tùy thuộc vào
+  tính chất của tình huống khẩn cấp, các lãnh đạo có thể chọn thông báo cho các thành viên của
+  đội ngũ điều hành.
+
+* **Truy cập và Thực hiện:** Truy cập hệ thống sản xuất thủ công hoặc triển khai phần mềm thủ công,
+  sử dụng một trong các cơ chế truy cập sau như được định nghĩa trong
+  [Chính sách và Quy trình Kiểm soát Truy cập](access.md):
+
+    1. Truy cập Hỗ trợ/Xử lý sự cố
+    2. Truy cập tài khoản root hoặc người dùng root
+    3. Truy cập hệ thống cục bộ (đối với môi trường tại chỗ)
+
+* **Tài liệu Sau khẩn cấp:** Một vé PRODCM nên được tạo trong vòng 24
+  giờ sau khi thay đổi khẩn cấp. Vé này nên chứa tất cả các chi tiết
+  liên quan đến thay đổi, bao gồm:
+
+    * Lý do cho thay đổi khẩn cấp
+    * Phương pháp truy cập khẩn cấp được sử dụng
+    * Các bước và chi tiết của thay đổi đã được thực hiện
+    * Phê duyệt/phê chuẩn phải được thu thập theo loại thay đổi như được định nghĩa bởi
+      quy trình CM chuẩn
+
+* **Ngăn ngừa và Cải tiến:** Thay đổi phải được xem xét đầy đủ bởi An ninh
+  và Kỹ thuật cùng với người/đội ngũ chịu trách nhiệm về thay đổi. Bất kỳ
+  cải tiến quy trình và/hoặc biện pháp phòng ngừa nào nên được tài liệu hóa và kế hoạch thực hiện nên được phát triển.

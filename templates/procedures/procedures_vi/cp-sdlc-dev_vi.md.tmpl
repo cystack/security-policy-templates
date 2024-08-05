@@ -1,0 +1,73 @@
+## Quy Trình Phát Triển Phần Mềm
+
+#### Tổng Quan
+
+Phát triển phần mềm tại {{companyShortName}} tuân theo chiến lược phát hành cung cấp khả năng theo dõi các thay đổi phần mềm sản xuất. Các tính năng, cải tiến và lỗi được viết dưới dạng Các vấn đề trong {{ticketingSystem}}. Một kỹ sư trong một nhóm nhỏ đề xuất các thay đổi cần thiết và tạo một đánh giá cho nhóm ({{sourceControl}}). Tích hợp liên tục ({{ciSystem}}) khởi động các bài kiểm tra đơn vị và chức năng, và các bài kiểm tra này phải vượt qua trước khi thay đổi được hợp nhất vào kho lưu trữ. Sau khi đánh giá hoàn tất, các thay đổi sẽ được triển khai đến môi trường phát triển, nơi các bài kiểm tra hồi quy và kiểm tra toàn diện sẽ được thực hiện trước khi mã mới thay thế mã đang hoạt động (mô hình kiểm tra rồi triển khai). Các nhóm nhỏ có thể quyết định theo chiến lược phân nhánh quản lý mã nguồn nào hợp lý: git-flow, github flow.
+
+{{companyShortName}} thực hiện việc phát hành liên tục mã vào sản xuất thông qua nhiều môi trường: phát triển, kiểm tra, sản xuất. Quy trình triển khai và triển khai cơ sở hạ tầng được viết dưới dạng mã (sử dụng công nghệ như Terraform và AWS Cloudformation) và được quản lý dưới mã nguồn.
+
+Nhiều môi trường thấp hơn của {{companyShortName}} (dev, test) cung cấp một hệ sinh thái các tập dữ liệu mẫu có thể được sử dụng để kiểm tra ứng dụng và dịch vụ khi tự động hóa kiểm tra được thực hiện. Môi trường kiểm tra là nơi hệ thống được kiểm tra hiệu suất và khả năng mở rộng. Các thay đổi hiệu suất và khả năng mở rộng được thúc đẩy bởi dữ liệu số liệu thu thập được thông qua giám sát và ghi nhật ký (số liệu trước và sau thay đổi – thường được ghi lại trong mô tả/vấn đề).
+
+Việc triển khai đến sản xuất được kiểm soát bởi quy trình quản lý thay đổi, nơi một vấn đề được mở ra để xác định những gì mới/thay đổi ({{ticketingSystem}}). Các chữ ký được ghi lại bởi phát triển, kiểm tra, bảo mật và quản lý sản phẩm. Các đợt phát hành sản xuất diễn ra theo định kỳ mà không ảnh hưởng đến dịch vụ. Quy trình liên tục này cho phép các bản cập nhật bảo mật được phát hành đều đặn và với sự khẩn cấp. Nếu có tác động đến sản xuất, một quy trình hoàn tác được thực hiện để khôi phục dịch vụ và bất cứ điều gì gây ra sự cố sẽ được hoàn tác từ nguồn. Điều này khởi động lại quy trình phê duyệt đề xuất lại các thay đổi nguồn. Quy trình này giữ cho sự khác biệt giữa môi trường phát triển và môi trường sản xuất càng thấp càng tốt.
+
+Trong tư duy phát hành liên tục, các tính năng không được phát hành bằng cách triển khai mã vào sản xuất, thay vào đó, các tính năng được kích hoạt trong sản xuất vào thời điểm phù hợp (kích hoạt tối). Kích hoạt chuyển đổi tính năng trong sản xuất được kiểm soát bởi một vé quản lý thay đổi ({{ticketingSystem}}) theo quy trình phê duyệt phát hành phần mềm. Kích hoạt chuyển đổi tính năng trong sản xuất có thể có nhiều phụ thuộc hơn so với mã. Những phụ thuộc đó bao gồm các tài liệu bên ngoài, các chương trình truy cập sớm và các sách hướng dẫn nội bộ để hỗ trợ tính năng.
+
+#### Tiêu Chuẩn Phát Triển Bảo Mật
+
+[Khả năng theo dõi](https://en.wikipedia.org/wiki/Traceability) các thay đổi mã cho phép phần mềm của chúng tôi trở thành một thực thể sống. Hệ thống hiện tại của chúng tôi để tài liệu thay đổi là {{ticketingSystem}}. Mỗi commit và/hoặc Pull-Request, nên có một {{ticketingSystem}} cung cấp mô tả ngữ cảnh lý do tại sao thay đổi này là cần thiết và hợp lý. Các tài liệu này theo thời gian cho phép theo dõi nguồn gốc của lý do tại sao phần mềm và dịch vụ sản xuất của chúng tôi thay đổi theo thời gian.
+
+Tất cả các kho lưu trữ `git` của {{companyShortName}} có cấu hình tiêu chuẩn của công ty từ góc độ {{sourceControl}}. Tiêu chuẩn này là hướng dẫn và có thể được nới lỏng, nhưng cần thông báo khi cần các ngoại lệ đó. Một ví dụ về ngoại lệ, là kho lưu trữ `wiki`, vì việc chỉnh sửa wiki và luôn yêu cầu PR trong môi trường này làm chậm 'dòng chảy'.
+
+-   Mã: <#>
+
+-   Cài đặt Repo: <#>
+
+-   Xây dựng: <#>
+
+**LƯU Ý**: Dự án Sandbox (và các kho lưu trữ) không tuân theo tiêu chuẩn này. Và một số dự án có thể bị loại trừ (ví dụ: `wiki`).
+
+**Các nhà phát triển theo chiến lược phân nhánh và quy trình đánh giá mã dưới đây:**
+
+1. Tất cả phát triển sử dụng các nhánh tính năng dựa trên nhánh chính được sử dụng cho phát hành hiện tại. Bất kỳ thay đổi nào cần thiết cho một tính năng mới hoặc sửa lỗi được cam kết vào nhánh tính năng đó.
+
+    * Các thay đổi này phải được bao phủ dưới 1) một bài kiểm tra đơn vị nếu có thể, hoặc 2) các bài kiểm tra tích hợp.
+    * Các bài kiểm tra tích hợp là _bắt buộc_ nếu các bài kiểm tra đơn vị không thể kiểm tra tất cả các khía cạnh của thay đổi.
+
+2. Các nhà phát triển được khuyến khích mạnh mẽ theo [các quy tắc thông điệp commit được đề xuất bởi GitHub](https://github.com/blog/926-shiny-new-commit-styles).
+
+    * Các thông điệp commit nên được bọc 72 ký tự.
+    * Các thông điệp commit nên được viết bằng thì hiện tại. Quy ước này phù hợp với các thông điệp commit được tạo bởi các lệnh như git merge và git revert.
+    * Ngoài ra, các thông điệp commit nên bắt đầu bằng ID Vấn đề {{ticketingSystem}} khi áp dụng.
+
+3. Khi tính năng và các bài kiểm tra tương ứng hoàn tất, một yêu cầu kéo (PR) sẽ được tạo bằng cách sử dụng giao diện web {{sourceControl}}. Yêu cầu kéo nên chỉ ra tính năng hoặc lỗi nào đang được giải quyết và nên cung cấp mô tả tổng quan về các thay đổi đã thực hiện.
+
+4. Đánh giá mã được thực hiện như một phần của quy trình yêu cầu kéo. Khi một thay đổi sẵn sàng để đánh giá, tác giả(s) sẽ thông báo cho các kỹ sư khác bằng cách sử dụng cơ chế phù hợp, thường là bằng cách thêm các đánh giá viên như các phê duyệt PR.
+
+    * Các kỹ sư khác sẽ đánh giá các thay đổi, sử dụng các hướng dẫn trên.
+    * Các kỹ sư nên ghi chú tất cả các vấn đề tiềm ẩn với mã; đó là trách nhiệm của tác giả(s) để giải quyết những vấn đề đó hoặc giải thích lý do tại sao chúng không áp dụng.
+    * Nếu các thay đổi/commits được thực hiện đối với một PR, nó nên đặt lại các phê duyệt trước đó và yêu cầu đánh giá và phê duyệt lại trước khi PR có thể được hợp nhất.
+    * Khi quy trình đánh giá hoàn tất, mỗi đánh giá viên nên phê duyệt PR, tại thời điểm đó tác giả(s) gốc có thể hợp nhất thay đổi của họ vào nhánh chính (tức là master).
+    * PR chỉ có thể được hợp nhất với ít nhất một phê duyệt từ một đánh giá viên khác ngoài tác giả.
+
+5. Nếu tính năng hoặc lỗi tương tác với dữ liệu nhạy cảm, hoặc kiểm soát truy cập đến dữ liệu nhạy cảm, hoặc chứa thay đổi cơ sở hạ tầng bảo mật/rủi ro đối với môi trường mục tiêu, các thay đổi mã phải được xem xét bởi nhóm Bảo mật trước khi tính năng được đánh dấu là hoàn tất.
+
+    * Đánh giá này phải bao gồm phân tích bảo mật cho các lỗ hổng tiềm ẩn như được liệt kê trong [OWASP Top
+      10](https://www.owasp.org/index.php/Top10).
+    * Đánh giá này cũng phải xác minh rằng bất kỳ hành động nào được thực hiện bởi người dùng đã xác thực sẽ tạo ra các mục nhật ký kiểm toán phù hợp.
+
+#### Chiến Lược Phát Hành
+
+Các tính năng, cải tiến và lỗi được viết dưới dạng các vấn đề ({{ticketingSystem}}). Một kỹ sư trong một nhóm nhỏ đề xuất các thay đổi cần thiết và tạo một đánh giá cho nhóm ({{sourceControl}}). Tích hợp liên tục ({{ciSystem}}) khởi động các bài kiểm tra đơn vị và chức năng, và các bài kiểm tra này phải vượt qua trước khi thay đổi được hợp nhất vào kho lưu trữ. Sau khi đánh giá hoàn tất, các thay đổi sẽ được triển khai đến môi trường phát triển, nơi các bài kiểm tra hồi quy và kiểm tra toàn diện sẽ được thực hiện trước khi mã mới thay thế mã đang hoạt động (mô hình kiểm tra rồi triển khai). Các nhóm nhỏ có thể quyết định theo chiến lược phân nhánh quản lý mã nguồn nào hợp lý: git-flow, github flow.
+
+{{companyShortName}} thực hiện việc phát hành liên tục mã vào sản xuất thông qua nhiều môi trường: phát triển, kiểm tra, sản xuất. Quy trình triển khai và triển khai cơ sở hạ tầng được viết dưới dạng mã (Terraform) và được quản lý dưới mã nguồn.
+
+Nhiều môi trường thấp hơn của {{companyShortName}} (dev, test) cung cấp một hệ sinh thái các tập dữ liệu mẫu có thể được sử dụng để kiểm tra ứng dụng và dịch vụ khi tự động hóa kiểm tra được thực hiện. Môi trường kiểm tra là nơi hệ thống được kiểm tra hiệu suất và khả năng mở rộng. Các thay đổi hiệu suất và khả năng mở rộng được thúc đẩy bởi dữ liệu số liệu thu thập được thông qua giám sát và ghi nhật ký (số liệu trước và sau thay đổi – thường được ghi lại trong mô tả/vấn đề).
+
+Việc triển khai đến sản xuất được kiểm soát bởi quy trình quản lý thay đổi, nơi một vấn đề được mở ra để xác định những gì mới/thay đổi ({{ticketingSystem}}). Các chữ ký được ghi lại bởi phát triển, kiểm tra, bảo mật và quản lý sản phẩm. Các đợt phát hành sản xuất diễn ra theo định kỳ mà không ảnh hưởng đến dịch vụ. Quy trình liên tục này cho phép các bản cập nhật bảo mật được phát hành đều đặn và với sự khẩn cấp. Nếu có tác động đến sản xuất, một quy trình hoàn tác được thực hiện để khôi phục dịch vụ và bất cứ điều gì gây ra sự cố sẽ được hoàn tác từ nguồn. Điều này khởi động lại quy trình phê duyệt đề xuất lại các thay đổi nguồn.
+
+Quy trình này giữ cho sự khác biệt giữa môi trường phát triển và môi trường sản xuất càng thấp càng tốt.
+
+Các tính năng có thể được phát hành qua các triển khai mã hoặc các tính năng có thể được kích hoạt trong sản xuất vào thời điểm thích hợp (kích hoạt tối). Kích hoạt chuyển đổi tính năng trong sản xuất được kiểm soát bởi cùng một vé quản lý thay đổi ({{ticketingSystem}}) theo quy trình phê duyệt phát hành phần mềm. Kích hoạt chuyển đổi tính năng trong sản xuất có thể có nhiều phụ thuộc hơn so với mã. Những phụ thuộc đó bao gồm các tài liệu bên ngoài, các chương trình truy cập sớm và các sách hướng dẫn nội bộ để hỗ trợ tính năng.
+
+**Quy trình và thủ tục chi tiết cho việc thăng cấp mã và phát hành sản xuất:**
+Xem [Quản lý Cấu hình và Thay đổi](ccm.md).

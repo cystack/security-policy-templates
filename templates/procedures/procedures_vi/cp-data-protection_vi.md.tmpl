@@ -1,0 +1,43 @@
+### Triển Khai và Quy Trình Bảo Vệ Dữ Liệu
+
+Dữ liệu được phân loại và xử lý theo các **Thông Số Xử Lý Dữ Liệu** và **Tài Liệu Phân Loại Dữ Liệu** của {{companyShortName}}.
+
+Dữ liệu quan trọng, bí mật và nội bộ sẽ được gán thẻ khi tạo ra, nếu việc gán thẻ được hỗ trợ. Mỗi thẻ tương ứng với một loại dữ liệu được xác định trong sơ đồ phân loại dữ liệu, và sau đó tương ứng với mức độ bảo vệ cho mã hóa, kiểm soát quyền truy cập, sao lưu và giữ lại. Phân loại dữ liệu cũng có thể được xác định bởi vị trí/kho lưu trữ của nó. Ví dụ, mã nguồn trong các kho {{companyShortName}}’s {{sourceControl}} được coi là "Nội bộ" theo mặc định, ngay cả khi thẻ không được áp dụng trực tiếp cho từng tệp nguồn.
+
+Dữ liệu quan trọng và bí mật luôn được lưu trữ và truyền tải một cách an toàn, sử dụng các tiêu chuẩn mã hóa đã được phê duyệt. Các chi tiết thêm được chỉ rõ trong tài liệu **Phân Loại và Xử Lý Dữ Liệu** của {{companyShortName}}.
+
+Tất cả các hệ thống CNTT xử lý và lưu trữ dữ liệu nhạy cảm đều tuân thủ quy trình cấp phát, cấu hình, quản lý thay đổi, cập nhật và tiêu chuẩn chống phần mềm độc hại như được định nghĩa trong tài liệu [Quản Lý Cấu Hình và Thay Đổi](ccm.md).
+
+#### Bảo Vệ Dữ Liệu Khách Hàng/Sản Xuất
+
+{{companyShortName}} lưu trữ trên Amazon Web Services tại khu vực US-East (Ohio) theo mặc định. Dữ liệu được sao chép qua nhiều khu vực để đảm bảo độ tin cậy và phục hồi sau thảm họa.
+
+Tất cả các nhân viên, hệ thống và tài nguyên của {{companyShortName}} đều tuân thủ các tiêu chuẩn và quy trình sau để giảm thiểu rủi ro bị xâm phạm Dữ Liệu Sản Xuất:
+
+1. Thực hiện và/hoặc xem xét các kiểm soát được thiết kế để bảo vệ Dữ Liệu Sản Xuất khỏi sự thay đổi hoặc phá hủy không đúng cách.
+2. Đảm bảo rằng dữ liệu bí mật được lưu trữ theo cách hỗ trợ nhật ký truy cập của người dùng và giám sát tự động các sự cố bảo mật tiềm ẩn.
+3. Đảm bảo Dữ Liệu Sản Xuất của khách hàng {{companyShortName}} được phân tách và chỉ có thể truy cập bởi khách hàng được ủy quyền truy cập dữ liệu.
+4. Tất cả Dữ Liệu Sản Xuất khi nghỉ được lưu trữ trên các ổ đĩa mã hóa bằng cách sử dụng các khóa mã hóa do {{companyShortName}} quản lý. Mã hóa khi nghỉ được đảm bảo thông qua việc sử dụng các tập lệnh triển khai tự động được tham chiếu trong [Quản Lý Cấu Hình và Thay Đổi](ccm.md).
+5. Các khóa mã hóa ổ đĩa và các máy tạo ra các khóa mã hóa ổ đĩa được bảo vệ khỏi việc truy cập trái phép. Vật liệu khóa mã hóa ổ đĩa được bảo vệ bằng các kiểm soát quyền truy cập sao cho vật liệu khóa chỉ có thể được truy cập bởi các tài khoản đặc quyền.
+6. Các ổ đĩa mã hóa sử dụng các thuật toán mã hóa được phê duyệt, độ mạnh khóa và quy trình quản lý khóa như được định nghĩa trong §12.3.1 ở trên.
+7. Các ổ đĩa RAID được mã hóa riêng lẻ và được lắp ráp khi khởi động yêu cầu nhập thủ công khóa để gắn ổ đĩa mã hóa.
+
+#### Quyền Truy Cập
+
+Quyền truy cập của nhân viên {{companyShortName}} đến sản xuất được bảo vệ bởi một quy trình phê duyệt và theo mặc định là bị vô hiệu hóa. Khi quyền truy cập được phê duyệt, quyền truy cập tạm thời được cấp để cho phép truy cập vào sản xuất. Quyền truy cập sản xuất được xem xét bởi nhóm bảo mật theo từng trường hợp cụ thể.
+
+#### Tách Biệt
+
+Dữ liệu của khách hàng được phân tách theo logic ở cấp độ cơ sở dữ liệu/kho lưu trữ bằng cách sử dụng một định danh duy nhất cho tổ chức. Việc phân tách được thực thi ở lớp API, nơi khách hàng phải xác thực với tổ chức đã chọn và sau đó định danh khách hàng duy nhất được bao gồm trong mã thông báo truy cập và được API sử dụng để hạn chế quyền truy cập vào dữ liệu của tổ chức. Tất cả các truy vấn cơ sở dữ liệu/kho lưu trữ sau đó bao gồm định danh tổ chức.
+
+#### Sao Lưu và Phục Hồi
+
+Chi tiết về quy trình sao lưu và phục hồi, xem các kiểm soát và quy trình được định nghĩa trong [Quản Lý Dữ Liệu](data-mgmt.md).
+
+#### Giám Sát
+
+{{companyShortName}} sử dụng AWS CloudWatch/CloudTrail để giám sát toàn bộ hoạt động dịch vụ đám mây. Nếu xảy ra sự cố hệ thống và cảnh báo được kích hoạt, nhân sự chính sẽ được thông báo qua tin nhắn văn bản, trò chuyện và/hoặc email để thực hiện các hành động khắc phục phù hợp. Có thể cần phải nâng cao và có một vòng quay trực tuyến cho các dịch vụ chính khi cần thêm hỗ trợ.
+
+{{companyShortName}} sử dụng một tác nhân bảo mật để giám sát các hệ thống sản xuất. Các tác nhân giám sát hoạt động hệ thống, tạo ra cảnh báo về các hoạt động nghi ngờ và báo cáo về các phát hiện lỗ hổng tới một bảng điều khiển quản lý tập trung.
+
+Tác nhân bảo mật được cài đặt trên tất cả các máy chủ Linux tại chỗ. Nó cũng được tích hợp vào Amazon Machine Images (AMIs) để sử dụng trong môi trường AWS của {{companyShortName}}.
