@@ -1,0 +1,7 @@
+### Môi Trường Sản Xuất và Khôi Phục Dữ Liệu
+
+Dữ liệu sản xuất sẽ được đồng bộ hóa qua nhiều bucket S3 trong AWS. Ngoài ra, nó còn được sao lưu vào AWS Glacier để lưu trữ và khôi phục lâu dài. Trong trường hợp cần khôi phục dữ liệu, dữ liệu sẽ được lấy từ Glacier.
+
+{{companyShortName}} giả định rằng trong trường hợp xấu nhất, một trong những môi trường sản xuất bị mất toàn bộ dữ liệu, tài khoản sẽ được tái tạo từ mã nguồn, và dữ liệu sẽ được khôi phục từ Glacier được lưu trữ trong một tài khoản AWS và vị trí địa lý khác.
+
+Việc khôi phục môi trường sản xuất và dữ liệu nên tuân theo các thủ tục được liệt kê ở trên và trong [Data Management - Backup and Recovery](data-mgmt.md#cp-data-backup).

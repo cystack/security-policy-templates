@@ -1,0 +1,62 @@
+### Quy Trình Khôi Phục Thảm Họa Tổng Quát
+
+#### Giai Đoạn Thông Báo và Kích Hoạt
+
+Giai đoạn này đề cập đến các hành động ban đầu để phát hiện và đánh giá thiệt hại gây ra bởi sự gián đoạn đối với {{companyShortName}}. Dựa trên đánh giá về Sự Kiện, đôi khi theo Chính Sách Ứng Phó Sự Cố của {{companyShortName}}, Kế Hoạch Dự Phòng có thể được kích hoạt bởi COO hoặc Trưởng Bộ Phận Kỹ Thuật. Kế Hoạch Dự Phòng cũng có thể được kích hoạt bởi Cán Bộ An Ninh trong trường hợp xảy ra thảm họa mạng.
+
+Trình tự thông báo được liệt kê dưới đây:
+
+* Người phản hồi đầu tiên phải thông báo cho COO. Tất cả các thông tin đã biết phải được chuyển đến COO.
+* COO phải liên hệ với Các Đội Phản Ứng và thông báo cho họ về sự kiện. COO hoặc người đại diện chịu trách nhiệm bắt đầu các quy trình đánh giá.
+* COO phải thông báo cho các thành viên trong nhóm và chỉ đạo họ hoàn thành các quy trình đánh giá được nêu dưới đây để xác định mức độ thiệt hại và thời gian khôi phục ước tính. Nếu không thể thực hiện đánh giá thiệt hại tại chỗ do điều kiện không an toàn, COO phải thực hiện các bước sau.
+
+    * Quy Trình Đánh Giá Thiệt Hại:
+    * COO phải đánh giá thiệt hại một cách logic, nắm bắt thông tin về việc cơ sở hạ tầng có thể cứu vãn được hay không, và bắt đầu lập kế hoạch khôi phục.
+    * Quy Trình Đánh Giá Thay Thế:
+    * Khi nhận được thông báo, COO phải tuân theo các quy trình đánh giá thiệt hại cùng với Các Đội Phản Ứng.
+
+* Kế Hoạch Dự Phòng của {{companyShortName}} phải được kích hoạt nếu một hoặc nhiều tiêu chí sau được đáp ứng:
+
+    * {{companyShortName}} sẽ không hoạt động trong hơn 48 giờ.
+    * Cơ sở lưu trữ tại chỗ hoặc dịch vụ hạ tầng đám mây bị hư hại và sẽ không hoạt động trong hơn 24 giờ.
+    * Các tiêu chí khác, nếu thích hợp và được {{companyShortName}} xác định.
+
+* Nếu kế hoạch được kích hoạt, COO phải thông báo và thông tin chi tiết cho các thành viên trong nhóm về sự kiện và liệu việc di dời có cần thiết hay không.
+* Khi nhận được thông báo từ COO, các trưởng nhóm và quản lý phải thông báo cho các đội tương ứng của họ. Các thành viên trong nhóm phải được thông báo về tất cả thông tin liên quan và chuẩn bị phản ứng và di dời nếu cần thiết.
+* COO phải thông báo cho các đối tác lưu trữ rằng một sự kiện dự phòng đã được tuyên bố và để gửi các tài liệu cần thiết (như được xác định bởi đánh giá thiệt hại) đến địa điểm thay thế.
+* COO phải thông báo cho nhân viên còn lại và lãnh đạo điều hành về tình trạng chung của sự cố.
+* Thông báo có thể là tin nhắn, email hoặc điện thoại.
+
+#### Giai Đoạn Khôi Phục
+
+Phần này cung cấp các quy trình để khôi phục cơ sở hạ tầng và hoạt động của {{companyShortName}} tại một địa điểm thay thế, trong khi các nỗ lực khác được hướng tới sửa chữa thiệt hại cho hệ thống ban đầu và các khả năng.
+
+Các quy trình được nêu ra theo từng đội cần thiết. Mỗi quy trình nên được thực hiện theo thứ tự được trình bày để duy trì hiệu quả hoạt động.
+
+Mục tiêu khôi phục: Mục tiêu là xây dựng lại cơ sở hạ tầng của {{companyShortName}} để đạt trạng thái sản xuất.
+
+Các nhiệm vụ dưới đây không theo thứ tự và một số có thể được thực hiện song song.
+
+1. Liên hệ với Đối Tác và Khách Hàng bị ảnh hưởng để bắt đầu thông báo ban đầu - DevOps
+2. Đánh giá thiệt hại cho môi trường - DevOps
+3. Tạo môi trường sản xuất mới bằng cách sử dụng tự động hóa khởi động môi trường mới - DevOps
+4. Đảm bảo truy cập an toàn vào môi trường mới - Bảo mật
+5. Bắt đầu triển khai mã và sao chép dữ liệu bằng cách sử dụng tự động hóa đã được thiết lập trước - DevOps
+6. Kiểm tra môi trường mới và các ứng dụng bằng cách sử dụng các bài kiểm tra đã được viết trước - DevOps
+7. Kiểm tra chức năng ghi log, bảo mật và cảnh báo - DevOps và Bảo mật
+8. Đảm bảo hệ thống và ứng dụng được vá và cập nhật phù hợp - DevOps
+9. Cập nhật DNS và các bản ghi cần thiết khác để trỏ tới môi trường mới - DevOps
+10. Cập nhật Đối Tác và Khách Hàng bị ảnh hưởng thông qua các kênh đã thiết lập - DevOps
+
+#### Giai Đoạn Tái Cấu Trúc
+
+Phần này thảo luận về các hoạt động cần thiết để khôi phục hoàn toàn các hoạt động của {{companyShortName}} tại địa điểm ban đầu hoặc mới. Mục tiêu là khôi phục hoàn toàn các hoạt động trong vòng 24 giờ sau thảm họa hoặc sự cố ngừng hoạt động. Nếu cần thiết, khi trung tâm dữ liệu được lưu trữ tại địa điểm ban đầu hoặc mới đã được khôi phục, các hoạt động của {{companyShortName}} tại địa điểm thay thế có thể được chuyển lại. Mục tiêu là cung cấp một quá trình chuyển tiếp liền mạch từ địa điểm thay thế về trung tâm máy tính.
+
+1. Khôi Phục Địa Điểm Ban Đầu hoặc Mới
+
+    * Lặp lại các bước 5-9 trong Giai Đoạn Khôi Phục tại địa điểm / môi trường ban đầu hoặc mới.
+    * Khôi phục Địa điểm Ban đầu là không cần thiết đối với môi trường đám mây, trừ khi cần thiết cho mục đích pháp y.
+
+2. Hủy Kích Hoạt Kế Hoạch
+
+    * Nếu môi trường của {{companyShortName}} được chuyển trở lại địa điểm ban đầu từ địa điểm thay thế, tất cả phần cứng được sử dụng tại địa điểm thay thế nên được xử lý theo Chính Sách Xử Lý Phương Tiện của {{companyShortName}}.
