@@ -473,7 +473,7 @@
       "type": "thông tin",
       "provider": "JupiterOne",
       "summary": "Các chỉ số được xác định để đo lường hiệu quả của các kiểm soát và chúng được báo cáo/đánh giá bởi ban quản lý cấp cao.",
-      "guidance": "Điều này mô tả các chỉ số chính và quy trình báo cáo cấp cao cho chương trình quản lý an ninh thông tin.",
+      "guidance": "Điều này mô tả các chỉ số quan trọng và quy trình báo cáo cấp cao cho chương trình quản lý an ninh thông tin.",
       "applicable": true,
       "adopted": true
     },
@@ -494,7 +494,7 @@
       "type": "thông tin",
       "provider": "",
       "summary": "Tổ chức áp dụng các thực tiễn tốt nhất như nguyên tắc ít đặc quyền nhất hoặc không tin tưởng trong mô hình hoạt động an ninh của mình.",
-      "guidance": "Điều này mô tả các nguyên tắc hoạt động cấp cao của một chương trình an ninh theo hướng DevOps. Cách tiếp cận không tin tưởng và hướng đám mây giúp loại bỏ nhu cầu về một số kiểm soát an ninh cũ.",
+      "guidance": "Điều này mô tả các nguyên tắc hoạt động cấp cao của một chương trình an ninh theo hướng DevOps. Cách tiếp cận không tin tưởng và hướng đám mây giúp loại bỏ nhu cầu về một số kiểm soát an ninh đã lỗi thời.",
       "considerations": [
         "Bạn có sử dụng kiến trúc microservice không?",
         "Nhân viên của bạn có nhận được đào tạo nâng cao nhận thức về an ninh thường xuyên hơn một lần một năm không?",
@@ -510,10 +510,10 @@
       "name": "Chất lượng Hệ thống",
       "type": "thông tin",
       "provider": "",
-      "summary": "Tổ chức giao tiếp cam kết về chất lượng dịch vụ tới người dùng và khách hàng của mình.",
-      "guidance": "Điều này mô tả ở mức độ cao cách quản lý đảm bảo chất lượng hệ thống và cung cấp các tài liệu tham khảo thêm.",
+      "summary": "Tổ chức truyền đạt cam kết về chất lượng dịch vụ tới người dùng và khách hàng của mình.",
+      "guidance": "Điều này mô tả một cách khái quát cách quản lý đảm bảo chất lượng hệ thống và cung cấp các tài liệu tham khảo.",
       "considerations": [
-        "Bạn công bố tình trạng của các ứng dụng khách hàng hướng ngoài ở đâu (thời gian hoạt động)?"
+        "Bạn công bố tình trạng các dịch vụ mà khách hàng sử dụng trực tiếp ở đâu (thời gian hoạt động)?"
       ],
       "applicable": true,
       "adopted": true
@@ -544,9 +544,9 @@
       "name": "Các Chỉ số, Đo lường và Giám sát Liên tục",
       "type": "hoạt động",
       "provider": "JupiterOne",
-      "summary": "Các chỉ số được xác định để đo lường hiệu quả của các kiểm soát và chúng được giám sát liên tục.",
+      "summary": "Các chỉ số được xác định để đo lường hiệu quả của các kiểm soát an ninh và chúng được giám sát liên tục.",
       "guidance": "Bạn sẽ cần xác định một tập hợp các KPI và chỉ số để giám sát và báo cáo về hiệu quả của các kiểm soát an ninh. Bạn có thể sử dụng khả năng truy vấn/báo cáo của JupiterOne để tự động hóa quá trình báo cáo.",
-      "considerations": ["Tần suất sản xuất bảng điểm là bao nhiêu?"],
+      "considerations": ["Tần suất xuất các báo cáo là bao nhiêu?"],
       "applicable": true,
       "adopted": true
     },
@@ -557,7 +557,7 @@
       "type": "hành chính",
       "provider": "JupiterOne",
       "summary": "Các vai trò và trách nhiệm về an ninh và tuân thủ được xác định rõ ràng để đảm bảo sự phân chia trách nhiệm.",
-      "guidance": "Các khung công việc tuân thủ quy định, như HIPAA, yêu cầu phân công trách nhiệm chính thức về an ninh và quyền riêng tư cho một người trong tổ chức của bạn. Khi tổ chức của bạn mở rộng và trưởng thành, bạn có thể muốn thành lập một ủy ban an ninh cấp điều hành để đáp ứng yêu cầu này. Thường thì, một ủy ban như vậy là yêu cầu của các chứng nhận an ninh. Bạn có thể quản lý việc phân công vai trò này thủ công (I.E. trong chính sách/quy trình kiểm soát được tài liệu hóa) hoặc trong ứng dụng của JupiterOne. Sử dụng JupiterOne, bạn có thể hầu như luôn tránh được việc triển khai một hệ thống GRC phức tạp của doanh nghiệp.",
+      "guidance": "Các khung công việc tuân thủ quy định, như HIPAA, yêu cầu phân công trách nhiệm chính thức về an ninh và quyền riêng tư cho một người trong tổ chức của bạn. Khi tổ chức của bạn mở rộng và trưởng thành, bạn có thể muốn thành lập một ủy ban an ninh cấp điều hành để đáp ứng yêu cầu này. Thường thì, một ủy ban như vậy là yêu cầu của các chứng nhận an ninh. Bạn có thể quản lý việc phân công vai trò này thủ công (ví dụ trong chính sách/quy trình kiểm soát) hoặc trong ứng dụng của JupiterOne. Sử dụng JupiterOne, bạn có thể hầu như luôn tránh được việc triển khai một hệ thống GRC phức tạp của doanh nghiệp.",
       "considerations": ["Bạn sẽ cam kết những trách nhiệm nào?"],
       "applicable": true,
       "adopted": true
@@ -568,7 +568,7 @@
       "name": "Đào tạo Chính sách và Tuân thủ",
       "type": "hành chính",
       "provider": "JupiterOne",
-      "summary": "Nhân viên và nhà thầu nhận được đào tạo về các chính sách và quy trình an ninh của tổ chức.",
+      "summary": "Nhân viên và nhà thầu được đào tạo về các chính sách và quy trình an ninh của tổ chức.",
       "guidance": "Bạn sẽ cần đảm bảo tất cả nhân viên của bạn được đào tạo đúng cách về các chính sách và quy trình an ninh. Bạn có thể sử dụng một hệ thống quản lý học tập đầy đủ tính năng (LMS) để phát triển, phân phối và theo dõi đào tạo này. JupiterOne cũng hỗ trợ một quy trình đơn giản cho phép nhân viên của bạn truy cập các chính sách và quy trình an ninh của bạn, và ghi lại sự xác nhận của họ.",
       "considerations": [
         "Chương trình đào tạo nhân viên hiện tại của bạn về các chính sách và tuân thủ là gì?",
@@ -586,7 +586,7 @@
       "type": "hành chính",
       "provider": "KnowBe4",
       "summary": "Nhân viên và nhà thầu nhận được đào tạo nhận thức an ninh liên tục ít nhất hàng năm.",
-      "guidance": "Đào tạo nhận thức an ninh liên tục là nền tảng để giảm thiểu rủi ro tổng thể cho bất kỳ tổ chức nào, chưa kể là một yêu cầu tuân thủ hầu như phổ quát. Chúng tôi khuyến nghị sử dụng một nhà cung cấp như Ataata, người cung cấp một cách giá rẻ và thú vị để giữ cho nhân viên của bạn được đào tạo. Tất cả những gì cần là ít hơn 5 phút của mọi người để xem một video vui nhộn và làm bài kiểm tra mỗi tháng.",
+      "guidance": "Đào tạo nhận thức an ninh liên tục là nền tảng để giảm thiểu rủi ro tổng thể cho bất kỳ tổ chức nào. Chúng tôi khuyến nghị sử dụng một nhà cung cấp như Ataata, người cung cấp một cách giá rẻ và thú vị để giữ cho nhân viên của bạn được đào tạo. Tất cả những gì cần là ít hơn 5 phút của mọi người để xem một video vui nhộn và làm bài kiểm tra mỗi tháng.",
       "considerations": [
         "Công cụ nào được sử dụng cho nhận thức an ninh và những chủ đề nào được bao phủ?"
       ],
@@ -691,8 +691,8 @@
       "name": "Đánh giá và Phân tích Rủi ro",
       "type": "hành chính",
       "provider": "JupiterOne",
-      "summary": "Đánh giá rủi ro được thực hiện hàng năm bằng một phương pháp xác định để xác định mối đe dọa, tác động, xác suất, tác nhân và tài sản bị nhắm mục tiêu/tác động.",
-      "guidance": "Ít nhất hàng năm, một đánh giá rủi ro nên được thực hiện cho tổ chức của bạn. Một quy trình được thiết lập tốt giúp nhóm của bạn thực hiện đánh giá và quản lý kết quả. Bản thân đánh giá thường được thực hiện thủ công, được hỗ trợ bởi các công cụ để đánh giá rủi ro kỹ thuật và các công cụ quản lý để giúp tài liệu và theo dõi các vấn đề đã xác định. Bạn có thể tài liệu các vấn đề trực tiếp trong hệ thống theo dõi vấn đề như Jira, hoặc tốt hơn, thêm các rủi ro đã xác định dưới dạng đối tượng trong JupiterOne để chúng có thể được trực quan hóa trong bối cảnh với phần còn lại của hệ sinh thái hoạt động của bạn.",
+      "summary": "Đánh giá rủi ro được thực hiện hàng năm bằng một phương pháp xác định để xác định mối đe dọa, tác động, xác suất, tác nhân và tài sản bị nhắm tới",
+      "guidance": "Ít nhất hàng năm, một đánh giá rủi ro nên được thực hiện cho tổ chức của bạn. Một quy trình được thiết lập tốt giúp nhóm của bạn thực hiện đánh giá và quản lý kết quả. Bản thân đánh giá thường được thực hiện thủ công, được hỗ trợ bởi các công cụ để đánh giá rủi ro kỹ thuật và các công cụ quản lý để giúp tài liệu và theo dõi các vấn đề đã xác định. Bạn có thể tài liệu hoá các vấn đề trực tiếp trong hệ thống theo dõi vấn đề như Jira, hoặc tốt hơn, thêm các rủi ro đã xác định dưới dạng đối tượng trong JupiterOne để chúng có thể được trực quan hóa trong bối cảnh với phần còn lại của hệ sinh thái của doanh nghiệp.",
       "applicable": true,
       "adopted": true
     },
@@ -803,7 +803,7 @@
       "type": "kỹ thuật",
       "provider": "JupiterOne",
       "summary": "Nhóm an ninh giám sát các sự kiện an ninh hệ thống và nhật ký thông qua kết hợp các công cụ tự động và đánh giá thủ công.",
-      "guidance": "Nhật ký an ninh, sự kiện và dấu vết kiểm toán nên được xem xét đều đặn. Trong một thực hành an ninh trưởng thành, đây là một nỗ lực chính của hoạt động an ninh hàng ngày. Nó nên được giám sát chủ động thay vì khi xảy ra vi phạm. Số lượng lớn sự kiện có thể nhanh chóng dẫn đến mệt mỏi cảnh báo. Khả năng phân tích sự kiện tự động của JupiterOne có thể giúp đỡ mà không cần một hệ thống Quản lý Thông tin và Sự kiện An ninh (SIEM) đắt đỏ.",
+      "guidance": "Nhật ký an ninh, sự kiện nên được xem xét đều đặn. Đây là một nỗ lực chính của hoạt động an ninh hàng ngày. Nó nên được giám sát chủ động thay vì chỉ thực hiện khi xảy ra vi phạm. Tuy nhiên, số lượng lớn sự kiện có thể nhanh chóng dẫn đến mệt mỏi cảnh báo. Bởi vậy, khả năng phân tích sự kiện tự động của JupiterOne có thể giúp đỡ mà không cần một hệ thống Quản lý Thông tin và Sự kiện An ninh (SIEM) đắt đỏ.",
       "considerations": [
         "Các sự kiện an ninh được cảnh báo đến đâu?",
         "SLA của bạn cho phân tích/phản hồi/điều tra/xử lý các sự kiện an ninh là gì?"
@@ -934,7 +934,7 @@
     {
       "id": "cp-employee-acceptable-use",
       "file": "procedures/cp-employee-acceptable-use.md",
-      "name": "Sử dụng Chấp nhận được của Máy tính Người dùng Cuối",
+      "name": "Sử dụng Chấp nhận được của Điện toán Người dùng Cuối",
       "type": "hành chính",
       "provider": "JupiterOne",
       "summary": "Chính sách sử dụng chấp nhận được có hiệu lực để hướng dẫn nhân viên của tổ chức về việc sử dụng đúng cách các tài sản thông tin và vai trò và trách nhiệm của họ.",
@@ -986,13 +986,13 @@
     {
       "id": "cp-employee-escalation",
       "file": "procedures/cp-employee-escalation.md",
-      "name": "Quy trình Tăng cường Vấn đề của Nhân viên",
+      "name": "Quy trình Báo cáo vấn đề của Nhân viên lên cấp cao hơn",
       "type": "hành chính",
       "provider": "quy trình thủ công",
-      "summary": "Nhân viên được cung cấp một kênh và quy trình an toàn để tăng cường các vấn đề trong nơi làm việc lên HR và/hoặc quản lý cấp cao nếu cần thiết.",
-      "guidance": "Như một phần của hoạt động HR, bạn nên có một quy trình được xác định để nhân viên có thể an toàn tăng cường một vấn đề có thể phát sinh trong nơi làm việc.",
+      "summary": "Nhân viên được cung cấp một kênh và quy trình an toàn để báo cáo các vấn đề trong nơi làm việc lên HR và/hoặc quản lý cấp cao nếu cần thiết.",
+      "guidance": "Như một phần của hoạt động HR, bạn nên có một quy trình được xác định để nhân viên có thể an toàn báo cáo một vấn đề có thể phát sinh trong nơi làm việc.",
       "considerations": [
-        "Nhân viên có thể tăng cường một sự cố an ninh cần hành động ở đâu?"
+        "Nhân viên có thể báo cáo một sự cố an ninh cần hành động ở đâu?"
       ],
       "applicable": true,
       "adopted": true
@@ -1050,7 +1050,7 @@
     {
       "id": "cp-sanctions",
       "file": "procedures/cp-sanctions.md",
-      "name": "Điều tra và Xử phạt Không Tuân thủ",
+      "name": "Điều tra và Xử phạt các trường hợp không tuân thủ",
       "type": "hành chính",
       "provider": "quy trình thủ công",
       "summary": "Chính sách và quy trình được thiết lập để điều tra và thực hiện các hành động phù hợp đối với bất kỳ hành vi không tuân thủ nào với chính sách và quy trình của tổ chức.",
@@ -1229,7 +1229,7 @@
       "name": "Sử Dụng Máy Tính/Những Điểm Cuối",
       "type": "administrative",
       "provider": "JupiterOne",
-      "summary": "Tổ chức cung cấp các thiết bị máy tính điểm cuối tiêu chuẩn cho nhân viên được cấu hình theo các tiêu chuẩn bảo mật của công ty, bao gồm mã hóa đĩa, tường lửa máy chủ, bảo vệ phần mềm độc hại và phát hiện hoạt động độc hại.",
+      "summary": "Tổ chức cung cấp các thiết bị máy tính điểm cuối tiêu chuẩn cho nhân viên được cấu hình theo các tiêu chuẩn bảo mật của công ty, bao gồm mã hóa đĩa, tường lửa máy chủ, bảo vệ máy khỏi phần mềm độc hại và phát hiện hoạt động độc hại.",
       "guidance": "Một bộ tiêu chuẩn và hướng dẫn nên được thiết lập để nhân viên hiểu trách nhiệm và hạn chế của họ khi sử dụng máy tính do công ty cung cấp. Điều này cũng được tham chiếu trong Sổ Tay Nhân Viên. Các kiểm soát kỹ thuật nên được thiết lập để xử lý việc giám sát và bảo vệ máy tính của nhân viên, điều này được đề cập trong một quy trình/kiểm soát riêng biệt.",
       "considerations": [
         "Công cụ nào được sử dụng để mã hóa ổ đĩa của điểm cuối?"
@@ -1876,7 +1876,7 @@
       "provider": "code",
       "function": "provisioning",
       "scope": "điểm cuối",
-      "summary": "Các hệ thống máy tính của người dùng cuối được cấu hình với các kiểm soát bảo mật cơ bản yêu cầu bao gồm mã hóa đĩa, tài khoản người dùng duy nhất và chính sách mật khẩu mạnh, tường lửa máy chủ, bảo vệ khóa màn hình, tự động cập nhật bản vá bảo mật và tác nhân bảo mật điểm cuối để giám sát cấu hình và bảo vệ phần mềm độc hại.",
+      "summary": "Các hệ thống máy tính của người dùng cuối được cấu hình với các kiểm soát bảo mật cơ bản yêu cầu bao gồm mã hóa đĩa, tài khoản người dùng duy nhất và chính sách mật khẩu mạnh, tường lửa máy chủ, bảo vệ khóa màn hình, tự động cập nhật bản vá bảo mật và tác nhân bảo mật điểm cuối để giám sát cấu hình và bảo vệ thiết bị khỏi phần mềm độc hại.",
       "guidance": "Định nghĩa các kiểm soát bảo mật và tiêu chuẩn cấu hình cho các hệ thống người dùng cuối. Có thể sử dụng hệ thống quản lý cung cấp, hoặc điều này có thể được thực hiện thông qua một tập hợp các script tự động chạy trên mỗi hệ thống địa phương để xử lý cấu hình ban đầu. Đối với các hệ thống người dùng cuối được tự quản lý bởi từng nhân viên, bạn nên cung cấp cho họ các tiêu chuẩn cấu hình và các script tự động, nếu có.",
       "considerations": [
         "Các kiểm soát bảo mật nào được áp dụng cho các điểm cuối người dùng?",
@@ -1935,7 +1935,7 @@
       "function": "HIDS",
       "provider": "AWS Inspector và Carbon Black PSC",
       "summary": "Các tác nhân phát hiện xâm nhập máy chủ và giám sát hoạt động độc hại được cài đặt trên các máy chủ và máy tính điểm cuối.",
-      "guidance": "AWS Inspector là một dịch vụ gốc bao gồm quét lỗ hổng của các phiên bản EC2. Đối với phát hiện xâm nhập máy chủ dựa trên tác nhân, chúng tôi khuyên dùng OSSEC như một giải pháp mã nguồn mở cơ bản. OSSEC hỗ trợ nhiều hệ điều hành cả trên đám mây và tại chỗ. Có thể cần một giải pháp thương mại cho giám sát hoạt động của các container Docker. Đối với các hệ thống người dùng cuối trên Windows và macOS, Carbon Black Cb Defense hoặc SentinelOne đều là những giải pháp bảo vệ điểm cuối thế hệ tiếp theo tốt, bao gồm phát hiện/phòng ngừa xâm nhập thông qua phân tích hành vi tiên tiến cũng như bảo vệ phần mềm độc hại.",
+      "guidance": "AWS Inspector là một dịch vụ gốc bao gồm quét lỗ hổng của các phiên bản EC2. Đối với phát hiện xâm nhập máy chủ dựa trên tác nhân, chúng tôi khuyên dùng OSSEC như một giải pháp mã nguồn mở cơ bản. OSSEC hỗ trợ nhiều hệ điều hành cả trên đám mây và tại chỗ. Có thể cần một giải pháp thương mại cho giám sát hoạt động của các container Docker. Đối với các hệ thống người dùng cuối trên Windows và macOS, Carbon Black Cb Defense hoặc SentinelOne đều là những giải pháp bảo vệ điểm cuối thế hệ tiếp theo tốt, bao gồm phát hiện/phòng ngừa xâm nhập thông qua phân tích hành vi tiên tiến cũng như bảo vệ thiết bị khỏi phần mềm độc hại.",
       "considerations": [
         "Bạn sử dụng công cụ gì cho phát hiện xâm nhập dựa trên máy chủ?"
       ],
@@ -1961,7 +1961,7 @@
     {
       "id": "cp-threat-malware",
       "file": "procedures/cp-threat-malware.md",
-      "name": "Bảo vệ Phần mềm Độc hại",
+      "name": "Bảo vệ Thiết bị khỏi Phần mềm Độc hại",
       "type": "kỹ thuật",
       "provider": "Carbon Black PSC",
       "function": "AV",
@@ -2118,7 +2118,7 @@
       "provider": "Jamf",
       "function": "MDM",
       "summary": "Các thiết bị BYOD không được phép kết nối với các môi trường sản xuất chứa dữ liệu quan trọng.",
-      "guidance": "Bạn không thể hỗ trợ thiết bị mang theo (BYOD) cho nhân viên của mình. Nếu bạn làm như vậy, một giải pháp quản lý thiết bị di động (MDM) nên được triển khai để quản lý chúng một cách phù hợp. Nếu bạn đã sử dụng Okta làm IdP của mình, họ có một giải pháp MDM nhẹ mà bạn có thể bật từ cùng nhà cung cấp. Alternativel, AirWatch hoặc Jamf (chỉ dành cho thiết bị Apple) cũng là các giải pháp tốt.",
+      "guidance": "Bạn không thể hỗ trợ thiết bị mang theo (BYOD) cho nhân viên của mình. Nếu bạn làm như vậy, một giải pháp quản lý thiết bị di động (MDM) nên được triển khai để quản lý chúng một cách phù hợp. Nếu bạn đã sử dụng Okta làm IdP của mình, họ có một giải pháp MDM nhẹ mà bạn có thể bật từ cùng nhà cung cấp. Tương tự, AirWatch hoặc Jamf (chỉ dành cho thiết bị Apple) cũng là các giải pháp tốt.",
       "considerations": [
         "Công cụ nào được sử dụng để quản lý thiết bị đầu cuối?",
         "Có cho phép BYOD không?"
@@ -2129,7 +2129,7 @@
     {
       "id": "cp-bcdr",
       "file": "procedures/cp-bcdr.md",
-      "name": "Mục tiêu và Vai trò BCDR",
+      "name": "Mục tiêu và Vai trò của kế hoạch kinh doanh liên tục và khắc phục thảm hoạ (BCDR)",
       "type": "vận hành",
       "provider": "quy trình thủ công",
       "function": "BCDR",
@@ -2173,7 +2173,7 @@
       "name": "Khôi phục Tại Nơi làm việc",
       "type": "vận hành",
       "provider": "quy trình thủ công",
-      "summary": "Các sắp xếp làm việc từ xa đã được thực hiện.",
+      "summary": "Các sắp xếp làm việc từ xa đã được thực hiện theo quy trình được ban hành",
       "guidance": "Bạn nên bao gồm một quy trình mô tả cách bạn khôi phục từ một thảm họa vật lý tại một địa điểm làm việc, hoặc trung tâm dữ liệu vật lý của bạn, nếu áp dụng.",
       "applicable": true,
       "adopted": true
@@ -2234,11 +2234,11 @@
     {
       "id": "cp-ir-playbook",
       "file": "procedures/cp-ir-playbook.md",
-      "name": "Danh mục và Sách Quy trình Sự cố",
+      "name": "Danh mục và Tài liệu quy trình xử lý Sự cố",
       "type": "vận hành",
       "provider": "quy trình thủ công",
-      "summary": "Các sách quy trình sự cố được tạo ra với các quy trình kỹ thuật chi tiết để hướng dẫn nhân viên trong việc xử lý sự cố theo phân loại và mức độ nghiêm trọng của sự cố.",
-      "guidance": "Một tập hợp các sách quy trình được tham khảo ở đây theo các danh mục sự cố đã xác định. Điều này có thể được thực hiện thủ công theo các sách quy trình. Khi thực hành bảo mật của bạn trưởng thành, bạn có thể xem xét việc triển khai một giải pháp phản ứng sự cố/forensic chuyên dụng.",
+      "summary": "Các tài liệu quy trình xử lý sự cố được tạo ra với các quy trình kỹ thuật chi tiết để hướng dẫn nhân viên trong việc xử lý sự cố theo phân loại và mức độ nghiêm trọng của sự cố.",
+      "guidance": "Một tập hợp các tài liệu quy trình xử lý sự cố được tham khảo ở đây theo các danh mục sự cố đã xác định. Điều này có thể được thực hiện thủ công theo các tài liệu quy trình. Khi thực hành bảo mật của bạn trưởng thành, bạn có thể xem xét việc triển khai một giải pháp phản ứng sự cố/forensic chuyên dụng.",
       "considerations": [
         "Bạn có đồng ý với các phân loại không?",
         "Bạn có đồng ý với các mức độ bảo mật không?",
@@ -2401,8 +2401,8 @@
       "name": "Thông báo Quyền riêng tư, Điều khoản và Đồng ý",
       "type": "hành chính",
       "provider": "quy trình thủ công",
-      "summary": "Tổ chức đã công bố chính sách quyền riêng tư và thiết lập quy trình đồng ý của người dùng cho việc xử lý dữ liệu, phù hợp với các quy định áp dụng.",
-      "guidance": "Tạo và công bố Chính sách Quyền riêng tư, Thông báo Thực tiễn Quyền riêng tư, cũng như Điều khoản và Điều kiện để sử dụng sản phẩm của bạn, nếu áp dụng. Bất kỳ thay đổi nào nên được thông báo nhanh chóng và chính thức đến tất cả khách hàng.",
+      "summary": "Tổ chức đã công bố chính sách quyền riêng tư và thiết lập quy trình đồng ý của người dùng cho việc xử lý dữ liệu, phù hợp với các quy định đã được ban hành.",
+      "guidance": "Tạo và công bố Chính sách Quyền riêng tư, Thông báo Thực tiễn Quyền riêng tư, cũng như Điều khoản và Điều kiện để sử dụng sản phẩm của bạn. Bất kỳ thay đổi nào nên được thông báo nhanh chóng đến tất cả khách hàng.",
       "considerations": [
         "Chính sách quyền riêng tư của bạn được công bố ở đâu? (Bạn có thể áp dụng của chúng tôi)"
       ],
