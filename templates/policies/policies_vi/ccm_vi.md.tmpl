@@ -1,0 +1,34 @@
+# Quản Lý Cấu Hình và Thay Đổi
+
+`{{defaultRevision}}`
+
+{{companyShortName}} chuẩn hóa và tự động hóa việc quản lý cấu hình thông qua việc sử dụng
+các tập lệnh tự động cũng như tài liệu hóa tất cả các thay đổi đối với hệ thống
+và mạng sản xuất. Các công cụ tự động hóa (ví dụ như Chef, Salt, và Terraform) tự động
+cấu hình tất cả các hệ thống của {{companyShortName}} theo các chính sách đã được thiết lập và kiểm
+tra, và được sử dụng như một phần của kế hoạch và quy trình khôi phục thảm họa của chúng tôi.
+
+## Các Tuyên Bố Chính Sách
+
+Chính sách của {{companyShortName}} yêu cầu rằng:
+
+(a) Tất cả các thay đổi sản xuất, bao gồm nhưng không giới hạn ở việc triển khai phần mềm,
+bật tính năng chuyển đổi, thay đổi cơ sở hạ tầng mạng, và cập nhật quyền kiểm soát truy cập,
+phải được thực hiện thông qua quy trình quản lý thay đổi đã được phê duyệt.
+
+(b) Mỗi thay đổi sản xuất phải duy trì đầy đủ khả năng truy vết để ghi lại hoàn toàn
+yêu cầu, bao gồm người yêu cầu, ngày/giờ thay đổi, hành động thực hiện và
+kết quả.
+
+(c) Mỗi thay đổi sản xuất phải được kiểm tra hoàn toàn trước khi thực hiện.
+
+(d) Mỗi thay đổi sản xuất phải bao gồm kế hoạch hoàn nguyên để khôi phục thay đổi
+trong trường hợp thất bại.
+
+(e) Mỗi thay đổi sản xuất phải bao gồm sự phê duyệt thích hợp.
+
+  * Người phê duyệt được xác định dựa trên loại thay đổi.
+  * Người phê duyệt phải là người khác với tác giả/người thực hiện thay đổi.
+  * Phê duyệt có thể được tự động cấp nếu đáp ứng một số tiêu chí nhất định.
+    Các tiêu chí tự động phê duyệt phải được Phụ trách An ninh phê duyệt trước và
+    được tài liệu hóa và xác thực hoàn toàn cho mỗi yêu cầu.

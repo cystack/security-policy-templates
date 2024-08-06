@@ -1,0 +1,63 @@
+# Phát Triển Phần Mềm An Toàn và Bảo Mật Sản Phẩm
+
+`{{defaultRevision}}`
+
+Nhóm phát triển của {{companyShortName}} tuân theo các phương pháp tốt nhất về bảo mật mới nhất khi phát triển phần mềm và tự động hóa việc kiểm tra bảo mật trong suốt vòng đời phát triển khi có thể.
+
+Bảo mật được tích hợp vào tất cả các giai đoạn của vòng đời phát triển sản phẩm của {{companyShortName}}, bao gồm:
+
+* Thiết Kế An Toàn:
+
+    - Phân loại rủi ro ứng dụng
+    - Xác định yêu cầu bảo mật
+    - Thiết kế ứng dụng an toàn / RFC
+    - Mô hình hóa mối đe dọa
+    - Phân tích luồng dữ liệu ứng dụng
+
+* Phát Triển và Kiểm Tra An Toàn:
+
+    - Hướng dẫn lập trình an toàn
+    - Xem xét mã bởi đồng nghiệp
+    - Kiểm tra bảo mật, ví dụ:
+
+        - Linting với quy tắc bảo mật
+        - Phân tích bảo mật mã nguồn mở
+        - Phân tích mã nguồn bảo mật tĩnh
+        - Phân tích bảo mật động
+        - Kiểm tra thâm nhập
+
+    - Công bố lỗ hổng có trách nhiệm / chương trình bug bounty
+
+* Khắc Phục:
+
+    - Tuân theo vòng đời quản lý lỗ hổng đã định
+    - Đảm bảo không có lỗ hổng bảo mật nghiêm trọng nào trong môi trường sản xuất
+
+Chi tiết về kiến trúc ứng dụng phần mềm và bảo mật của {{companyShortName}} được tài liệu hóa trên [wiki phát triển sản phẩm / kỹ thuật]({{&devWikiURL}}).
+
+## Tuyên Bố Chính Sách
+
+Chính sách của {{companyShortName}} yêu cầu rằng:
+
+(a) Kỹ thuật phần mềm và phát triển sản phẩm của {{companyShortName}} phải tuân theo các phương pháp tốt nhất về bảo mật. Sản phẩm phải được "An Toàn Theo Thiết Kế" và "An Toàn Theo Mặc Định".
+
+(b) Các hoạt động đảm bảo chất lượng phải được thực hiện. Điều này có thể bao gồm
+
+  * Xem xét mã bởi đồng nghiệp trước khi gộp mã mới vào nhánh phát triển chính (ví dụ: nhánh master); và
+  * Kiểm tra sản phẩm kỹ lưỡng trước khi phát hành ra môi trường sản xuất (ví dụ: kiểm tra đơn vị và kiểm tra tích hợp).
+
+(c) Các hoạt động đánh giá rủi ro (tức là mô hình hóa mối đe dọa) phải được thực hiện cho một sản phẩm mới hoặc thay đổi lớn đối với một sản phẩm hiện có.
+
+(d) Các yêu cầu bảo mật phải được xác định, theo dõi và thực hiện.
+
+(e) Phân tích bảo mật phải được thực hiện cho bất kỳ phần mềm mã nguồn mở và/hoặc các thành phần và phụ thuộc bên thứ ba nào được bao gồm trong các sản phẩm phần mềm của {{companyShortName}}.
+
+(f) Kiểm tra bảo mật ứng dụng tĩnh (SAST) phải được thực hiện trong suốt quá trình phát triển và trước mỗi lần phát hành.
+
+(g) Kiểm tra bảo mật ứng dụng động (DAST) phải được thực hiện trước mỗi lần phát hành.
+
+(h) Tất cả các phát hiện bảo mật nghiêm trọng hoặc mức độ cao phải được khắc phục trước mỗi lần phát hành.
+
+(i) Tất cả các lỗ hổng nghiêm trọng hoặc mức độ cao được phát hiện sau khi phát hành phải được khắc phục trong lần phát hành tiếp theo hoặc trong khoảng thời gian đã định.
+
+(j) Bất kỳ ngoại lệ nào đối với việc khắc phục một phát hiện phải được tài liệu hóa và phê duyệt bởi đội ngũ bảo mật.
