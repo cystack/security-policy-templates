@@ -1054,8 +1054,8 @@
       "type": "hành chính",
       "provider": "quy trình thủ công",
       "summary": "Chính sách và quy trình được thiết lập để điều tra và thực hiện các hành động phù hợp đối với bất kỳ hành vi không tuân thủ nào với chính sách và quy trình của tổ chức.",
-      "guidance": "Tất cả các thành viên lực lượng lao động nên được đào tạo và chấp nhận các chính sách và quy trình an ninh của tổ chức. Trong trường hợp vi phạm, nên có một quy trình được xác định trước để xác định, điều tra và xử lý công bằng từng sự cố.",
-      "considerations": ["Bạn có mẫu cảnh báo nhân viên không?"],
+      "guidance": "Tất cả các thành viên lực lượng lao động nên được đào tạo và chấp nhận các chính sách và quy trình an ninh của tổ chức. Trong trường hợp vi phạm, nên có một quy trình để xác định, điều tra và xử lý công bằng từng sự cố.",
+      "considerations": ["Bạn có biểu mẫu cảnh báo nhân viên không?"],
       "applicable": true,
       "adopted": true
     },
@@ -1091,7 +1091,7 @@
       "name": "Kiểm soát Truy cập Dựa trên Vai trò (RBAC)",
       "type": "kỹ thuật",
       "provider": "Okta",
-      "summary": "Truy cập vào các hệ thống và ứng dụng được cấp phát dựa trên vai trò/nhóm của người dùng.",
+      "summary": "Quyền truy cập vào các hệ thống và ứng dụng được cấp phát dựa trên vai trò/nhóm của người dùng.",
       "guidance": "Kiểm soát truy cập dựa trên vai trò (RBAC) là phương pháp tiêu chuẩn ngành để thực hiện ủy quyền truy cập cho người dùng. Điều này được hỗ trợ bởi hầu hết các hệ thống định danh và truy cập dưới dạng 'Nhóm' và phân công người dùng vào 'Nhóm' phù hợp với chức năng công việc/vai trò của họ.",
       "applicable": true,
       "adopted": true
@@ -1158,7 +1158,7 @@
       "type": "operational",
       "provider": "Okta",
       "function": "SSO",
-      "summary": "Các thay đổi đối với quyền truy cập đã được thiết lập trước (được cấu hình như một phần của việc gia nhập) phải được yêu cầu và phê duyệt bởi quản lý của nhân viên hoặc nhóm bảo mật trước khi cấp quyền truy cập. Quyền truy cập không tiêu chuẩn sẽ bị thu hồi khi không còn cần thiết.",
+      "summary": "Các thay đổi đối với quyền truy cập đã được thiết lập trước (được cấu hình như một phần của việc gia nhập) phải được yêu cầu và phê duyệt bởi quản lý của nhân viên hoặc nhóm bảo mật trước khi cấp quyền truy cập. Quyền truy cập không theo tiêu chuẩn sẽ bị thu hồi khi không còn cần thiết.",
       "guidance": "Thỉnh thoảng, bạn có thể cần thêm, thay đổi hoặc gỡ bỏ quyền truy cập vào các tài nguyên nhất định cho một nhân viên/nhà thầu. Bạn cần phải có quy trình để ghi lại yêu cầu, phê duyệt và cung cấp các hành động như vậy. Nếu bạn đã sử dụng một công cụ quản lý vấn đề như Jira, thì việc tạo một dự án Service Desk và quản lý nó ở đó là khá đơn giản.",
       "considerations": [
         "Các tài khoản tiêu chuẩn/mặc định mà nhân viên mới nhận được quyền truy cập là gì?",
@@ -1376,7 +1376,7 @@
       "type": "technical",
       "provider": "JupiterOne",
       "function": ["inventory", "ITAM"],
-      "summary": "Tất cả tài sản kỹ thuật số và được định nghĩa bằng phần mềm, chẳng hạn như phiên bản ảo và kho mã nguồn, được phát hiện và duy trì trong hệ thống danh mục tài sản.",
+      "summary": "Tất cả tài sản kỹ thuật số và được định nghĩa bằng phần mềm, chẳng hạn như máy ảo và kho mã nguồn, được phát hiện và duy trì trong hệ thống danh mục tài sản.",
       "guidance": "Bạn sẽ cần duy trì một danh mục tài sản kỹ thuật số cập nhật, chẳng hạn như các phiên bản máy ảo, phiên bản cơ sở dữ liệu, kho dữ liệu, v.v. JupiterOne có thể tự động hóa điều đó cho bạn. Bạn chỉ cần cấu hình các nhà cung cấp, chẳng hạn như AWS, trong JupiterOne và nó sẽ lo phần còn lại.",
       "considerations": [
         "Công cụ nào được sử dụng để lưu trữ tài sản kỹ thuật số?"
@@ -1500,7 +1500,7 @@
       "type": "technical",
       "provider": "AWS KMS và mã hóa dữ liệu",
       "function": "data-encryption",
-      "summary": "Dữ liệu nhạy cảm và bí mật được mã hóa khi lưu trữ.",
+      "summary": "Dữ liệu nhạy cảm và bí mật được lưu trữ dưới dạng mã hoá.",
       "guidance": "Dữ liệu khi đang lưu trữ đề cập đến việc lưu trữ dữ liệu lâu dài, bao gồm các phương tiện vật lý như ổ cứng laptop, các khối dữ liệu ảo như Elastic Block Store (EBS) trong AWS, và kho dữ liệu logic như S3 Buckets trong AWS. Mã hóa mạnh, thường là AES-256, và quản lý khóa thường là cần thiết để bảo vệ dữ liệu khi đang lưu trữ.",
       "applicable": true,
       "adopted": true
@@ -1529,7 +1529,7 @@
       "type": "technical",
       "provider": "AWS CloudTrail",
       "function": ["auditing", "monitoring"],
-      "summary": "Theo dõi audit được kích hoạt để giám sát quyền truy cập dữ liệu khi đang sử dụng.",
+      "summary": "Dấu vết kiểm toán được kích hoạt để giám sát quyền truy cập dữ liệu khi đang sử dụng.",
       "guidance": "Dữ liệu khi đang sử dụng đề cập đến dữ liệu đang được xử lý bởi các hệ thống và ứng dụng. Các khả năng bảo mật lớp ứng dụng và cơ chế kiểm soát truy cập thường được áp dụng.",
       "applicable": true,
       "adopted": true
@@ -1623,7 +1623,7 @@
       "type": "technical",
       "provider": "code",
       "function": "appsec-requirements",
-      "summary": "Các yêu cầu bảo mật ứng dụng được xác định theo các thực tiễn tốt nhất của OWASP Top Ten.",
+      "summary": "Các yêu cầu bảo mật ứng dụng được xác định theo các thực tiễn tốt nhất của top 10 lỗ hổng OWASP.",
       "guidance": "Một bộ yêu cầu bảo mật ứng dụng cấp cao nên được xác định. Đây là nền tảng để đào tạo đội phát triển của bạn về mã hóa an toàn, và nó phục vụ như là cơ sở cho các yếu tố bảo mật trong toàn bộ thiết kế sản phẩm của bạn. OWASP được tham khảo như một phần quan trọng của các yêu cầu cấp cao.",
       "applicable": true,
       "adopted": true
@@ -1635,7 +1635,7 @@
       "type": "technical",
       "provider": "code",
       "function": "appsec-threat-modeling",
-      "summary": "Các yếu tố bảo mật là bắt buộc như một phần của thiết kế hệ thống mới và phát triển tính năng. Mô hình mối đe dọa, bao gồm lập bản đồ luồng dữ liệu và phân tích rủi ro cho các hệ thống/sản phẩm/tính năng mới, được thực hiện chung bởi các đội ngũ bảo mật và phát triển khi cần.",
+      "summary": "Các yếu tố bảo mật là bắt buộc như một phần của thiết kế hệ thống mới và phát triển tính năng. Mô hình hoá mối đe dọa, bao gồm lập bản đồ luồng dữ liệu và phân tích rủi ro cho các hệ thống/sản phẩm/tính năng mới, được thực hiện chung bởi các đội ngũ bảo mật và phát triển khi cần.",
       "guidance": "Bảo mật nên được tích hợp vào ứng dụng/sản phẩm của bạn càng sớm càng tốt, bắt đầu từ giai đoạn thiết kế. Xem xét bảo mật đúng cách và thậm chí mô hình mối đe dọa chính thức có thể giúp giảm đáng kể rủi ro liên quan đến các lỗi logic ứng dụng, những lỗi khó phát hiện bằng bất kỳ phần mềm quét nào, thường dẫn đến tác động tiêu cực lớn và là những lỗi tốn kém nhất để sửa chữa sau này.",
       "applicable": true,
       "adopted": true
@@ -1679,7 +1679,7 @@
       "type": "technical",
       "provider": "Lint and GitLeaks",
       "function": "SAST",
-      "summary": "Quét mã tĩnh được thực hiện tự động, hoặc là một phần của quy trình DevOps hoặc theo lịch trình định kỳ để phát hiện các lỗi phổ biến trong mẫu mã, chẳng hạn như lỗi tiêm, tràn bộ đệm và lộ bí mật/ thông tin xác thực trong mã.",
+      "summary": "Quét mã tĩnh được thực hiện tự động, hoặc là một phần của quy trình DevOps hoặc theo lịch trình định kỳ để phát hiện các lỗi phổ biến trong mẫu mã, chẳng hạn như lỗi tiêm mã dộc, tràn bộ đệm và lộ bí mật/ thông tin xác thực trong mã.",
       "guidance": "Mã phần mềm do các nhà phát triển của bạn viết nên được quét để phát hiện lỗ hổng trước khi đưa vào sản xuất. Veracode, WhiteHat, Checkmarx, v.v. là các giải pháp hỗ trợ hầu hết các ngôn ngữ lập trình hiện đại như Java, Javascript, Python, v.v.",
       "considerations": ["Công cụ nào bạn sử dụng cho SAST?"],
       "applicable": true,
@@ -1744,7 +1744,7 @@
       "type": "vận hành",
       "provider": "PagerDuty",
       "function": ["incident-management", "paging"],
-      "summary": "Các nhóm trực sẵn sàng nhận thông báo qua pager khi có sự cố hoặc lỗi xảy ra trong sản xuất.",
+      "summary": "Các nhóm trực sẵn sàng nhận thông báo ngay lập tức khi có sự cố hoặc lỗi xảy ra trong sản xuất.",
       "guidance": "Sau khi hệ thống và/hoặc phần mềm được triển khai vào sản xuất, bạn nên thiết lập giám sát liên tục để phát hiện lỗi và sự cố và thông báo cho các thành viên trong nhóm tương ứng.",
       "considerations": [
         "Nhóm trực của bạn được thông báo như thế nào về các điều kiện lỗi nghiêm trọng/ quan trọng?"
@@ -2102,7 +2102,7 @@
       "type": "kỹ thuật",
       "provider": "IronKey",
       "function": "MDM",
-      "summary": "Việc sử dụng USB flash drive hoặc thiết bị lưu trữ di động tương tự để lưu trữ dữ liệu nhạy cảm và quan trọng bị cấm và phải được xử lý theo cách ngoại lệ được phê duyệt bởi bảo mật.",
+      "summary": "Việc sử dụng USB flash drive hoặc thiết bị lưu trữ di động tương tự để lưu trữ dữ liệu nhạy cảm và quan trọng bị cấm và phải được xử lý theo cách ngoại lệ đã được phê duyệt.",
       "guidance": "Nếu cần sử dụng phương tiện di động, chẳng hạn như USB flash drive, để lưu trữ dữ liệu nhạy cảm, cần phải thực hiện các biện pháp bảo mật. IronKey hoặc các thiết bị tương tự hỗ trợ mã hóa phần cứng là lựa chọn tốt. Tuy nhiên, tốt hơn nhiều nếu không lưu trữ dữ liệu nhạy cảm trên thiết bị lưu trữ di động ngay từ đầu.",
       "considerations": [
         "Dữ liệu có được phép trên các flash drive mã hóa không và công cụ gì được sử dụng?"
@@ -2268,7 +2268,7 @@
       "name": "Bài tập Giả lập",
       "type": "vận hành",
       "provider": "quy trình thủ công",
-      "summary": "Các bài tập giả lập và/hoặc các bài tập mô phỏng sự cố được thực hiện ít nhất hàng năm để xác thực và cập nhật quy trình phản ứng sự cố.",
+      "summary": "Các bài tập giả lập và/hoặc các bài tập mô phỏng sự cố được thực hiện ít nhất hàng năm để đánh giá và cập nhật quy trình phản ứng sự cố.",
       "guidance": "Luyện tập là hoàn hảo. Thực hiện các bài tập theo quy trình phản ứng sự cố, sách quy trình và quy trình khẩn cấp để bạn biết điều gì sẽ xảy ra trong một sự kiện thực tế.",
       "applicable": true,
       "adopted": true
@@ -2317,10 +2317,10 @@
     {
       "id": "cp-breach-letter",
       "file": "procedures/cp-breach-letter.md",
-      "name": "Mẫu Thư Thông Báo cho Khách Hàng trong Trường hợp Vi phạm",
+      "name": "Biểu mẫu Thư Thông Báo cho Khách Hàng trong Trường hợp Vi phạm",
       "type": "thông tin",
       "provider": "",
-      "summary": "Mẫu thông tin được thiết lập cho thông báo bên ngoài về vi phạm.",
+      "summary": "Biểu mẫu thông báo được thiết lập cho thông báo ra bên ngoài về vi phạm.",
       "guidance": "Nếu vi phạm được xác nhận, bạn có nghĩa vụ pháp lý để thông báo cho khách hàng của bạn. Một mẫu thông báo giúp bạn đơn giản hóa quy trình này.",
       "applicable": true,
       "adopted": true
@@ -2328,7 +2328,7 @@
     {
       "id": "cp-breach-authorities",
       "file": "procedures/cp-breach-authorities.md",
-      "name": "Điểm Liên hệ với Cơ quan",
+      "name": "Đầu mối liên hệ với Cơ quan",
       "type": "thông tin",
       "provider": "",
       "summary": "Thông tin liên hệ với các cơ quan quản lý bảo vệ và quyền riêng tư dữ liệu được ghi chép để phản ứng kịp thời.",
